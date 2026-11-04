@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1793752210412,
+  "lastUpdate": 1793780320447,
   "repoUrl": "https://github.com/ixxq/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -6376,6 +6376,65 @@ window.BENCHMARK_DATA = {
             "range": "2.65 ms",
             "unit": "ms",
             "extra": "median: 34 ms\nmin: 32.2 ms\nmax: 41.75 ms\nstddev: 2.65 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+ixxq@users.noreply.github.com",
+            "name": "ixxq",
+            "username": "ixxq"
+          },
+          "committer": {
+            "email": "83203852+ixxq@users.noreply.github.com",
+            "name": "ixxq",
+            "username": "ixxq"
+          },
+          "distinct": true,
+          "id": "9684923ebe6918f0c7b66ae56b84d24411a5582d",
+          "message": "feat(claude): show-image と image-view を統合版の images に置き換える\n\n- enabledPlugins を images@claude-images（ixxq/claude-images）の 1 つにまとめる\n- extraKnownMarketplaces から claude-show-image と claude-image-view を外し claude-images を追加\n\nCo-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>",
+          "timestamp": "2026-11-04T14:25:17+09:00",
+          "tree_id": "05f03c6f3cb0130a01e730aff6e706cc6df5c63a",
+          "url": "https://github.com/ixxq/dotfiles/commit/9684923ebe6918f0c7b66ae56b84d24411a5582d"
+        },
+        "date": 1793780319158,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 44.06,
+            "range": "7.59 ms",
+            "unit": "ms",
+            "extra": "median: 44.06 ms\nmin: 39.17 ms\nmax: 73.36 ms\nstddev: 7.59 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 44.56,
+            "range": "7.67 ms",
+            "unit": "ms",
+            "extra": "median: 44.56 ms\nmin: 39.64 ms\nmax: 74.18 ms\nstddev: 7.67 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.08,
+            "range": "0.07 ms",
+            "unit": "ms",
+            "extra": "median: 1.08 ms\nmin: 0.98 ms\nmax: 1.24 ms\nstddev: 0.07 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 18.69,
+            "range": "7.48 ms",
+            "unit": "ms",
+            "extra": "median: 18.69 ms\nmin: 1.62 ms\nmax: 22.47 ms\nstddev: 7.48 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 40.58,
+            "range": "2.61 ms",
+            "unit": "ms",
+            "extra": "median: 40.58 ms\nmin: 36.11 ms\nmax: 46.11 ms\nstddev: 2.61 ms\nruns: 16"
           }
         ]
       }
