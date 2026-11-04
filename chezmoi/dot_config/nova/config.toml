@@ -31,7 +31,7 @@
 [layout]
 lines = 2
 # Collapse accepted lines, keeping the directory and exit status.
-transient = ["dir", "exit_status", "prompt_char"]
+# transient = ["dir", "exit_status", "prompt_char"]
 
 [layout.line1]
 left = [
