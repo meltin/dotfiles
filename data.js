@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1793465900762,
+  "lastUpdate": 1793752210412,
   "repoUrl": "https://github.com/ixxq/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -6317,6 +6317,65 @@ window.BENCHMARK_DATA = {
             "range": "2.37 ms",
             "unit": "ms",
             "extra": "median: 36.44 ms\nmin: 35.61 ms\nmax: 45.85 ms\nstddev: 2.37 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+ixxq@users.noreply.github.com",
+            "name": "ixxq",
+            "username": "ixxq"
+          },
+          "committer": {
+            "email": "83203852+ixxq@users.noreply.github.com",
+            "name": "ixxq",
+            "username": "ixxq"
+          },
+          "distinct": true,
+          "id": "373423aa65875f4abc49caced412575511165f4e",
+          "message": "fix(zsh): mise activate の出力をキャッシュしない\n\n- mise activate は実行時の PATH を出力に埋め込むため、キャッシュすると古い PATH で上書きされる\n- zsh-defer で遅延したまま毎回 eval する\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+          "timestamp": "2026-11-04T09:23:43+09:00",
+          "tree_id": "6754bc6f59a2c5b006f600223ed505fbdffa326d",
+          "url": "https://github.com/ixxq/dotfiles/commit/373423aa65875f4abc49caced412575511165f4e"
+        },
+        "date": 1793752209239,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 37.75,
+            "range": "7.12 ms",
+            "unit": "ms",
+            "extra": "median: 37.75 ms\nmin: 36.67 ms\nmax: 66.99 ms\nstddev: 7.12 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 38.21,
+            "range": "7.15 ms",
+            "unit": "ms",
+            "extra": "median: 38.21 ms\nmin: 37.14 ms\nmax: 67.56 ms\nstddev: 7.15 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.07,
+            "range": "0.05 ms",
+            "unit": "ms",
+            "extra": "median: 1.07 ms\nmin: 1.01 ms\nmax: 1.16 ms\nstddev: 0.05 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 8.17,
+            "range": "8 ms",
+            "unit": "ms",
+            "extra": "median: 8.17 ms\nmin: 0.94 ms\nmax: 22.24 ms\nstddev: 8 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 34,
+            "range": "2.65 ms",
+            "unit": "ms",
+            "extra": "median: 34 ms\nmin: 32.2 ms\nmax: 41.75 ms\nstddev: 2.65 ms\nruns: 16"
           }
         ]
       }
