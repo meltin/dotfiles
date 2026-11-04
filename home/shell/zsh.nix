@@ -166,7 +166,8 @@ in
         ${zshDeferIdle} cache_eval "${zoxideBin} init zsh"
         ${zshDeferIdle} cache_eval "${fzfBin} --zsh"
         ${zshDeferIdle} cache_eval "${direnvBin} hook zsh"
-        ${zshDeferIdle} cache_eval "${miseBin} activate zsh"
+        # mise activate embeds the current PATH in its output, so caching it pins a stale PATH.
+        ${zshDeferIdle} -c 'eval "$(${miseBin} activate zsh)"'
         if (( $+commands[muu] )); then
           ${zshDeferIdle} cache_eval "COMPLETE=zsh muu"
         fi
