@@ -13,12 +13,10 @@ let
     "stablyai/orca"
     "watrix811/tap"
     "fif7y/tap"
-    # Keep the upstream tap available for switching back.
     {
       name = "yksr-melt/meltype";
       clone_target = "https://github.com/yksr-melt/Meltype.git";
     }
-    "whitewater-png/meltype-for-mac"
   ];
   # Trusting a whole tap covers every formula and cask it provides.
   trustJson = builtins.toJSON {
@@ -79,7 +77,7 @@ in
       "capsomnia"
       "watrix811/tap/pieto-timer"
       "fif7y/tap/dimble"
-      "whitewater-png/meltype-for-mac/meltype-for-mac"
+      "yksr-melt/meltype/meltype"
     ];
   };
 
