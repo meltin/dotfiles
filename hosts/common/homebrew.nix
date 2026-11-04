@@ -7,7 +7,7 @@ let
     "dimentium/autoraise"
     "k1low/tap"
     "kayac/tap"
-    "ixxq/tap"
+    "unmett/tap"
     "manaflow-ai/cmux"
     "productdevbook/tap"
     "stablyai/orca"
@@ -39,7 +39,7 @@ in
       "k1low/tap/git-wt"
       "k1low/tap/mo"
       "kayac/tap/ecspresso"
-      "ixxq/tap/muu"
+      "unmett/tap/muu"
     ];
     casks = [
       "1password@beta"

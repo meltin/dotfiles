@@ -88,13 +88,13 @@
       "locked": {
         "lastModified": 1793438877,
         "narHash": "sha256-mpTHuCt1NPBYoYMLMBpDTuA0rSfHUzKgYRAH+KZXcgs=",
-        "owner": "ixxq-labs",
+        "owner": "unmett",
         "repo": "nova",
         "rev": "4acb75dd0b7ebcfb7c7325c6c7bd622e8f5381d7",
         "type": "github"
       },
       "original": {
-        "owner": "ixxq-labs",
+        "owner": "unmett",
         "repo": "nova",
         "type": "github"
       }

@@ -1,5 +1,5 @@
 {
-  description = "ixxq's dotfiles";
+  description = "unmett's dotfiles";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin = {
@@ -11,7 +11,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nova = {
-      url = "github:ixxq-labs/nova";
+      url = "github:unmett/nova";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -66,7 +66,7 @@
       };
       darwinConfigurations."M4Air" = mkDarwinConfig {
         hostName = "M4Air";
-        username = "lemtoc";
+        username = "u";
       };
       formatter.${system} = pkgs.nixfmt-tree;
 
