@@ -80,7 +80,6 @@ in
       "watrix811/tap/pieto-timer"
       "fif7y/tap/dimble"
       "whitewater-png/meltype-for-mac/meltype-for-mac"
-      "lunar"
     ];
   };
 
