@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1793842663361,
+  "lastUpdate": 1793843642678,
   "repoUrl": "https://github.com/unmett/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -6494,6 +6494,65 @@ window.BENCHMARK_DATA = {
             "range": "34.76 ms",
             "unit": "ms",
             "extra": "median: 38.16 ms\nmin: 34.08 ms\nmax: 178.63 ms\nstddev: 34.76 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+unmett@users.noreply.github.com",
+            "name": "unmett",
+            "username": "unmett"
+          },
+          "committer": {
+            "email": "83203852+unmett@users.noreply.github.com",
+            "name": "unmett",
+            "username": "unmett"
+          },
+          "distinct": true,
+          "id": "b76d70252c68e2669ca261715f08c066058c84db",
+          "message": "chore(chezmoi): M4Air の実設定を source に取り込む\n\n- M4Air では SidePulse を使わないため、chezmoi の対象から外す\n- Codex アプリが更新した config.toml の内容を source に反映する\n- Claude の skipDangerousModePermissionPrompt を source に追加する\n- Meltype の設定ディレクトリを private にして権限を 700 に保つ\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+          "timestamp": "2026-11-05T10:53:16+09:00",
+          "tree_id": "1a8e52762dff01203e2c616184fc792a115fc4b6",
+          "url": "https://github.com/unmett/dotfiles/commit/b76d70252c68e2669ca261715f08c066058c84db"
+        },
+        "date": 1793843641306,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 37.86,
+            "range": "6.8 ms",
+            "unit": "ms",
+            "extra": "median: 37.86 ms\nmin: 36.87 ms\nmax: 65.88 ms\nstddev: 6.8 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 38.33,
+            "range": "6.81 ms",
+            "unit": "ms",
+            "extra": "median: 38.33 ms\nmin: 37.32 ms\nmax: 66.37 ms\nstddev: 6.81 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.06,
+            "range": "0.03 ms",
+            "unit": "ms",
+            "extra": "median: 1.06 ms\nmin: 1.01 ms\nmax: 1.11 ms\nstddev: 0.03 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 2.52,
+            "range": "4.46 ms",
+            "unit": "ms",
+            "extra": "median: 2.52 ms\nmin: 1.21 ms\nmax: 20.54 ms\nstddev: 4.46 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 32.27,
+            "range": "0.84 ms",
+            "unit": "ms",
+            "extra": "median: 32.27 ms\nmin: 32.11 ms\nmax: 35.7 ms\nstddev: 0.84 ms\nruns: 16"
           }
         ]
       }
