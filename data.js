@@ -1,6 +1,6 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1793780320447,
-  "repoUrl": "https://github.com/ixxq/dotfiles",
+  "lastUpdate": 1793842663361,
+  "repoUrl": "https://github.com/unmett/dotfiles",
   "entries": {
     "Zsh Startup Time": [
       {
@@ -6435,6 +6435,65 @@ window.BENCHMARK_DATA = {
             "range": "2.61 ms",
             "unit": "ms",
             "extra": "median: 40.58 ms\nmin: 36.11 ms\nmax: 46.11 ms\nstddev: 2.61 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+unmett@users.noreply.github.com",
+            "name": "unmett",
+            "username": "unmett"
+          },
+          "committer": {
+            "email": "83203852+unmett@users.noreply.github.com",
+            "name": "unmett",
+            "username": "unmett"
+          },
+          "distinct": true,
+          "id": "0be331afe2daaf06e6fb87e6770dd8c9646df38c",
+          "message": "chore(nova): transient プロンプトを無効にする\n\nnova 側で transient がオプトインになったため、設定をコメントアウトして既定に合わせる。\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+          "timestamp": "2026-11-05T02:36:56+09:00",
+          "tree_id": "1aed78544fb78da656b24c8a0edf9b1b44da2c16",
+          "url": "https://github.com/unmett/dotfiles/commit/0be331afe2daaf06e6fb87e6770dd8c9646df38c"
+        },
+        "date": 1793842661287,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 40.02,
+            "range": "24.39 ms",
+            "unit": "ms",
+            "extra": "median: 40.02 ms\nmin: 38.12 ms\nmax: 139.69 ms\nstddev: 24.39 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 40.55,
+            "range": "24.58 ms",
+            "unit": "ms",
+            "extra": "median: 40.55 ms\nmin: 38.59 ms\nmax: 140.97 ms\nstddev: 24.58 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1,
+            "range": "3.88 ms",
+            "unit": "ms",
+            "extra": "median: 1 ms\nmin: 0.87 ms\nmax: 16.43 ms\nstddev: 3.88 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 14.46,
+            "range": "18.73 ms",
+            "unit": "ms",
+            "extra": "median: 14.46 ms\nmin: 0.89 ms\nmax: 81.9 ms\nstddev: 18.73 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 38.16,
+            "range": "34.76 ms",
+            "unit": "ms",
+            "extra": "median: 38.16 ms\nmin: 34.08 ms\nmax: 178.63 ms\nstddev: 34.76 ms\nruns: 16"
           }
         ]
       }
