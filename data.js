@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1793847130260,
+  "lastUpdate": 1793853816748,
   "repoUrl": "https://github.com/unmett/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -6612,6 +6612,65 @@ window.BENCHMARK_DATA = {
             "range": "2.71 ms",
             "unit": "ms",
             "extra": "median: 35.7 ms\nmin: 32.94 ms\nmax: 42.14 ms\nstddev: 2.71 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+unmett@users.noreply.github.com",
+            "name": "unmett",
+            "username": "unmett"
+          },
+          "committer": {
+            "email": "83203852+unmett@users.noreply.github.com",
+            "name": "unmett",
+            "username": "unmett"
+          },
+          "distinct": true,
+          "id": "1572d283524e6e543df4df69c90acab58776f40e",
+          "message": "chore(codex): computer-use MCP と confetti を有効にする\n\n- M4Pro に合わせて computer-use の MCP サーバーを起動する設定に戻す\n- Codex アプリの confetti の演出を有効にする\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+          "timestamp": "2026-11-05T13:29:24+09:00",
+          "tree_id": "fe70c6cbe21324b1c5cb78801717eb6cbfbb92e7",
+          "url": "https://github.com/unmett/dotfiles/commit/1572d283524e6e543df4df69c90acab58776f40e"
+        },
+        "date": 1793853815420,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 38.02,
+            "range": "6.2 ms",
+            "unit": "ms",
+            "extra": "median: 38.02 ms\nmin: 36.54 ms\nmax: 63.22 ms\nstddev: 6.2 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 38.51,
+            "range": "6.22 ms",
+            "unit": "ms",
+            "extra": "median: 38.51 ms\nmin: 37 ms\nmax: 63.75 ms\nstddev: 6.22 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.03,
+            "range": "0.04 ms",
+            "unit": "ms",
+            "extra": "median: 1.03 ms\nmin: 0.97 ms\nmax: 1.15 ms\nstddev: 0.04 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 2.59,
+            "range": "5.31 ms",
+            "unit": "ms",
+            "extra": "median: 2.59 ms\nmin: 1.01 ms\nmax: 18.57 ms\nstddev: 5.31 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 32.88,
+            "range": "1.34 ms",
+            "unit": "ms",
+            "extra": "median: 32.88 ms\nmin: 32.2 ms\nmax: 38.12 ms\nstddev: 1.34 ms\nruns: 16"
           }
         ]
       }
