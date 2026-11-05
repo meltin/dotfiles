@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1793855218220,
+  "lastUpdate": 1793855268189,
   "repoUrl": "https://github.com/unmett/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -6789,6 +6789,65 @@ window.BENCHMARK_DATA = {
             "range": "3.7 ms",
             "unit": "ms",
             "extra": "median: 33.19 ms\nmin: 32.52 ms\nmax: 48.03 ms\nstddev: 3.7 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+unmett@users.noreply.github.com",
+            "name": "unmett",
+            "username": "unmett"
+          },
+          "committer": {
+            "email": "83203852+unmett@users.noreply.github.com",
+            "name": "unmett",
+            "username": "unmett"
+          },
+          "distinct": true,
+          "id": "7a5322316f14981403ad64cb0acfd50ebe1211cb",
+          "message": "fix(codex): commit スキルのスクリプトのパス修正\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+          "timestamp": "2026-11-05T14:06:22+09:00",
+          "tree_id": "8a5117e3f5044c2380e591ed86b9101911ad540e",
+          "url": "https://github.com/unmett/dotfiles/commit/7a5322316f14981403ad64cb0acfd50ebe1211cb"
+        },
+        "date": 1793855266844,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 38.37,
+            "range": "6.3 ms",
+            "unit": "ms",
+            "extra": "median: 38.37 ms\nmin: 37 ms\nmax: 61.61 ms\nstddev: 6.3 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 38.83,
+            "range": "6.38 ms",
+            "unit": "ms",
+            "extra": "median: 38.83 ms\nmin: 37.46 ms\nmax: 62.1 ms\nstddev: 6.38 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.04,
+            "range": "0.03 ms",
+            "unit": "ms",
+            "extra": "median: 1.04 ms\nmin: 1 ms\nmax: 1.13 ms\nstddev: 0.03 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 1.57,
+            "range": "6.27 ms",
+            "unit": "ms",
+            "extra": "median: 1.57 ms\nmin: 1.2 ms\nmax: 18.26 ms\nstddev: 6.27 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 32.75,
+            "range": "1.03 ms",
+            "unit": "ms",
+            "extra": "median: 32.75 ms\nmin: 32.35 ms\nmax: 36.2 ms\nstddev: 1.03 ms\nruns: 16"
           }
         ]
       }
