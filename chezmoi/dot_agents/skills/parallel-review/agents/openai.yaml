@@ -1,4 +1,0 @@
-interface:
-  display_name: "Parallel Review"
-  short_description: "Run four focused agents for code review"
-  default_prompt: "Use $parallel-review to review the staged changes."
