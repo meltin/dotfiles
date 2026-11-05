@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1793854733887,
+  "lastUpdate": 1793855218220,
   "repoUrl": "https://github.com/unmett/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -6730,6 +6730,65 @@ window.BENCHMARK_DATA = {
             "range": "1.99 ms",
             "unit": "ms",
             "extra": "median: 33.64 ms\nmin: 32.83 ms\nmax: 40.93 ms\nstddev: 1.99 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+unmett@users.noreply.github.com",
+            "name": "unmett",
+            "username": "unmett"
+          },
+          "committer": {
+            "email": "83203852+unmett@users.noreply.github.com",
+            "name": "unmett",
+            "username": "unmett"
+          },
+          "distinct": true,
+          "id": "3f4f1a65296c6cb2450693b4c0d2da72826ae8c6",
+          "message": "fix(codex): commit スキルを Codex 専用の場所に移す\n\n- Codex のセッションに依存する commit スキルを ~/.agents/skills から ~/.codex/skills に移す\n- ~/.agents/skills を読む pi などで動くと、CODEX_THREAD_ID がなくコミットが止まるため\n- SKILL.md と config.toml の developer_instructions のスクリプトのパスを合わせる\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+          "timestamp": "2026-11-05T14:06:10+09:00",
+          "tree_id": "9392cecc1d4a049884033b12503a5005edfd8594",
+          "url": "https://github.com/unmett/dotfiles/commit/3f4f1a65296c6cb2450693b4c0d2da72826ae8c6"
+        },
+        "date": 1793855216888,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 38.58,
+            "range": "6.77 ms",
+            "unit": "ms",
+            "extra": "median: 38.58 ms\nmin: 37.3 ms\nmax: 66.38 ms\nstddev: 6.77 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 39.05,
+            "range": "6.77 ms",
+            "unit": "ms",
+            "extra": "median: 39.05 ms\nmin: 37.77 ms\nmax: 66.87 ms\nstddev: 6.77 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1,
+            "range": "0.03 ms",
+            "unit": "ms",
+            "extra": "median: 1 ms\nmin: 0.94 ms\nmax: 1.07 ms\nstddev: 0.03 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 2.71,
+            "range": "7 ms",
+            "unit": "ms",
+            "extra": "median: 2.71 ms\nmin: 1.39 ms\nmax: 18.9 ms\nstddev: 7 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 33.19,
+            "range": "3.7 ms",
+            "unit": "ms",
+            "extra": "median: 33.19 ms\nmin: 32.52 ms\nmax: 48.03 ms\nstddev: 3.7 ms\nruns: 16"
           }
         ]
       }
