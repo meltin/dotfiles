@@ -124,7 +124,7 @@ git-commit-instructions = """
 - Do not insert blank lines between bullet points.
 - Separate the final body bullet from the `Co-authored-by` trailer with exactly one blank line.
 - Be specific about what changed. Avoid vague wording like "minor fix" or "review comments".
-- Immediately before `git commit`, run `bash "$HOME/.agents/skills/commit/scripts/current-codex-attribution.sh"` and append its single-line output as the final trailer.
+- Immediately before `git commit`, run `bash "$HOME/.codex/skills/commit/scripts/current-codex-attribution.sh"` and append its single-line output as the final trailer.
 - The helper reads the latest `turn_context` for the current `CODEX_THREAD_ID` from the session JSONL and formats its model and reasoning effort.
 - If the helper exits non-zero, stop and report its provenance warning. Do not commit or substitute values from `commit_attribution` or `~/.codex/config.toml`.
 
