@@ -1,1 +1,8 @@
 README.md
+{{- if eq .chezmoi.hostname "M4Air" }}
+# M4Air では SidePulse を使わない。
+.config/sidepulse
+.local/share/sidepulse
+Library/LaunchAgents/local.sidepulse-log-trim.plist
+sidepulse-init.sh
+{{- end }}
