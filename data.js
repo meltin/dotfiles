@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1793843642678,
+  "lastUpdate": 1793847130260,
   "repoUrl": "https://github.com/unmett/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -6553,6 +6553,65 @@ window.BENCHMARK_DATA = {
             "range": "0.84 ms",
             "unit": "ms",
             "extra": "median: 32.27 ms\nmin: 32.11 ms\nmax: 35.7 ms\nstddev: 0.84 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+unmett@users.noreply.github.com",
+            "name": "unmett",
+            "username": "unmett"
+          },
+          "committer": {
+            "email": "83203852+unmett@users.noreply.github.com",
+            "name": "unmett",
+            "username": "unmett"
+          },
+          "distinct": true,
+          "id": "bf6a9a4c240c36aeda184c67a99f8eaef08fe440",
+          "message": "chore(claude): 使われていない show-your-work の marketplace を削除する\n\n- show-image への置き換え後も残っていた iamumeransari の extraKnownMarketplaces を消す\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+          "timestamp": "2026-11-05T11:13:54+09:00",
+          "tree_id": "764d1639936e3be1270f915f0d258f93968c5a35",
+          "url": "https://github.com/unmett/dotfiles/commit/bf6a9a4c240c36aeda184c67a99f8eaef08fe440"
+        },
+        "date": 1793847128881,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 40.47,
+            "range": "15.01 ms",
+            "unit": "ms",
+            "extra": "median: 40.47 ms\nmin: 38.32 ms\nmax: 89.46 ms\nstddev: 15.01 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 40.97,
+            "range": "15.03 ms",
+            "unit": "ms",
+            "extra": "median: 40.97 ms\nmin: 38.78 ms\nmax: 90.04 ms\nstddev: 15.03 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.03,
+            "range": "0.08 ms",
+            "unit": "ms",
+            "extra": "median: 1.03 ms\nmin: 0.94 ms\nmax: 1.24 ms\nstddev: 0.08 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 4.5,
+            "range": "7.94 ms",
+            "unit": "ms",
+            "extra": "median: 4.5 ms\nmin: 1.78 ms\nmax: 22.54 ms\nstddev: 7.94 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 35.7,
+            "range": "2.71 ms",
+            "unit": "ms",
+            "extra": "median: 35.7 ms\nmin: 32.94 ms\nmax: 42.14 ms\nstddev: 2.71 ms\nruns: 16"
           }
         ]
       }
