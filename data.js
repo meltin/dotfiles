@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1793855424773,
+  "lastUpdate": 1793855897388,
   "repoUrl": "https://github.com/unmett/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -6907,6 +6907,65 @@ window.BENCHMARK_DATA = {
             "range": "0.59 ms",
             "unit": "ms",
             "extra": "median: 33.05 ms\nmin: 32.23 ms\nmax: 35.04 ms\nstddev: 0.59 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+unmett@users.noreply.github.com",
+            "name": "unmett",
+            "username": "unmett"
+          },
+          "committer": {
+            "email": "83203852+unmett@users.noreply.github.com",
+            "name": "unmett",
+            "username": "unmett"
+          },
+          "distinct": true,
+          "id": "5f8808c0b9b9f1abeae658daf09b99f824874c25",
+          "message": "refactor(agents): create-pr を共通化し、小さな変更は件名だけでよいことにする\n\n- Claude の create-pr を .agents の共通版への symlink にする\n- 共通版の create-pr で、作成後に gh pr view --web で開く\n- commit スキルと Codex の developer_instructions で、コメントや typo の修正は件名だけでよいことにする\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+          "timestamp": "2026-11-05T14:17:33+09:00",
+          "tree_id": "fe3c2326bbfdafe3f27f77346c6e228a0de6ff1e",
+          "url": "https://github.com/unmett/dotfiles/commit/5f8808c0b9b9f1abeae658daf09b99f824874c25"
+        },
+        "date": 1793855896196,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 38.66,
+            "range": "5.81 ms",
+            "unit": "ms",
+            "extra": "median: 38.66 ms\nmin: 36.94 ms\nmax: 62.42 ms\nstddev: 5.81 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 39.13,
+            "range": "5.81 ms",
+            "unit": "ms",
+            "extra": "median: 39.13 ms\nmin: 37.42 ms\nmax: 62.89 ms\nstddev: 5.81 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.04,
+            "range": "0.03 ms",
+            "unit": "ms",
+            "extra": "median: 1.04 ms\nmin: 0.98 ms\nmax: 1.09 ms\nstddev: 0.03 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 2.01,
+            "range": "4.71 ms",
+            "unit": "ms",
+            "extra": "median: 2.01 ms\nmin: 1.2 ms\nmax: 21.34 ms\nstddev: 4.71 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 34.09,
+            "range": "2.2 ms",
+            "unit": "ms",
+            "extra": "median: 34.09 ms\nmin: 32.43 ms\nmax: 39.28 ms\nstddev: 2.2 ms\nruns: 16"
           }
         ]
       }
