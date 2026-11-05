@@ -32,18 +32,6 @@ args = ["-y", "@upstash/context7-mcp@latest"]
 command = "npx"
 args = ["@playwright/mcp@latest", "--vision"]
 
-[mcp_servers.serena]
-command = "uvx"
-args = [
-  "--from",
-  "git+https://github.com/oraios/serena",
-  "serena",
-  "start-mcp-server",
-  "--context",
-  "codex",
-]
-enabled = false
-
 [mcp_servers.node_repl]
 args = []
 command = "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node_repl"
