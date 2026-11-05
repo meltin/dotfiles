@@ -27,6 +27,10 @@ in
 
     # コミット署名を Secure Enclave の鍵で行う。鍵は端末外に持ち出せないため
     # このホスト専用。セットアップ手順は docs/secure-enclave-signing.md
+    # GUI アプリ（Orca など）は sessionVariables を継承しないため、GIT_SSL_CAINFO
+    # だけでは社内プロキシ経由の HTTPS fetch が失敗する。git 設定にも書いておく。
+    programs.git.settings.http.sslCAInfo = customCert;
+
     programs.git.signing = {
       # sk 鍵はハンドルファイルが無いと署名できないので、公開鍵リテラルではなくパスを指定する
       key = "/Users/${username}/.ssh/id_git_sign";
