@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1793853816748,
+  "lastUpdate": 1793854733887,
   "repoUrl": "https://github.com/unmett/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -6671,6 +6671,65 @@ window.BENCHMARK_DATA = {
             "range": "1.34 ms",
             "unit": "ms",
             "extra": "median: 32.88 ms\nmin: 32.2 ms\nmax: 38.12 ms\nstddev: 1.34 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+unmett@users.noreply.github.com",
+            "name": "unmett",
+            "username": "unmett"
+          },
+          "committer": {
+            "email": "83203852+unmett@users.noreply.github.com",
+            "name": "unmett",
+            "username": "unmett"
+          },
+          "distinct": true,
+          "id": "d555e776920de4a6d064d7852d4d3bdf963b3686",
+          "message": "chore(codex): config.toml を初回作成のみにする\n\n- Codex が書き換えるファイルなので、apply で上書きしない\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+          "timestamp": "2026-11-05T13:58:08+09:00",
+          "tree_id": "0f79837258f11e5d166e988d058abc92238647a5",
+          "url": "https://github.com/unmett/dotfiles/commit/d555e776920de4a6d064d7852d4d3bdf963b3686"
+        },
+        "date": 1793854732390,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 38.55,
+            "range": "4.13 ms",
+            "unit": "ms",
+            "extra": "median: 38.55 ms\nmin: 37.2 ms\nmax: 55.36 ms\nstddev: 4.13 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 39.01,
+            "range": "4.14 ms",
+            "unit": "ms",
+            "extra": "median: 39.01 ms\nmin: 37.67 ms\nmax: 55.88 ms\nstddev: 4.14 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.02,
+            "range": "0.04 ms",
+            "unit": "ms",
+            "extra": "median: 1.02 ms\nmin: 0.96 ms\nmax: 1.1 ms\nstddev: 0.04 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 2.32,
+            "range": "6.51 ms",
+            "unit": "ms",
+            "extra": "median: 2.32 ms\nmin: 1.13 ms\nmax: 19.75 ms\nstddev: 6.51 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 33.64,
+            "range": "1.99 ms",
+            "unit": "ms",
+            "extra": "median: 33.64 ms\nmin: 32.83 ms\nmax: 40.93 ms\nstddev: 1.99 ms\nruns: 16"
           }
         ]
       }
