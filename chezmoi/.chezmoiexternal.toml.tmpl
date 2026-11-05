@@ -1,0 +1,40 @@
+# 外部のスキル。実体は ~/.agents/skills に置き、Claude からは dot_claude/skills/symlink_* で参照する。
+# 上流はコミット SHA で固定している。更新するときは SHA を書き換えて `chezmoi diff` で確認する。
+
+{{- $mattpocock := "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d" }}
+{{- range list "productivity/grill-me" "productivity/grilling" "engineering/grill-with-docs" "engineering/domain-modeling" }}
+
+[".agents/skills/{{ base . }}"]
+    type = "archive"
+    url = "https://github.com/mattpocock/skills/archive/{{ $mattpocock }}.tar.gz"
+    include = ["*/skills/{{ . }}/**"]
+    stripComponents = 4
+    exact = true
+{{- end }}
+
+[".agents/skills/find-skills"]
+    type = "archive"
+    url = "https://github.com/vercel-labs/skills/archive/cabe07254cddf16a3a650253f0ba03d543d8a86e.tar.gz"
+    include = ["*/skills/find-skills/**"]
+    stripComponents = 3
+    exact = true
+
+[".agents/skills/gh-stack"]
+    type = "archive"
+    url = "https://github.com/github/gh-stack/archive/bd0a32504f9ae9f795875a9e6bb90ff7408fda08.tar.gz"
+    include = ["*/skills/gh-stack/**"]
+    stripComponents = 3
+    exact = true
+
+# heroui と turborepo はリポジトリが大きい（数百 MB）ので、書庫ではなくファイルを 1 つずつ取る。
+{{- $heroui := "b2c65a5b5236550526f23d475b1ad0c6e5eab1a2" }}
+{{- range list "SKILL.md" "LICENSE.txt" "scripts/get_component_docs.mjs" "scripts/get_docs.mjs" "scripts/get_source.mjs" "scripts/get_styles.mjs" "scripts/get_theme.mjs" "scripts/list_components.mjs" }}
+
+[".agents/skills/heroui-react/{{ . }}"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/heroui-inc/heroui/{{ $heroui }}/skills/heroui-react/{{ . }}"
+{{- end }}
+
+[".agents/skills/turborepo/SKILL.md"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/vercel/turborepo/d95ea894953e9262c6b930b9aeb3a493e7a41884/skills/turborepo/SKILL.md"
