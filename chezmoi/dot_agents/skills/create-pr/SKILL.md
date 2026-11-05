@@ -19,7 +19,7 @@ description: Create a GitHub pull request using the gh CLI. Use when the user wa
 5. If there are unstaged or uncommitted changes, stop and ask the user unless they explicitly said a draft/WIP PR is acceptable with local changes left out.
 6. Push the current branch with `git push -u origin HEAD`.
 7. Create the PR with `gh pr create`.
-8. After creating the PR, report the PR URL and a short summary.
+8. After creating the PR, open it with `gh pr view --web`, then report the PR URL and a short summary.
 9. Do not merge the PR unless explicitly instructed.
 
 ## Pull Request Content

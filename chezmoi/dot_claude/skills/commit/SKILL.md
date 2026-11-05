@@ -44,7 +44,7 @@ Based on the above context:
 - Use the **imperative mood** in the description (e.g., "add", not "added" or "adds").
 - Keep the **summary concise** (max ~72 characters).
 - **Body rules**:
-  - **Always include a body — no exceptions**, even for trivial-looking changes
+  - **Include a body** when the change needs explanation. For trivial changes such as comment or typo fixes, write the summary line only (e.g. `chore(ci): コメント修正`)
   - Insert one blank line after the summary, then write the body
   - The body **must** be written as bullet points — **never** use prose paragraphs or a single free-form line
   - Each bullet should describe a reason, context, or detail of the change
