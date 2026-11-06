@@ -85,6 +85,15 @@
             "command": "{{ .chezmoi.homeDir }}/.local/share/sidepulse/venv/bin/python {{ .chezmoi.homeDir }}/.local/share/sidepulse/venv/lib/python3.13/site-packages/sidepulse/hook_entry.py --provider claude --log {{ .chezmoi.homeDir }}/.local/state/sidepulse/agent-monitor/claude.jsonl ; true"
           }
         ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/bin/sh -c 'rex __internal session-start --agent claude 2>/dev/null || true'",
+            "timeout": 5
+          }
+        ]
       }
     ],
     "UserPromptSubmit": [

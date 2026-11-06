@@ -19,6 +19,12 @@
       /bin/rm -f -- "$CMUX_RESTORE_SCROLLBACK_FILE" >/dev/null 2>&1 || true
       unset CMUX_RESTORE_SCROLLBACK_FILE
     fi
+
+    # Rex prepends REX_BIN_DIR to PATH for its terminals, but nix-darwin's /etc/zshenv
+    # rebuilds PATH from scratch and drops it. Put it back so `rex` resolves inside Rex.
+    if [[ -n "''${REX_BIN_DIR-}" && ":$PATH:" != *":$REX_BIN_DIR:"* ]]; then
+      path=("$REX_BIN_DIR" $path)
+    fi
   '';
 
   programs.zsh.profileExtra = ''
