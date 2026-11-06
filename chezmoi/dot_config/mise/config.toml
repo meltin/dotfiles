@@ -60,7 +60,7 @@ grep -qx orca.yaml .worktreeinclude 2>/dev/null || echo orca.yaml >> .worktreein
 
 [tools]
 bun = "latest"
-"github:unmett/awsctx" = "latest"
+"github:meltin/awsctx" = "latest"
 ni = "latest"
 node = "lts"
 pinact = "latest"

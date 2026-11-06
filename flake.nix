@@ -1,5 +1,5 @@
 {
-  description = "unmett's dotfiles";
+  description = "meltin's dotfiles";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin = {
@@ -11,7 +11,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nova = {
-      url = "github:unmett/nova";
+      url = "github:meltin/nova";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

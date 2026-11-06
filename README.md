@@ -20,7 +20,7 @@ macOS dotfiles managed with Nix flakes, nix-darwin, and home-manager.
 3. Clone this repository:
 
    ```bash
-   git clone https://github.com/unmett/dotfiles.git ~/.dotfiles
+   git clone https://github.com/meltin/dotfiles.git ~/.dotfiles
    ```
 
 4. Configure chezmoi to use the source directory inside this repository:

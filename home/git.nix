@@ -7,9 +7,12 @@
 let
   gitVersion = "2.56.0";
 
-  userEmail = "83203852+unmett@users.noreply.github.com";
+  userEmail = "83203852+meltin@users.noreply.github.com";
   # 改名前に署名したコミットもローカルで検証できるようにする。
-  previousUserEmail = "83203852+ixxq@users.noreply.github.com";
+  previousUserEmails = [
+    "83203852+unmett@users.noreply.github.com"
+    "83203852+ixxq@users.noreply.github.com"
+  ];
 
   # ローカルで `git log --show-signature` を通すための信頼済み公開鍵。
   # 鍵の実体は不要なので、そのホストに存在しない鍵も載せてよい。
@@ -28,7 +31,7 @@ let
 in
 {
   home.file.".ssh/allowed_signers".text = lib.concatMapStrings (
-    key: "${userEmail},${previousUserEmail} ${key}\n"
+    key: "${lib.concatStringsSep "," ([ userEmail ] ++ previousUserEmails)} ${key}\n"
   ) allowedSignerKeys;
 
   # Orca のワークツリー setup フック。各リポジトリの orca.yaml（グローバル ignore）から呼ぶ。
@@ -70,7 +73,7 @@ in
 
     settings = {
       user = {
-        name = "unmett";
+        name = "meltin";
         email = userEmail;
       };
       gpg.ssh.allowedSignersFile = allowedSignersFile;

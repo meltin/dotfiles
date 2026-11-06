@@ -88,13 +88,13 @@
       "locked": {
         "lastModified": 1793932320,
         "narHash": "sha256-F5n5Ky7tMarLnwT25iNEoqw2/TXl9JPxAI0XIB0Nf4M=",
-        "owner": "unmett",
+        "owner": "meltin",
         "repo": "nova",
         "rev": "be863fbf0fa02c37430868a21ed430bcb209c3c7",
         "type": "github"
       },
       "original": {
-        "owner": "unmett",
+        "owner": "meltin",
         "repo": "nova",
         "type": "github"
       }
