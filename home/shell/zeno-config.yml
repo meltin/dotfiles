@@ -11,10 +11,10 @@ completions:
     sourceCommand: 'COMP_LINE="${LBUFFER}${RBUFFER}" COMP_POINT=${#LBUFFER} aws_completer 2>/dev/null'
     options:
       --prompt: "'aws > '"
-  - name: git wt
+  - name: gh wt
     patterns:
-      - "^git wt $"
-    sourceCommand: "git-wt | awk '{print $1}'"
+      - "^gh wt $"
+    sourceCommand: "git worktree list --porcelain | sed -n 's|^branch refs/heads/||p'"
     options:
       --prompt: "'worktree > '"
 

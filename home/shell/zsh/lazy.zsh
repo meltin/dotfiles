@@ -102,17 +102,24 @@ if (( $+commands[awsctx] )); then
   source <(awsctx activate zsh --aws-wrapper)
 fi
 
-# git-wt (cache, regenerate when .zshrc symlink target changes)
-if (( ${+commands[git-wt]} )); then
-  git_wt_cache="${XDG_CACHE_HOME:-$HOME/.cache}/sheldon/git-wt.zsh"
-  if [[ ! -r "$git_wt_cache" || "$(readlink ~/.zshrc)" != "$(cat "${git_wt_cache}.lock" 2>/dev/null)" ]]; then
-    mkdir -p "${git_wt_cache:h}"
-    git wt --init zsh > "$git_wt_cache"
-    readlink ~/.zshrc > "${git_wt_cache}.lock"
+# gh-wt (meltin/gh-wt): gh wt は移動先のパスを出すだけなので、cd はこの関数が行う。
+# -l / --help 以外の gh wt を横取りし、出力の最後の行がディレクトリならそこへ移動する
+gh() {
+  if [[ $1 == wt && $2 != (-l|--list|-h|--help) ]]; then
+    local out rc last
+    out=$(command gh "$@"); rc=$?
+    last=${out##*$'\n'}
+    if [[ -d $last ]]; then
+      [[ $out == *$'\n'* ]] && print -r -- "${out%$'\n'*}"
+      cd -- "$last"
+    elif [[ -n $out ]]; then
+      print -r -- "$out"
+    fi
+    return $rc
+  else
+    command gh "$@"
   fi
-  source "$git_wt_cache"
-  unset git_wt_cache
-fi
+}
 
 # Orca のコマンド付きターミナル（Setup など）では __orca_prompt_mark が add-zle-hook-widget の
 # ディスパッチャから呼ばれ、さらに直前の zle-line-init としてディスパッチャを呼び返して循環する

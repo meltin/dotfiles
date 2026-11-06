@@ -3,7 +3,6 @@
 set -euo pipefail
 
 zshrc="${1:-$HOME/.zshrc}"
-zsh_lazy="${2:-$HOME/.config/zsh/lazy.zsh}"
 cache_home="${XDG_CACHE_HOME:-$HOME/.cache}"
 zsh_cache_dir="$cache_home/zsh"
 
@@ -56,15 +55,3 @@ while IFS= read -r command_string; do
   [[ -n "$command_string" ]] || continue
   warm_cache_eval "$command_string"
 done < <(sed -nE 's/^[[:space:]]*(zsh-defer[[:space:]]+)?cache_eval "([^"]+)".*$/\2/p' "$zshrc")
-
-if [[ -r "$zsh_lazy" ]] && command -v git >/dev/null 2>&1 && command -v git-wt >/dev/null 2>&1; then
-  git_wt_cache="$cache_home/sheldon/git-wt.zsh"
-  mkdir -p "$(dirname "$git_wt_cache")"
-  if [[ ! -s "$git_wt_cache" || "$(readlink "$zshrc")" != "$(cat "${git_wt_cache}.lock" 2>/dev/null)" ]]; then
-    echo "warming git-wt zsh cache"
-    git wt --init zsh > "$git_wt_cache"
-    readlink "$zshrc" > "${git_wt_cache}.lock"
-  fi
-elif [[ -r "$zsh_lazy" ]]; then
-  echo "skipping git-wt zsh cache: git-wt is unavailable"
-fi
