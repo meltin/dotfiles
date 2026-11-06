@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1793855897388,
+  "lastUpdate": 1793924158544,
   "repoUrl": "https://github.com/unmett/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -6966,6 +6966,65 @@ window.BENCHMARK_DATA = {
             "range": "2.2 ms",
             "unit": "ms",
             "extra": "median: 34.09 ms\nmin: 32.43 ms\nmax: 39.28 ms\nstddev: 2.2 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+unmett@users.noreply.github.com",
+            "name": "unmett",
+            "username": "unmett"
+          },
+          "committer": {
+            "email": "83203852+unmett@users.noreply.github.com",
+            "name": "unmett",
+            "username": "unmett"
+          },
+          "distinct": true,
+          "id": "c5198b877eedbd18e6f2a8005f3019593026b39c",
+          "message": "refactor(skills): 外部スキルを chezmoi external で管理する\n\n- 外部スキルを `.chezmoiexternal.toml.tmpl` に移し、上流のコミット SHA で固定する\n- 実体は `~/.agents/skills` に置き、Claude からは `symlink_*` で参照する\n- mattpocock/skills の構成変更に合わせ grilling と domain-modeling を追加する\n- heroui と turborepo はリポジトリが大きいため、ファイル単位で取得する\n- 使わなくなった issue-start と web-design-guidelines を削除する\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+          "timestamp": "2026-11-05T21:29:45+09:00",
+          "tree_id": "7ef96b29a82e1a5d326705b98e0f8e93d16bc71d",
+          "url": "https://github.com/unmett/dotfiles/commit/c5198b877eedbd18e6f2a8005f3019593026b39c"
+        },
+        "date": 1793924156957,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 42.75,
+            "range": "7.53 ms",
+            "unit": "ms",
+            "extra": "median: 42.75 ms\nmin: 38.87 ms\nmax: 71.56 ms\nstddev: 7.53 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 43.35,
+            "range": "7.55 ms",
+            "unit": "ms",
+            "extra": "median: 43.35 ms\nmin: 39.33 ms\nmax: 72.09 ms\nstddev: 7.55 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.13,
+            "range": "0.23 ms",
+            "unit": "ms",
+            "extra": "median: 1.13 ms\nmin: 0.94 ms\nmax: 1.7 ms\nstddev: 0.23 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 3.01,
+            "range": "5.46 ms",
+            "unit": "ms",
+            "extra": "median: 3.01 ms\nmin: 1.12 ms\nmax: 18.02 ms\nstddev: 5.46 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 39.4,
+            "range": "6.02 ms",
+            "unit": "ms",
+            "extra": "median: 39.4 ms\nmin: 34.29 ms\nmax: 57.29 ms\nstddev: 6.02 ms\nruns: 16"
           }
         ]
       }
