@@ -12,6 +12,29 @@
         "type": "separator"
       },
       {
+        "id": "65cf49ba-90a5-4335-8a87-7adbb486bc11",
+        "type": "thinking-effort",
+        "rawValue": true,
+        "metadata": {
+          "label": "Effort: "
+        }
+      },
+      {
+        "id": "38741821-e58c-4215-93e1-353d0c36f720",
+        "type": "separator"
+      },
+      {
+        "id": "1761de43-fb4a-4d81-b1ad-17e9414be42d",
+        "type": "remote-control-status",
+        "metadata": {
+          "format": "word"
+        }
+      },
+      {
+        "id": "583911aa-8ac8-40f8-b95f-90040eb3b635",
+        "type": "separator"
+      },
+      {
         "id": "3",
         "type": "context-length",
         "color": "brightBlack"
@@ -33,6 +56,14 @@
         "id": "7",
         "type": "git-changes",
         "color": "yellow"
+      },
+      {
+        "id": "3ef74840-9a9c-4c0f-b5c5-ff449208b02b",
+        "type": "flex-separator"
+      },
+      {
+        "id": "296e3db9-a5ea-4958-83b2-670471771f56",
+        "type": "session-name"
       }
     ],
     [
@@ -47,25 +78,17 @@
       {
         "id": "b15c49f5-6f96-4ceb-af30-5fdc1eaff2e5",
         "type": "context-percentage-usable"
+      },
+      {
+        "id": "2f09edd3-8965-4ca5-88a2-9e5f00ac4d25",
+        "type": "flex-separator"
+      },
+      {
+        "id": "7232cb97-172c-4bf7-a1e0-23409cce7b23",
+        "type": "session-cost"
       }
     ],
     [
-      {
-        "id": "d5d9187a-99eb-4a21-84f8-b78bbc998a58",
-        "type": "session-usage"
-      },
-      {
-        "id": "edb31aa1-e6ae-48a0-a0e0-a058ad7ee09a",
-        "type": "separator"
-      },
-      {
-        "id": "d2fcacce-2774-4960-912f-586ec2451676",
-        "type": "reset-timer"
-      },
-      {
-        "id": "d2446cd0-af19-444c-a0f5-7822b874b92e",
-        "type": "separator"
-      },
       {
         "id": "a5ee82ce-9605-47b9-b13c-a113433c39d1",
         "type": "weekly-usage"
@@ -77,14 +100,26 @@
       {
         "id": "87f2233e-38ee-49bd-9624-cc04cdd4cbdc",
         "type": "weekly-reset-timer"
+      },
+      {
+        "id": "e475a1c0-b24d-4208-b80b-0c9cf17c83c8",
+        "type": "flex-separator"
+      },
+      {
+        "id": "b17331d9-ceca-470f-882d-97b046bb8b49",
+        "type": "skills"
       }
     ]
   ],
   "flexMode": "full-until-compact",
   "compactThreshold": 60,
   "colorLevel": 2,
+  "defaultPaddingSide": "both",
   "inheritSeparatorColors": false,
   "globalBold": false,
+  "gitCacheTtlSeconds": 5,
+  "terminalWidthCacheTtlSeconds": 5,
+  "customCommandCacheTtlSeconds": 0,
   "minimalistMode": false,
   "powerline": {
     "enabled": false,
