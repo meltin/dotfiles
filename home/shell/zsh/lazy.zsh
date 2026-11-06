@@ -102,23 +102,13 @@ if (( $+commands[awsctx] )); then
   source <(awsctx activate zsh --aws-wrapper)
 fi
 
-# gh-wt (meltin/gh-wt): gh wt は移動先のパスを出すだけなので、cd はこの関数が行う。
-# -l / --help 以外の gh wt を横取りし、出力の最後の行がディレクトリならそこへ移動する
-gh() {
-  if [[ $1 == wt && $2 != (-l|--list|-h|--help) ]]; then
-    local out rc last
-    out=$(command gh "$@"); rc=$?
-    last=${out##*$'\n'}
-    if [[ -d $last ]]; then
-      [[ $out == *$'\n'* ]] && print -r -- "${out%$'\n'*}"
-      cd -- "$last"
-    elif [[ -n $out ]]; then
-      print -r -- "$out"
-    fi
-    return $rc
-  else
-    command gh "$@"
-  fi
+# gh-wt (meltin/gh-wt): gh wt --init zsh が出す gh() 関数を読み込む（gh wt の出力先へ cd する）。
+# キャッシュ名に拡張の版（manifest.yml の tag）を含め、gh extension upgrade 後に作り直されるようにする
+() {
+  local manifest=~/.local/share/gh/extensions/gh-wt/manifest.yml
+  (( $+commands[gh] )) && [[ -r $manifest ]] || return
+  local tag=${${(M)${(f)"$(<$manifest)"}:#tag: *}#tag: }
+  cache_eval "GH_WT_TAG=$tag gh wt --init zsh"
 }
 
 # Orca のコマンド付きターミナル（Setup など）では __orca_prompt_mark が add-zle-hook-widget の
