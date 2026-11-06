@@ -86,11 +86,11 @@
         "vhs-nixpkgs": "vhs-nixpkgs"
       },
       "locked": {
-        "lastModified": 1793861690,
-        "narHash": "sha256-rpEwXUDjLOTuyF4xXm7tCpI4RI6EtdIaAhc6BWpAgCg=",
+        "lastModified": 1793932320,
+        "narHash": "sha256-F5n5Ky7tMarLnwT25iNEoqw2/TXl9JPxAI0XIB0Nf4M=",
         "owner": "unmett",
         "repo": "nova",
-        "rev": "0b931ed1d4aca1a7fa6996d4ba299f8f3a50c251",
+        "rev": "be863fbf0fa02c37430868a21ed430bcb209c3c7",
         "type": "github"
       },
       "original": {
