@@ -1,0 +1,102 @@
+{
+  "version": 4,
+  "lines": [
+    [
+      {
+        "id": "1",
+        "type": "model",
+        "color": "cyan"
+      },
+      {
+        "id": "2",
+        "type": "separator"
+      },
+      {
+        "id": "3",
+        "type": "context-length",
+        "color": "brightBlack"
+      },
+      {
+        "id": "4",
+        "type": "separator"
+      },
+      {
+        "id": "5",
+        "type": "git-branch",
+        "color": "magenta"
+      },
+      {
+        "id": "6",
+        "type": "separator"
+      },
+      {
+        "id": "7",
+        "type": "git-changes",
+        "color": "yellow"
+      }
+    ],
+    [
+      {
+        "id": "d702fa49-5a90-441e-9106-9b899fa3263f",
+        "type": "context-bar"
+      },
+      {
+        "id": "7027c74a-f579-4765-aac7-b3978e6c163f",
+        "type": "separator"
+      },
+      {
+        "id": "b15c49f5-6f96-4ceb-af30-5fdc1eaff2e5",
+        "type": "context-percentage-usable"
+      }
+    ],
+    [
+      {
+        "id": "d5d9187a-99eb-4a21-84f8-b78bbc998a58",
+        "type": "session-usage"
+      },
+      {
+        "id": "edb31aa1-e6ae-48a0-a0e0-a058ad7ee09a",
+        "type": "separator"
+      },
+      {
+        "id": "d2fcacce-2774-4960-912f-586ec2451676",
+        "type": "reset-timer"
+      },
+      {
+        "id": "d2446cd0-af19-444c-a0f5-7822b874b92e",
+        "type": "separator"
+      },
+      {
+        "id": "a5ee82ce-9605-47b9-b13c-a113433c39d1",
+        "type": "weekly-usage"
+      },
+      {
+        "id": "cc44e62d-c737-4a64-82a1-3ec51b7bd53a",
+        "type": "separator"
+      },
+      {
+        "id": "87f2233e-38ee-49bd-9624-cc04cdd4cbdc",
+        "type": "weekly-reset-timer"
+      }
+    ]
+  ],
+  "flexMode": "full-until-compact",
+  "compactThreshold": 60,
+  "colorLevel": 2,
+  "inheritSeparatorColors": false,
+  "globalBold": false,
+  "minimalistMode": false,
+  "powerline": {
+    "enabled": false,
+    "separators": [
+      ""
+    ],
+    "separatorInvertBackground": [
+      false
+    ],
+    "startCaps": [],
+    "endCaps": [],
+    "autoAlign": false,
+    "continueThemeAcrossLines": false
+  }
+}
