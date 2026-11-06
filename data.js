@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1793939614301,
+  "lastUpdate": 1793953206375,
   "repoUrl": "https://github.com/unmett/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -7143,6 +7143,65 @@ window.BENCHMARK_DATA = {
             "range": "1.53 ms",
             "unit": "ms",
             "extra": "median: 32.81 ms\nmin: 31.84 ms\nmax: 38.67 ms\nstddev: 1.53 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+unmett@users.noreply.github.com",
+            "name": "unmett",
+            "username": "unmett"
+          },
+          "committer": {
+            "email": "83203852+unmett@users.noreply.github.com",
+            "name": "unmett",
+            "username": "unmett"
+          },
+          "distinct": true,
+          "id": "82f875a8b09670a67955815637f4f9078635a6c2",
+          "message": "feat(rex): Rex の CLI とエージェント用フックを使えるようにする\n\n- nix-darwin の /etc/zshenv が PATH を作り直し、Rex が足した `REX_BIN_DIR` が消えるので、zsh の envExtra で戻す\n- `rex skill setup` が実ファイルに書いた SessionStart フックを、Claude と Codex の chezmoi テンプレートにも反映する\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+          "timestamp": "2026-11-06T14:06:58+09:00",
+          "tree_id": "4c35ba4455a042450e27f0891e966c2dddef3830",
+          "url": "https://github.com/unmett/dotfiles/commit/82f875a8b09670a67955815637f4f9078635a6c2"
+        },
+        "date": 1793953205252,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 37.9,
+            "range": "5.93 ms",
+            "unit": "ms",
+            "extra": "median: 37.9 ms\nmin: 36.66 ms\nmax: 60.74 ms\nstddev: 5.93 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 38.38,
+            "range": "5.96 ms",
+            "unit": "ms",
+            "extra": "median: 38.38 ms\nmin: 37.16 ms\nmax: 61.36 ms\nstddev: 5.96 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.08,
+            "range": "0.02 ms",
+            "unit": "ms",
+            "extra": "median: 1.08 ms\nmin: 1.03 ms\nmax: 1.12 ms\nstddev: 0.02 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 18.17,
+            "range": "7.37 ms",
+            "unit": "ms",
+            "extra": "median: 18.17 ms\nmin: 1.74 ms\nmax: 21.32 ms\nstddev: 7.37 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 32.83,
+            "range": "1.24 ms",
+            "unit": "ms",
+            "extra": "median: 32.83 ms\nmin: 32.3 ms\nmax: 37.46 ms\nstddev: 1.24 ms\nruns: 16"
           }
         ]
       }
