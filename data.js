@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1793924158544,
+  "lastUpdate": 1793927235398,
   "repoUrl": "https://github.com/unmett/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -7025,6 +7025,65 @@ window.BENCHMARK_DATA = {
             "range": "6.02 ms",
             "unit": "ms",
             "extra": "median: 39.4 ms\nmin: 34.29 ms\nmax: 57.29 ms\nstddev: 6.02 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+unmett@users.noreply.github.com",
+            "name": "unmett",
+            "username": "unmett"
+          },
+          "committer": {
+            "email": "83203852+unmett@users.noreply.github.com",
+            "name": "unmett",
+            "username": "unmett"
+          },
+          "distinct": true,
+          "id": "b73aa9b40b559bc8d6d622ddd6732e7c59376f01",
+          "message": "chore(nix): flake inputs を更新\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+          "timestamp": "2026-11-06T10:02:42+09:00",
+          "tree_id": "562a699c7c0b9c3fab5b0729f0eeec31cfd40fad",
+          "url": "https://github.com/unmett/dotfiles/commit/b73aa9b40b559bc8d6d622ddd6732e7c59376f01"
+        },
+        "date": 1793927234044,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 38.27,
+            "range": "9.98 ms",
+            "unit": "ms",
+            "extra": "median: 38.27 ms\nmin: 36.98 ms\nmax: 79.33 ms\nstddev: 9.98 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 38.72,
+            "range": "10 ms",
+            "unit": "ms",
+            "extra": "median: 38.72 ms\nmin: 37.45 ms\nmax: 79.83 ms\nstddev: 10 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.06,
+            "range": "0.05 ms",
+            "unit": "ms",
+            "extra": "median: 1.06 ms\nmin: 0.97 ms\nmax: 1.17 ms\nstddev: 0.05 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 4.43,
+            "range": "7.78 ms",
+            "unit": "ms",
+            "extra": "median: 4.43 ms\nmin: 2.07 ms\nmax: 19.76 ms\nstddev: 7.78 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 33.19,
+            "range": "1.46 ms",
+            "unit": "ms",
+            "extra": "median: 33.19 ms\nmin: 32.5 ms\nmax: 39.04 ms\nstddev: 1.46 ms\nruns: 16"
           }
         ]
       }
