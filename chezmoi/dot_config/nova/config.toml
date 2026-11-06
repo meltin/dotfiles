@@ -54,7 +54,7 @@ left = [
   "aws",
   "duration",
 ]
-right = ["time"]
+right = []
 
 [layout.line2]
 left = [
@@ -63,7 +63,7 @@ left = [
   "exit_status",
   "prompt_char",
 ]
-right = []
+right = ["time"]
 
 # Use user_host instead of ssh when you want local prompts to always show
 # user@host. Example:
