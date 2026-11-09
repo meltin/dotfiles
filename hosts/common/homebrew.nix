@@ -73,7 +73,6 @@ in
       "productdevbook/tap/portkiller"
       "stablyai/orca/orca"
       "t3-code"
-      "capsomnia"
       "watrix811/tap/pieto-timer"
       "fif7y/tap/dimble"
       "yksr-melt/meltype/meltype"
