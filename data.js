@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794223682135,
+  "lastUpdate": 1794233398668,
   "repoUrl": "https://github.com/meltin/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -7438,6 +7438,65 @@ window.BENCHMARK_DATA = {
             "range": "0.84 ms",
             "unit": "ms",
             "extra": "median: 33.51 ms\nmin: 32.62 ms\nmax: 36.14 ms\nstddev: 0.84 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "committer": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "distinct": true,
+          "id": "097a779231453dce41da51f1b79ab21d310290fa",
+          "message": "feat(nix): ccsession を追加\n\n- 全プロジェクトの Claude Code セッションを fzf で検索して再開できるようにする\n- nixpkgs に無いため nova と同じくフレーク入力にし、nixpkgs は dotfiles 側に揃える\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+          "timestamp": "2026-11-09T22:57:34+09:00",
+          "tree_id": "0a6d00161ad1f738acc3a0a4f2a7a0b4f50aca44",
+          "url": "https://github.com/meltin/dotfiles/commit/097a779231453dce41da51f1b79ab21d310290fa"
+        },
+        "date": 1794233397196,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 39.78,
+            "range": "4.76 ms",
+            "unit": "ms",
+            "extra": "median: 39.78 ms\nmin: 37.92 ms\nmax: 58.04 ms\nstddev: 4.76 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 40.23,
+            "range": "4.79 ms",
+            "unit": "ms",
+            "extra": "median: 40.23 ms\nmin: 38.37 ms\nmax: 58.59 ms\nstddev: 4.79 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.08,
+            "range": "0.05 ms",
+            "unit": "ms",
+            "extra": "median: 1.08 ms\nmin: 0.98 ms\nmax: 1.19 ms\nstddev: 0.05 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 2.16,
+            "range": "4.53 ms",
+            "unit": "ms",
+            "extra": "median: 2.16 ms\nmin: 1.07 ms\nmax: 20.65 ms\nstddev: 4.53 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 34.41,
+            "range": "1.82 ms",
+            "unit": "ms",
+            "extra": "median: 34.41 ms\nmin: 32.88 ms\nmax: 39.15 ms\nstddev: 1.82 ms\nruns: 16"
           }
         ]
       }
