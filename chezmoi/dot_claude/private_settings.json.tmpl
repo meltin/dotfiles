@@ -90,8 +90,19 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/bin/sh -c 'rex __internal session-start --agent claude 2>/dev/null || true'",
-            "timeout": 5
+            "command": "/bin/sh -c 'rex __internal session-start --agent claude --feature-session-naming=false 2>/dev/null || true'",
+            "timeout": 5,
+            "statusMessage": "Rex: session context"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -n \"$REX_SESSION\" ] && rex session rename \"$REX_SESSION\" \"$(basename \"$(dirname \"$(git rev-parse --path-format=absolute --git-common-dir 2>/dev/null || echo \"$PWD/.\")\")\")\" >/dev/null 2>&1 || true",
+            "timeout": 5,
+            "statusMessage": "Rex: set session name to project"
           }
         ]
       }
