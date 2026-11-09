@@ -14,6 +14,10 @@
       url = "github:meltin/nova";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ccsession = {
+      url = "github:sorafujitani/ccsession";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     inputs@{

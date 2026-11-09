@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 let
   # Remove these overrides once nixpkgs includes awscli2 >= 2.37.2.
   awsCrt = pkgs.python3Packages.awscrt.overridePythonAttrs (old: rec {
@@ -46,5 +46,6 @@ in
     fastfetch
     hyperfine
     lefthook
+    inputs.ccsession.packages.${stdenv.hostPlatform.system}.default
   ];
 }
