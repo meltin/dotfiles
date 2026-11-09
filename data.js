@@ -1,6 +1,6 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1793953206375,
-  "repoUrl": "https://github.com/unmett/dotfiles",
+  "lastUpdate": 1794186445288,
+  "repoUrl": "https://github.com/meltin/dotfiles",
   "entries": {
     "Zsh Startup Time": [
       {
@@ -7202,6 +7202,65 @@ window.BENCHMARK_DATA = {
             "range": "1.24 ms",
             "unit": "ms",
             "extra": "median: 32.83 ms\nmin: 32.3 ms\nmax: 37.46 ms\nstddev: 1.24 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "committer": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "distinct": true,
+          "id": "76b7ee6e439f29929d57fcf24703505588912fec",
+          "message": "revert(claude): git commit の確認を元に戻す\n\n- 6a43c7f の変更を取り消し、Bash(git commit:*) を ask に戻す\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+          "timestamp": "2026-11-07T02:57:41+09:00",
+          "tree_id": "4fc82d087252706925bc3ed5cd1dda21a32b05c7",
+          "url": "https://github.com/meltin/dotfiles/commit/76b7ee6e439f29929d57fcf24703505588912fec"
+        },
+        "date": 1794186443529,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 41.02,
+            "range": "4.48 ms",
+            "unit": "ms",
+            "extra": "median: 41.02 ms\nmin: 39.98 ms\nmax: 59.19 ms\nstddev: 4.48 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 41.51,
+            "range": "4.49 ms",
+            "unit": "ms",
+            "extra": "median: 41.51 ms\nmin: 40.48 ms\nmax: 59.71 ms\nstddev: 4.49 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.01,
+            "range": "0.05 ms",
+            "unit": "ms",
+            "extra": "median: 1.01 ms\nmin: 0.93 ms\nmax: 1.12 ms\nstddev: 0.05 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 18.51,
+            "range": "7.3 ms",
+            "unit": "ms",
+            "extra": "median: 18.51 ms\nmin: 1.4 ms\nmax: 19.03 ms\nstddev: 7.3 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 37.28,
+            "range": "1.3 ms",
+            "unit": "ms",
+            "extra": "median: 37.28 ms\nmin: 34.72 ms\nmax: 39.37 ms\nstddev: 1.3 ms\nruns: 16"
           }
         ]
       }
