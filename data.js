@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794199302427,
+  "lastUpdate": 1794223682135,
   "repoUrl": "https://github.com/meltin/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -7379,6 +7379,65 @@ window.BENCHMARK_DATA = {
             "range": "0.58 ms",
             "unit": "ms",
             "extra": "median: 32.82 ms\nmin: 31.92 ms\nmax: 33.9 ms\nstddev: 0.58 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "committer": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "distinct": true,
+          "id": "429f3692c4070c236504159c51e7ad1c6e1b30fe",
+          "message": "chore(codex): 手で入れたスキルを chezmoi の外部管理に移す\n\n- figma 系 4 個と pdf、playwright を openai/skills のコミット SHA で固定する\n- ローカルの全ファイルが上流と一致することを確認済みで、既存の内容は変わらない\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+          "timestamp": "2026-11-09T20:27:14+09:00",
+          "tree_id": "c74c06d6df465c394abb2393ba06be58ca7802bb",
+          "url": "https://github.com/meltin/dotfiles/commit/429f3692c4070c236504159c51e7ad1c6e1b30fe"
+        },
+        "date": 1794223679341,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 38.16,
+            "range": "6.66 ms",
+            "unit": "ms",
+            "extra": "median: 38.16 ms\nmin: 37.61 ms\nmax: 65.8 ms\nstddev: 6.66 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 38.61,
+            "range": "6.67 ms",
+            "unit": "ms",
+            "extra": "median: 38.61 ms\nmin: 38.07 ms\nmax: 66.31 ms\nstddev: 6.67 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.02,
+            "range": "0.03 ms",
+            "unit": "ms",
+            "extra": "median: 1.02 ms\nmin: 0.98 ms\nmax: 1.08 ms\nstddev: 0.03 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 1.6,
+            "range": "6.55 ms",
+            "unit": "ms",
+            "extra": "median: 1.6 ms\nmin: 1 ms\nmax: 19.07 ms\nstddev: 6.55 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 33.51,
+            "range": "0.84 ms",
+            "unit": "ms",
+            "extra": "median: 33.51 ms\nmin: 32.62 ms\nmax: 36.14 ms\nstddev: 0.84 ms\nruns: 16"
           }
         ]
       }
