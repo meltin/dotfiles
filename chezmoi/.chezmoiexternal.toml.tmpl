@@ -38,3 +38,15 @@
 [".agents/skills/turborepo/SKILL.md"]
     type = "file"
     url = "https://raw.githubusercontent.com/vercel/turborepo/d95ea894953e9262c6b930b9aeb3a493e7a41884/skills/turborepo/SKILL.md"
+
+# Codex 専用のスキルは ~/.codex/skills に置く。
+{{- $openai := "49f948faa9258a0c61caceaf225e179651397431" }}
+{{- range list "figma" "figma-implement-design" "figma-code-connect-components" "figma-create-design-system-rules" "pdf" "playwright" }}
+
+[".codex/skills/{{ . }}"]
+    type = "archive"
+    url = "https://github.com/openai/skills/archive/{{ $openai }}.tar.gz"
+    include = ["*/skills/.curated/{{ . }}/**"]
+    stripComponents = 4
+    exact = true
+{{- end }}
