@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794189629205,
+  "lastUpdate": 1794199302427,
   "repoUrl": "https://github.com/meltin/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -7320,6 +7320,65 @@ window.BENCHMARK_DATA = {
             "range": "1.12 ms",
             "unit": "ms",
             "extra": "median: 35.26 ms\nmin: 34.41 ms\nmax: 38.21 ms\nstddev: 1.12 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "committer": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "distinct": true,
+          "id": "5c2d720f5f6615e08c0148a2a994bc236409309d",
+          "message": "chore(claude): Rex のセッション名の自動付与をオフにする\n\n- live の settings.json に Rex が書いたフラグがテンプレートに無く、chezmoi apply で消えていた\n- テンプレートに `--feature-session-naming=false` を足して live と揃える\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+          "timestamp": "2026-11-09T13:40:57+09:00",
+          "tree_id": "6792faf5342e2014e9460ee4e852086c8490a069",
+          "url": "https://github.com/meltin/dotfiles/commit/5c2d720f5f6615e08c0148a2a994bc236409309d"
+        },
+        "date": 1794199301365,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 38,
+            "range": "5.61 ms",
+            "unit": "ms",
+            "extra": "median: 38 ms\nmin: 37.26 ms\nmax: 61.08 ms\nstddev: 5.61 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 38.46,
+            "range": "5.63 ms",
+            "unit": "ms",
+            "extra": "median: 38.46 ms\nmin: 37.72 ms\nmax: 61.58 ms\nstddev: 5.63 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.02,
+            "range": "0.03 ms",
+            "unit": "ms",
+            "extra": "median: 1.02 ms\nmin: 0.95 ms\nmax: 1.07 ms\nstddev: 0.03 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 1.39,
+            "range": "4.12 ms",
+            "unit": "ms",
+            "extra": "median: 1.39 ms\nmin: 1.25 ms\nmax: 18.45 ms\nstddev: 4.12 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 32.82,
+            "range": "0.58 ms",
+            "unit": "ms",
+            "extra": "median: 32.82 ms\nmin: 31.92 ms\nmax: 33.9 ms\nstddev: 0.58 ms\nruns: 16"
           }
         ]
       }
