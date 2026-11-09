@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794186445288,
+  "lastUpdate": 1794189629205,
   "repoUrl": "https://github.com/meltin/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -7261,6 +7261,65 @@ window.BENCHMARK_DATA = {
             "range": "1.3 ms",
             "unit": "ms",
             "extra": "median: 37.28 ms\nmin: 34.72 ms\nmax: 39.37 ms\nstddev: 1.3 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+unmett@users.noreply.github.com",
+            "name": "unmett",
+            "username": "meltin"
+          },
+          "committer": {
+            "email": "83203852+unmett@users.noreply.github.com",
+            "name": "unmett",
+            "username": "meltin"
+          },
+          "distinct": true,
+          "id": "9950296d9b3a1eb8492cc926ee8af368cc00c006",
+          "message": "chore(homebrew): capsomnia を削除し、flake inputs を更新\n\n- キー入力が落ちる原因だった capsomnia はアンインストール済みなので cask から外す\n- home-manager と nixpkgs を更新\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+          "timestamp": "2026-11-09T10:37:15+09:00",
+          "tree_id": "ad7efae7caf485dacad93ff1bb1bc9d4c2571b94",
+          "url": "https://github.com/meltin/dotfiles/commit/9950296d9b3a1eb8492cc926ee8af368cc00c006"
+        },
+        "date": 1794189627875,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 39.62,
+            "range": "5.71 ms",
+            "unit": "ms",
+            "extra": "median: 39.62 ms\nmin: 38.78 ms\nmax: 63.06 ms\nstddev: 5.71 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 40.1,
+            "range": "5.74 ms",
+            "unit": "ms",
+            "extra": "median: 40.1 ms\nmin: 39.23 ms\nmax: 63.66 ms\nstddev: 5.74 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.02,
+            "range": "0.04 ms",
+            "unit": "ms",
+            "extra": "median: 1.02 ms\nmin: 0.95 ms\nmax: 1.08 ms\nstddev: 0.04 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 5.68,
+            "range": "6.91 ms",
+            "unit": "ms",
+            "extra": "median: 5.68 ms\nmin: 1.11 ms\nmax: 19.1 ms\nstddev: 6.91 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 35.26,
+            "range": "1.12 ms",
+            "unit": "ms",
+            "extra": "median: 35.26 ms\nmin: 34.41 ms\nmax: 38.21 ms\nstddev: 1.12 ms\nruns: 16"
           }
         ]
       }
