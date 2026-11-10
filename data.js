@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794287502349,
+  "lastUpdate": 1794296431482,
   "repoUrl": "https://github.com/meltin/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -7674,6 +7674,65 @@ window.BENCHMARK_DATA = {
             "range": "1.6 ms",
             "unit": "ms",
             "extra": "median: 35.27 ms\nmin: 33.65 ms\nmax: 38.29 ms\nstddev: 1.6 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "committer": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "distinct": true,
+          "id": "84f9564e3f1979b937ab21dd1987efda9f745b8d",
+          "message": "chore(handoff): 説明から Orca のスキルへの言及を削除\n\nCo-Authored-By: Claude Fable 5.2 <noreply@anthropic.com>",
+          "timestamp": "2026-11-10T16:37:20+09:00",
+          "tree_id": "0e40a3b94a95cc1de5cdaaeba36d65fe7fc70d1a",
+          "url": "https://github.com/meltin/dotfiles/commit/84f9564e3f1979b937ab21dd1987efda9f745b8d"
+        },
+        "date": 1794296430140,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 42.69,
+            "range": "8.17 ms",
+            "unit": "ms",
+            "extra": "median: 42.69 ms\nmin: 38 ms\nmax: 73.49 ms\nstddev: 8.17 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 43.21,
+            "range": "8.19 ms",
+            "unit": "ms",
+            "extra": "median: 43.21 ms\nmin: 38.47 ms\nmax: 74.03 ms\nstddev: 8.19 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.08,
+            "range": "0.19 ms",
+            "unit": "ms",
+            "extra": "median: 1.08 ms\nmin: 0.94 ms\nmax: 1.63 ms\nstddev: 0.19 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 17.19,
+            "range": "7.45 ms",
+            "unit": "ms",
+            "extra": "median: 17.19 ms\nmin: 1.18 ms\nmax: 22.11 ms\nstddev: 7.45 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 37.33,
+            "range": "3.7 ms",
+            "unit": "ms",
+            "extra": "median: 37.33 ms\nmin: 33.65 ms\nmax: 47.36 ms\nstddev: 3.7 ms\nruns: 16"
           }
         ]
       }
