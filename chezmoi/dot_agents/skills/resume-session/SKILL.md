@@ -56,6 +56,8 @@ jq -r 'select(.gitBranch) | .gitBranch' ~/.claude/projects/*/'<セッション I
 
 ### 4. 渡す指示をファイルに書く
 
+再開だけ頼まれて、伝える指示がないときは、この手順を飛ばす。指示を作り上げない。
+
 長い複数行の指示をシェルの引数に直接書くと壊れやすいので、一時ファイル（スクラッチパッドがあればそこ）に書く。相手は以前の会話を覚えているので、そのあとに変わったことを中心に書く。次を入れる。
 
 - この会話で決まったことと、その理由
@@ -75,13 +77,15 @@ repo=$(basename "$(dirname "$(git -C "$dir" rev-parse --path-format=absolute --g
 sid=$(rex ls --json | jq -r --arg l "$repo" 'first(.sessions[] | select(.label == $l) | .session_id) // empty')
 if [ -n "$sid" ]; then
   echo "$sid"
-  rex window new -s "$sid" -c "$dir" --focus=false --json -- sh -c 'claude --resume "$1" "$(cat "$2")"' sh "$session" "$prompt_file"
+  rex window new -s "$sid" -c "$dir" --focus=false --json -- env RESUME_ID="$session" PROMPT_FILE="$prompt_file" sh -c 'claude --resume "$RESUME_ID" "$(cat "$PROMPT_FILE")"'
 else
-  rex new "$repo" -c "$dir" --json -- sh -c 'claude --resume "$1" "$(cat "$2")"' sh "$session" "$prompt_file"
+  rex new "$repo" -c "$dir" --json -- env RESUME_ID="$session" PROMPT_FILE="$prompt_file" sh -c 'claude --resume "$RESUME_ID" "$(cat "$PROMPT_FILE")"'
 fi
 ```
 
-- 再開のコマンドは `resume-spec` の `args` に合わせる。Codex のセッションなら `claude --resume "$1"` を `codex resume "$1"` に変える。
+- 再開のコマンドは `resume-spec` の `args` に合わせる。Codex のセッションなら `claude --resume` を `codex resume` に変える。
+- 伝える指示がなく、再開だけ頼まれたときは、`--` のあとを `claude --resume "$session"` だけにする。手順 4 は飛ばす。
+- 値は環境変数で渡す。シェルの位置引数（1 番目、2 番目を表す変数）をこのファイルに書くと、スキルの引数に置き換わって壊れる。
 - `ccsession resume` は使わない。実行したその場（Bash の中）で対話画面を起動するので、Rex のタブが開かず、最初の指示も渡せない。
 - 再開先のフォルダーを cwd にする。別のフォルダーからだと、セッションが見つからないか、別の場所で作業が進む。
 - タブに名前（`rex window new` の LABEL、`rex new` の `--window`、`rex window rename`）を付けない。付けるとサイドバーがその名前で固定され、エージェントが付ける要約のタイトルが出なくなる。
