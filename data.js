@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794275233165,
+  "lastUpdate": 1794287502349,
   "repoUrl": "https://github.com/meltin/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -7615,6 +7615,65 @@ window.BENCHMARK_DATA = {
             "range": "0.91 ms",
             "unit": "ms",
             "extra": "median: 33.54 ms\nmin: 32.06 ms\nmax: 36.26 ms\nstddev: 0.91 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "committer": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "distinct": true,
+          "id": "696f694e3a3621b8c9d94915ce6d99ca6f155e50",
+          "message": "chore(meltype): 辞書に「紐付け」を追加\n\nCo-Authored-By: Claude Fable 5.2 <noreply@anthropic.com>",
+          "timestamp": "2026-11-10T14:08:43+09:00",
+          "tree_id": "52e5810c675e8be2d4d65ded688bf037001305db",
+          "url": "https://github.com/meltin/dotfiles/commit/696f694e3a3621b8c9d94915ce6d99ca6f155e50"
+        },
+        "date": 1794287501113,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 40.02,
+            "range": "1.91 ms",
+            "unit": "ms",
+            "extra": "median: 40.02 ms\nmin: 35.82 ms\nmax: 42.76 ms\nstddev: 1.91 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 40.49,
+            "range": "1.94 ms",
+            "unit": "ms",
+            "extra": "median: 40.49 ms\nmin: 36.28 ms\nmax: 43.28 ms\nstddev: 1.94 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.1,
+            "range": "0.06 ms",
+            "unit": "ms",
+            "extra": "median: 1.1 ms\nmin: 1.01 ms\nmax: 1.23 ms\nstddev: 0.06 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 13.25,
+            "range": "7.66 ms",
+            "unit": "ms",
+            "extra": "median: 13.25 ms\nmin: 1.14 ms\nmax: 19.99 ms\nstddev: 7.66 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 35.27,
+            "range": "1.6 ms",
+            "unit": "ms",
+            "extra": "median: 35.27 ms\nmin: 33.65 ms\nmax: 38.29 ms\nstddev: 1.6 ms\nruns: 16"
           }
         ]
       }
