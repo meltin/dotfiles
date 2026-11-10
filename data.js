@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794299751749,
+  "lastUpdate": 1794300879529,
   "repoUrl": "https://github.com/meltin/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -7969,6 +7969,65 @@ window.BENCHMARK_DATA = {
             "range": "2.25 ms",
             "unit": "ms",
             "extra": "median: 35.56 ms\nmin: 33.64 ms\nmax: 41.19 ms\nstddev: 2.25 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "committer": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "distinct": true,
+          "id": "98fe106424125ef358413345b9644eb7b78f4c55",
+          "message": "feat(skills): create-pr で日本語の PR を yomiyasu で推敲する\n\n- `gh pr create` の前にタイトルと本文を yomiyasu に渡す手順を追加\n- Copilot 向けコメントや見出し、チェックボックスなどの構造は保つ\n- PR に入れるのは推敲後の本文だけにし、確認事項は報告で伝える\n- スキルがない環境では推敲せずに作成し、その旨を報告する\n\nCo-Authored-By: Claude Fable 5.2 <noreply@anthropic.com>",
+          "timestamp": "2026-11-10T17:48:25+09:00",
+          "tree_id": "d4c6c91df6ff62a4de3c8848a9889cde443f8fc7",
+          "url": "https://github.com/meltin/dotfiles/commit/98fe106424125ef358413345b9644eb7b78f4c55"
+        },
+        "date": 1794300878343,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 39.03,
+            "range": "8.58 ms",
+            "unit": "ms",
+            "extra": "median: 39.03 ms\nmin: 36.98 ms\nmax: 74.34 ms\nstddev: 8.58 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 39.47,
+            "range": "8.6 ms",
+            "unit": "ms",
+            "extra": "median: 39.47 ms\nmin: 37.45 ms\nmax: 74.86 ms\nstddev: 8.6 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1,
+            "range": "0.07 ms",
+            "unit": "ms",
+            "extra": "median: 1 ms\nmin: 0.92 ms\nmax: 1.22 ms\nstddev: 0.07 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 2.52,
+            "range": "6.46 ms",
+            "unit": "ms",
+            "extra": "median: 2.52 ms\nmin: 1.09 ms\nmax: 19.25 ms\nstddev: 6.46 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 33.9,
+            "range": "2.49 ms",
+            "unit": "ms",
+            "extra": "median: 33.9 ms\nmin: 32.84 ms\nmax: 42.3 ms\nstddev: 2.49 ms\nruns: 16"
           }
         ]
       }
