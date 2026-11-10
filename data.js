@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794316968636,
+  "lastUpdate": 1794353229645,
   "repoUrl": "https://github.com/meltin/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -8087,6 +8087,65 @@ window.BENCHMARK_DATA = {
             "range": "2.82 ms",
             "unit": "ms",
             "extra": "median: 33.92 ms\nmin: 32.85 ms\nmax: 40.9 ms\nstddev: 2.82 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "committer": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "distinct": true,
+          "id": "062722f1283fbc2be09b890d9c6194ea49b39155",
+          "message": "chore(nix): flake inputs を更新\n\n- home-manager と nova を最新のコミットに更新\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+          "timestamp": "2026-11-11T08:25:46+09:00",
+          "tree_id": "be9e903e74e1d6cf047ed72c930ce38589a4ba8a",
+          "url": "https://github.com/meltin/dotfiles/commit/062722f1283fbc2be09b890d9c6194ea49b39155"
+        },
+        "date": 1794353228402,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 38.65,
+            "range": "7.81 ms",
+            "unit": "ms",
+            "extra": "median: 38.65 ms\nmin: 37.19 ms\nmax: 70.07 ms\nstddev: 7.81 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 39.11,
+            "range": "7.81 ms",
+            "unit": "ms",
+            "extra": "median: 39.11 ms\nmin: 37.63 ms\nmax: 70.46 ms\nstddev: 7.81 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.08,
+            "range": "0.16 ms",
+            "unit": "ms",
+            "extra": "median: 1.08 ms\nmin: 0.94 ms\nmax: 1.51 ms\nstddev: 0.16 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 2.65,
+            "range": "8.61 ms",
+            "unit": "ms",
+            "extra": "median: 2.65 ms\nmin: 1.24 ms\nmax: 23.98 ms\nstddev: 8.61 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 32.98,
+            "range": "3.78 ms",
+            "unit": "ms",
+            "extra": "median: 32.98 ms\nmin: 32.06 ms\nmax: 44.22 ms\nstddev: 3.78 ms\nruns: 16"
           }
         ]
       }
