@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794298746645,
+  "lastUpdate": 1794299751749,
   "repoUrl": "https://github.com/meltin/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -7910,6 +7910,65 @@ window.BENCHMARK_DATA = {
             "range": "0.74 ms",
             "unit": "ms",
             "extra": "median: 34.13 ms\nmin: 32.5 ms\nmax: 35.51 ms\nstddev: 0.74 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "committer": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "distinct": true,
+          "id": "4979fbbb1c6e06e2f74a141abdaf9196a01a48a5",
+          "message": "chore(claude): 見た目の提案は画像と Artifact を使い分ける\n\n- 静止画で足りるものは show_image でチャットに出す\n- 操作、複数案の比較、共有が要るときだけ Artifact を公開する\n- 依頼者が手段を名指ししたらそれに従う（画像は show_image、モックは Artifact）\n- 提案だけでなく実装結果の報告も対象にする\n\nCo-Authored-By: Claude Fable 5.2 <noreply@anthropic.com>",
+          "timestamp": "2026-11-10T17:35:07+09:00",
+          "tree_id": "e7d5f15d0791a70ed7c3eb881e8d7867760cd7a7",
+          "url": "https://github.com/meltin/dotfiles/commit/4979fbbb1c6e06e2f74a141abdaf9196a01a48a5"
+        },
+        "date": 1794299750519,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 39.85,
+            "range": "5.91 ms",
+            "unit": "ms",
+            "extra": "median: 39.85 ms\nmin: 38.32 ms\nmax: 63.62 ms\nstddev: 5.91 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 40.33,
+            "range": "5.92 ms",
+            "unit": "ms",
+            "extra": "median: 40.33 ms\nmin: 38.76 ms\nmax: 64.12 ms\nstddev: 5.92 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.12,
+            "range": "0.06 ms",
+            "unit": "ms",
+            "extra": "median: 1.12 ms\nmin: 1.02 ms\nmax: 1.32 ms\nstddev: 0.06 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 2.61,
+            "range": "8.28 ms",
+            "unit": "ms",
+            "extra": "median: 2.61 ms\nmin: 1.22 ms\nmax: 24.23 ms\nstddev: 8.28 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 35.56,
+            "range": "2.25 ms",
+            "unit": "ms",
+            "extra": "median: 35.56 ms\nmin: 33.64 ms\nmax: 41.19 ms\nstddev: 2.25 ms\nruns: 16"
           }
         ]
       }
