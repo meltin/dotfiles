@@ -1,15 +1,17 @@
 ---
 name: handoff
-description: 作業を新しい worktree（gh wt）と Rex の新しいタブで動く Claude に引き継ぐ。「新規ワークツリーで」「別のワークツリーで」「新しい worktree を切って」「別セッションで」「ここじゃなくて」「handoff」などと頼まれたときに使う。自分のセッションで作業を続けるのではなく、Rex のそのプロジェクトのセッションにタブが増える形で渡す。orca-cli や orchestration のスキルも handoff を挙げているが、Orca は使わないのでこちらを使う。
+description: 作業を新しい worktree（gh wt）と Rex の新しいタブで動くエージェントに引き継ぐ。「新規ワークツリーで」「別のワークツリーで」「新しい worktree を切って」「別セッションで」「ここじゃなくて」「handoff」などと頼まれたときに使う。自分のセッションで作業を続けるのではなく、Rex のそのプロジェクトのセッションにタブが増える形で渡す。orca-cli や orchestration のスキルも handoff を挙げているが、Orca は使わないのでこちらを使う。
 ---
 
 # handoff
 
-「新規ワークツリーで」は、`gh wt` で worktree を作り、Rex の新しいタブで Claude を起動して作業を渡すこと。自分のセッションで worktree を作って作業を続けることではない。よくある流れは、このセッションで Issue を起票し、その Issue の作業を新しい worktree に振る形。
+「新規ワークツリーで」は、`gh wt` で worktree を作り、Rex の新しいタブでエージェントを起動して作業を渡すこと。自分のセッションで worktree を作って作業を続けることではない。よくある流れは、このセッションで Issue を起票し、その Issue の作業を新しい worktree に振る形。
 
 Rex のセッションはプロジェクト（リポジトリ）ごとに 1 つで、名前はリポジトリ名。そのプロジェクトのセッションがあればタブを足し、なければセッションを作る。
 
 Bash の呼び出しをまたぐとシェルの変数は消える。手順をまたぐ値（worktree のパス、セッションやブロックの ID）は出力を読み取り、次のコマンドに直接書く。
+
+起動するのは自分と同じエージェント（例: Claude なら `claude`、Codex なら `codex`）。依頼者が相手を名指ししたらそれに従う。
 
 ## 何を渡すか決める
 
@@ -20,7 +22,7 @@ Bash の呼び出しをまたぐとシェルの変数は消える。手順をま
 
 ### 1. 作る内容を依頼者に確かめる
 
-worktree を作る前に、案を調べて AskUserQuestion で確かめる。答えをもらうまで作らない。
+worktree を作る前に、案を調べて、選択肢で尋ねるツールがあればそれで確かめる（例: Claude の AskUserQuestion、Codex の request_user_input）。なければ文章で尋ねる。答えをもらうまで作らない。
 
 ```sh
 git fetch origin
@@ -30,7 +32,7 @@ git config --get wt.basedir                          # worktree の置き場所�
 git status --short                                   # 今いる worktree の未コミット・未追跡
 ```
 
-1 回の AskUserQuestion で次を尋ねる。
+1 回でまとめて次を尋ねる。
 
 - **start-point**: 1 つ目の選択肢は `origin/<既定ブランチ>`。今いるブランチが既定ブランチでなければ、それも選択肢にする。
 - **名前**: ブランチ名、worktree 名（フォルダー名）、worktree のパスを 1 組にして、案を 2 つ出す。パスは `<wt.basedir を展開したもの>/<フォルダー名>`。
@@ -62,48 +64,50 @@ GIT_CONFIG_COUNT=2 GIT_CONFIG_KEY_0=wt.copymodified GIT_CONFIG_VALUE_0=false GIT
 - `wt.hook`（依存のインストールなど）がその場で走るので、Bash のタイムアウトを長めにする（5 分以上）。
 - 変更を写したときは `git -C <worktree のパス> status --short` で確かめ、写ったものを指示に書く。
 - PR を渡すときは `gh wt -p <番号|URL>`。ブランチも名前も PR で決まるので、手順 1 は未コミット・未追跡の変更だけ尋ねる。
-- すでにある worktree に渡すときは、先に `gh wt -l` で名前を確かめてから `gh wt <ブランチ|フォルダー名>`。一致する worktree がないと、その名前で `HEAD` から新しく作られてしまう。その worktree で別の Claude が動いていないかも確かめる。
+- すでにある worktree に渡すときは、先に `gh wt -l` で名前を確かめてから `gh wt <ブランチ|フォルダー名>`。一致する worktree がないと、その名前で `HEAD` から新しく作られてしまう。その worktree で別のエージェントが動いていないかも確かめる。
 
 ### 3. 渡す指示をファイルに書く
 
-長い複数行の指示をシェルの引数に直接書くと壊れやすいので、スクラッチパッドのファイルに書く。次を入れる。
+長い複数行の指示をシェルの引数に直接書くと壊れやすいので、一時ファイル（スクラッチパッドがあればそこ）に書く。次を入れる。
 
 - Issue の番号と URL。まず Issue を読んでから始めるよう書く
 - この会話で決まったこと、調べて分かったこと、済んだ作業（未コミットの変更があればファイルと内容）
 - ブランチ名と切った元、upstream が未設定であること
 - 残りの作業を順番に（Issue に書いてあれば、そちらを見るよう書けばよい）
-- その作業で守る約束事（コミットメッセージ、PR の作り方、push とマージの扱い、レビューへの返信の仕方など。メモリや CLAUDE.md にあるものを書き写す）
+- その作業で守る約束事（コミットメッセージ、PR の作り方、push とマージの扱い、レビューへの返信の仕方など。メモリや CLAUDE.md、AGENTS.md にあるものを書き写す）
 
-### 4. Rex のタブで Claude を起動する
+### 4. Rex のタブでエージェントを起動する
 
 リポジトリ名のセッションを探し、あればタブを足し、なければセッションを作る。
 
 ```sh
 wt_dir='<worktree のパス>'
 prompt_file='<指示ファイルのパス>'
+agent='<エージェントのコマンド。例: claude、codex>'
 repo=$(basename "$(dirname "$(git -C "$wt_dir" rev-parse --path-format=absolute --git-common-dir)")")
 sid=$(rex ls --json | jq -r --arg l "$repo" 'first(.sessions[] | select(.label == $l) | .session_id) // empty')
 if [ -n "$sid" ]; then
   echo "$sid"
-  rex window new -s "$sid" -c "$wt_dir" --focus=false --json -- sh -c 'claude "$(cat "$1")"' sh "$prompt_file"
+  rex window new -s "$sid" -c "$wt_dir" --focus=false --json -- sh -c '"$1" "$(cat "$2")"' sh "$agent" "$prompt_file"
 else
-  rex new "$repo" -c "$wt_dir" --json -- sh -c 'claude "$(cat "$1")"' sh "$prompt_file"
+  rex new "$repo" -c "$wt_dir" --json -- sh -c '"$1" "$(cat "$2")"' sh "$agent" "$prompt_file"
 fi
 ```
 
-- タブに名前（`rex window new` の LABEL、`rex new` の `--window`）を付けない。付けるとサイドバーがその名前で固定され、Claude が付ける要約のタイトルが出なくなる。
+- この形は、コマンドが最初の指示を引数で受け取る前提（`claude` と `codex` はそう）。受け取らないエージェントなら、そのエージェントの渡し方に合わせる。
+- タブに名前（`rex window new` の LABEL、`rex new` の `--window`）を付けない。付けるとサイドバーがその名前で固定され、エージェントが付ける要約のタイトルが出なくなる。
 - セッション ID とブロック ID を控える。タブを足したときは出力した `sid` と `.block_ids[0]`、セッションを作ったときは `.session_id` と `.initial_windows[0].block_ids[0]`。
 - セッション名は SessionStart フックがリポジトリ名に付け替えるので、Issue 名を付けても残らない。
 
 ### 5. 届いたか確かめて終える
 
-Rex は指示が届いたかを返さないので、10 秒待って画面を読む。Claude が動いていれば `rex wait` は `wait timed out` のエラーで戻る。これが正常。`rex wait` がエラーなしですぐ戻り、`rex capture` が `not found` になったら、Claude が起動に失敗してタブが閉じている。指示ファイルのパスと `claude` コマンドを確かめてから手順 4 をやり直す。
+Rex は指示が届いたかを返さないので、10 秒待って画面を読む。エージェントが動いていれば `rex wait` は `wait timed out` のエラーで戻る。これが正常。`rex wait` がエラーなしですぐ戻り、`rex capture` が `not found` になったら、エージェントが起動に失敗してタブが閉じている。指示ファイルのパスとエージェントのコマンドを確かめてから手順 4 をやり直す。
 
 ```sh
 rex wait -s <session_id> <block_id> --for 10s; rex capture -s <session_id> -b <block_id> --trim | tail -40
 ```
 
-指示の本文が表示され、Claude が動き始めていれば渡せている。フォルダーを信頼するかの確認などで止まっていたら、依頼者にそのタブで答えてもらうよう伝える。worktree のパス、ブランチ名、セッション ID を依頼者に伝えて終える。
+指示の本文が表示され、エージェントが動き始めていれば渡せている。フォルダーを信頼するかの確認などで止まっていたら、依頼者にそのタブで答えてもらうよう伝える。worktree のパス、ブランチ名、セッション ID を依頼者に伝えて終える。
 
 ## やらないこと
 
