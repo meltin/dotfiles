@@ -18,6 +18,7 @@
 - If both `lint` and `lint-types` exist, run only `lint-types`.
 - Do not run state-changing dev/prod operations (POST, PUT, PATCH, DELETE, or equivalent) just to verify a change unless the user explicitly authorizes that exact action. Ask the user for such checks and any you cannot perform, and state precisely what remains for them to verify and why.
 
-## Pull requests
+## Commits and pull requests
 
+- Never run `git commit` or `gh pr create` directly. Create commits with the `commit` skill and pull requests with the `create-pr` skill, even for one-line changes and in other worktrees.
 - Before creating a pull request, check for and follow any repository PR template.
