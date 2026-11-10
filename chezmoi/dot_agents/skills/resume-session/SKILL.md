@@ -82,7 +82,7 @@ fi
 ```
 
 - 再開のコマンドは `resume-spec` の `args` に合わせる。Codex のセッションなら `claude --resume "$1"` を `codex resume "$1"` に変える。
-- `ccsession resume` は使わない。最初の指示を渡せず、今のプロセスを置き換えてしまう。
+- `ccsession resume` は使わない。実行したその場（Bash の中）で対話画面を起動するので、Rex のタブが開かず、最初の指示も渡せない。
 - 再開先のフォルダーを cwd にする。別のフォルダーからだと、セッションが見つからないか、別の場所で作業が進む。
 - タブに名前（`rex window new` の LABEL、`rex new` の `--window`、`rex window rename`）を付けない。付けるとサイドバーがその名前で固定され、エージェントが付ける要約のタイトルが出なくなる。
 - Rex のセッション ID とブロック ID を控える。タブを足したときは出力した `sid` と `.block_ids[0]`、セッションを作ったときは `.session_id` と `.initial_windows[0].block_ids[0]`。
