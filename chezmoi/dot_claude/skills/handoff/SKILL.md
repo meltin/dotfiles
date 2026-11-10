@@ -1,11 +1,15 @@
 ---
 name: handoff
-description: 作業を Orca の新しい worktree と新しい Claude セッションに引き継ぐ。「新規ワークツリーで」「別のワークツリーで」「新しい worktree を切って」「別セッションで」「ここじゃなくて」などと頼まれたときに使う。git worktree add で自分が作業を続けるのではなく、Orca のサイドバーに新しいセッションが増える形で渡す。
+description: 作業を新しい worktree（gh wt）と Rex の新しいタブで動く Claude に引き継ぐ。「新規ワークツリーで」「別のワークツリーで」「新しい worktree を切って」「別セッションで」「ここじゃなくて」「handoff」などと頼まれたときに使う。自分のセッションで作業を続けるのではなく、Rex のそのプロジェクトのセッションにタブが増える形で渡す。orca-cli や orchestration のスキルも handoff を挙げているが、Orca は使わないのでこちらを使う。
 ---
 
 # handoff
 
-「新規ワークツリーで」は、Orca 管理の worktree を作り、新しい Claude セッションに作業を渡すこと。自分のセッションで `git worktree add` して作業を続けることではない。よくある流れは、このセッションで Issue を起票し、その Issue の作業を新しい worktree に振る形。
+「新規ワークツリーで」は、`gh wt` で worktree を作り、Rex の新しいタブで Claude を起動して作業を渡すこと。自分のセッションで worktree を作って作業を続けることではない。よくある流れは、このセッションで Issue を起票し、その Issue の作業を新しい worktree に振る形。
+
+Rex のセッションはプロジェクト（リポジトリ）ごとに 1 つで、名前はリポジトリ名。そのプロジェクトのセッションがあればタブを足し、なければセッションを作る。
+
+Bash の呼び出しをまたぐとシェルの変数は消える。手順をまたぐ値（worktree のパス、セッションやブロックの ID）は出力を読み取り、次のコマンドに直接書く。
 
 ## 何を渡すか決める
 
@@ -14,32 +18,69 @@ description: 作業を Orca の新しい worktree と新しい Claude セッシ�
 
 ## 手順
 
-1. orca-cli スキルで CLI を解決し、ガイドを読む（`orca skills get orca-cli`）。
-2. 渡す指示を書く。次を入れる。
-   - Issue の番号と URL。まず Issue を読んでから始めるよう書く
-   - この会話で決まったこと、調べて分かったこと、済んだ作業（未コミットの変更があればファイルと内容）
-   - 残りの作業を順番に（Issue に書いてあれば、そちらを見るよう書けばよい）
-   - その作業で守る約束事（コミットメッセージ、PR の作り方、push とマージの扱い、レビューへの返信の仕方など。メモリや CLAUDE.md にあるものを書き写す）
-3. 起動する。
-   - 新しく作る:
-     ```text
-     orca worktree create --repo path:<リポジトリのパス> --name <issue-番号-短い説明> --reference <Issue の URL> --no-parent --agent claude --prompt "<指示>" --json
-     ```
-     - Issue も PR も完全な URL を `--reference` で渡す。`--issue` / `--pr` は番号しか記録されず、タイトルやリポジトリが紐づかない。`--reference` とも併用できない。
-     - `--name` はフォルダー名とブランチ名に使われるので英数字の短い名前にし、作成後に表示名を Issue のタイトルに変える。先頭の `[問い合わせ]` や `[BUG]` などのラベルは外し、長ければ 20 字ほどに縮める。
-       ```text
-       orca worktree set --worktree id:<作成結果の worktree.id> --display-name "<表示名>" --json
-       ```
-     - 作成元は省いてリポジトリの既定（Orca の設定。例: origin/dev）に任せる。依頼者が作業中のブランチから積み上げるよう頼んだときだけ `--base-branch` を付ける。
-     - ブランチ名は Orca の既定に任せる。依頼者が名前を指定したときだけ `--branch` を付ける。
-   - すでに作った worktree に渡す:
-     ```text
-     orca agent launch --agent claude --worktree id:<repoId>::<path> --prompt "<指示>" --json
-     ```
-     id は `orca worktree list --json` で調べる。
-4. 結果の `launch.prompt.outcome` が `journaled` か `handed-to-terminal` なら渡せている。worktree の id と `launch.outcome.handle` を依頼者に伝えて終える。
+### 1. worktree を作る
+
+リポジトリの中で実行する。`gh wt` は標準出力に worktree のパスだけを出すので、それを控える。
+
+```sh
+git fetch origin
+base=$(git symbolic-ref --short refs/remotes/origin/HEAD) && [ -n "$base" ] || exit 1   # 例: origin/dev
+wt_dir=$(gh wt -b <ブランチ名> <フォルダー名> "$base")
+git -C "$wt_dir" branch --unset-upstream 2>/dev/null || true
+echo "$wt_dir"
+```
+
+- 変数名を `path` にしない。zsh では `PATH` と連動していて、代入すると以降のコマンドが見つからなくなる。
+- start-point は必ず付ける。省いたり空だったりすると `gh wt` を実行した場所の `HEAD`（今いるブランチ）から切られ、fetch もされない。`origin/HEAD` が未設定で止まったら `git remote set-head origin -a` で直す。依頼者が作業中のブランチから積み上げるよう頼んだときだけ、そのブランチを start-point にする。
+- ブランチ名は create-branch スキルと同じ `prefix/{issue-no}-summary`（例: `feat/1216-legend-number`）。フォルダー名は英数字の短い名前（例: `issue-1216-legend-number`）。依頼者が名前を指定したらそれに従う。
+- `origin/...` から切ると upstream がベースブランチになるので外しておく。初回の push は `git push -u origin HEAD`。
+- `wt.hook`（依存のインストールなど）がその場で走るので、Bash のタイムアウトを長めにする（5 分以上）。
+- `wt.copyignored` などが有効だと、今いる worktree の無視ファイル・未追跡ファイル・未コミットの変更が新しい worktree に写る。写ったものがあれば `git -C <worktree のパス> status --short` で確かめ、指示に書く。
+- PR を渡すときは `gh wt -p <番号|URL>`。
+- すでにある worktree に渡すときは、先に `gh wt -l` で名前を確かめてから `gh wt <ブランチ|フォルダー名>`。一致する worktree がないと、その名前で `HEAD` から新しく作られてしまう。その worktree で別の Claude が動いていないかも確かめる。
+
+### 2. 渡す指示をファイルに書く
+
+長い複数行の指示をシェルの引数に直接書くと壊れやすいので、スクラッチパッドのファイルに書く。次を入れる。
+
+- Issue の番号と URL。まず Issue を読んでから始めるよう書く
+- この会話で決まったこと、調べて分かったこと、済んだ作業（未コミットの変更があればファイルと内容）
+- ブランチ名と切った元、upstream が未設定であること
+- 残りの作業を順番に（Issue に書いてあれば、そちらを見るよう書けばよい）
+- その作業で守る約束事（コミットメッセージ、PR の作り方、push とマージの扱い、レビューへの返信の仕方など。メモリや CLAUDE.md にあるものを書き写す）
+
+### 3. Rex のタブで Claude を起動する
+
+リポジトリ名のセッションを探し、あればタブを足し、なければセッションを作る。
+
+```sh
+wt_dir='<worktree のパス>'
+prompt_file='<指示ファイルのパス>'
+repo=$(basename "$(dirname "$(git -C "$wt_dir" rev-parse --path-format=absolute --git-common-dir)")")
+sid=$(rex ls --json | jq -r --arg l "$repo" 'first(.sessions[] | select(.label == $l) | .session_id) // empty')
+if [ -n "$sid" ]; then
+  echo "$sid"
+  rex window new -s "$sid" -c "$wt_dir" --focus=false --json -- sh -c 'claude "$(cat "$1")"' sh "$prompt_file"
+else
+  rex new "$repo" -c "$wt_dir" --json -- sh -c 'claude "$(cat "$1")"' sh "$prompt_file"
+fi
+```
+
+- タブに名前（`rex window new` の LABEL、`rex new` の `--window`）を付けない。付けるとサイドバーがその名前で固定され、Claude が付ける要約のタイトルが出なくなる。
+- セッション ID とブロック ID を控える。タブを足したときは出力した `sid` と `.block_ids[0]`、セッションを作ったときは `.session_id` と `.initial_windows[0].block_ids[0]`。
+- セッション名は SessionStart フックがリポジトリ名に付け替えるので、Issue 名を付けても残らない。
+
+### 4. 届いたか確かめて終える
+
+Rex は指示が届いたかを返さないので、10 秒待って画面を読む。Claude が動いていれば `rex wait` は `wait timed out` のエラーで戻る。これが正常。`rex wait` がエラーなしですぐ戻り、`rex capture` が `not found` になったら、Claude が起動に失敗してタブが閉じている。指示ファイルのパスと `claude` コマンドを確かめてから手順 3 をやり直す。
+
+```sh
+rex wait -s <session_id> <block_id> --for 10s; rex capture -s <session_id> -b <block_id> --trim | tail -40
+```
+
+指示の本文が表示され、Claude が動き始めていれば渡せている。フォルダーを信頼するかの確認などで止まっていたら、依頼者にそのタブで答えてもらうよう伝える。worktree のパス、ブランチ名、セッション ID を依頼者に伝えて終える。
 
 ## やらないこと
 
 - 引き継いだ作業を自分で続けない。相手の完了も待たない。
-- 応答を受け取れなかったときに、新しく起動し直さない。返ってきた `operationId` を付けて `--retry-launch` で同じコマンドを再実行する。
+- `rex new` や `rex window new` がタイムアウトしても、すぐ作り直さない。`rex ls --json` と `rex session inspect <session_id> --json` で、セッションやタブができていないか確かめてからにする。
