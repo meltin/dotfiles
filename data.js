@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794271811612,
+  "lastUpdate": 1794275233165,
   "repoUrl": "https://github.com/meltin/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -7556,6 +7556,65 @@ window.BENCHMARK_DATA = {
             "range": "2.6 ms",
             "unit": "ms",
             "extra": "median: 34.21 ms\nmin: 32.4 ms\nmax: 40.77 ms\nstddev: 2.6 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "committer": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "distinct": true,
+          "id": "0b514e1559914bec15cd5312f85a53803572c4b4",
+          "message": "chore(agents): コミットと PR 作成はスキル経由にするルールを追加\n\n- git commit と gh pr create を直接実行せず、commit / create-pr スキルを使う\n- Claude の CLAUDE.md と Codex の AGENTS.md の両方に入れる\n- AGENTS.md の見出しを Commits and pull requests に変更\n\nCo-Authored-By: Claude Fable 5.2 <noreply@anthropic.com>",
+          "timestamp": "2026-11-10T10:45:54+09:00",
+          "tree_id": "386425de54eb332e2ecc6c59594f7c33c9466658",
+          "url": "https://github.com/meltin/dotfiles/commit/0b514e1559914bec15cd5312f85a53803572c4b4"
+        },
+        "date": 1794275231886,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 38.89,
+            "range": "5.73 ms",
+            "unit": "ms",
+            "extra": "median: 38.89 ms\nmin: 36.75 ms\nmax: 62.28 ms\nstddev: 5.73 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 39.36,
+            "range": "5.73 ms",
+            "unit": "ms",
+            "extra": "median: 39.36 ms\nmin: 37.29 ms\nmax: 62.8 ms\nstddev: 5.73 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.1,
+            "range": "0.03 ms",
+            "unit": "ms",
+            "extra": "median: 1.1 ms\nmin: 1.04 ms\nmax: 1.17 ms\nstddev: 0.03 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 2.76,
+            "range": "7.99 ms",
+            "unit": "ms",
+            "extra": "median: 2.76 ms\nmin: 1.25 ms\nmax: 21.43 ms\nstddev: 7.99 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 33.54,
+            "range": "0.91 ms",
+            "unit": "ms",
+            "extra": "median: 33.54 ms\nmin: 32.06 ms\nmax: 36.26 ms\nstddev: 0.91 ms\nruns: 16"
           }
         ]
       }
