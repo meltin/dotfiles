@@ -10,6 +10,7 @@
 - Never consider a task complete until all diagnostic errors are resolved.
 - In Issue drafting and design as well as implementation, avoid speculative abstractions, configuration, or follow-up work (including extra Issues) beyond confirmed current requirements.
 - Do not run state-changing dev/prod operations (POST, PUT, PATCH, DELETE, or equivalent) just to verify a change unless the user explicitly authorizes that exact action. Ask the user for such checks and any you cannot perform, and state precisely what remains for them to verify and why.
+- When proposing a spec that changes how something looks, publish an Artifact and share it instead of describing it in text. Skip it for small tweaks such as a single color or label.
 - Never run `git commit` or `gh pr create` directly. Create commits with the `commit` skill and pull requests with the `create-pr` skill, even for one-line changes and in other worktrees.
 - When creating a pull request, please check if there is a PR template in the repository and follow it if available.
 - Do not include the `Claude-Session:` trailer in commit messages or the session URL in PR descriptions; keep `Co-Authored-By`.
