@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794300879529,
+  "lastUpdate": 1794316968636,
   "repoUrl": "https://github.com/meltin/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -8028,6 +8028,65 @@ window.BENCHMARK_DATA = {
             "range": "2.49 ms",
             "unit": "ms",
             "extra": "median: 33.9 ms\nmin: 32.84 ms\nmax: 42.3 ms\nstddev: 2.49 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "committer": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "distinct": true,
+          "id": "9475487402105a0e110432054d7f31d39d60156a",
+          "message": "fix(skills): handoff の起動の行がスキルの引数で壊れないようにする\n\n- 位置引数の変数はスキルの引数に置き換わるので 値を環境変数で渡す形に変える\n- resume-session と同じ直し方に揃える\n\nCo-Authored-By: Claude Fable 5.2 <noreply@anthropic.com>",
+          "timestamp": "2026-11-10T22:21:44+09:00",
+          "tree_id": "fa228aa0451b7162b67eca2d83fb0c5fd546df66",
+          "url": "https://github.com/meltin/dotfiles/commit/9475487402105a0e110432054d7f31d39d60156a"
+        },
+        "date": 1794316967478,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 40.75,
+            "range": "8.11 ms",
+            "unit": "ms",
+            "extra": "median: 40.75 ms\nmin: 37.71 ms\nmax: 72.86 ms\nstddev: 8.11 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 41.22,
+            "range": "8.13 ms",
+            "unit": "ms",
+            "extra": "median: 41.22 ms\nmin: 38.15 ms\nmax: 73.43 ms\nstddev: 8.13 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.05,
+            "range": "0.07 ms",
+            "unit": "ms",
+            "extra": "median: 1.05 ms\nmin: 0.95 ms\nmax: 1.22 ms\nstddev: 0.07 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 18.25,
+            "range": "8.28 ms",
+            "unit": "ms",
+            "extra": "median: 18.25 ms\nmin: 1.27 ms\nmax: 22.21 ms\nstddev: 8.28 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 33.92,
+            "range": "2.82 ms",
+            "unit": "ms",
+            "extra": "median: 33.92 ms\nmin: 32.85 ms\nmax: 40.9 ms\nstddev: 2.82 ms\nruns: 16"
           }
         ]
       }
