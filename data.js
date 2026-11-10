@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794298687174,
+  "lastUpdate": 1794298746645,
   "repoUrl": "https://github.com/meltin/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -7851,6 +7851,65 @@ window.BENCHMARK_DATA = {
             "range": "1.12 ms",
             "unit": "ms",
             "extra": "median: 34.41 ms\nmin: 32.96 ms\nmax: 37.02 ms\nstddev: 1.12 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "committer": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "distinct": true,
+          "id": "11464d63c8aecd69d0cc892f95d89f4692670227",
+          "message": "fix(skills): handoff の start-point の選択肢を必ず 2 つ以上にする\n\n- 既定ブランチにいると選択肢が 1 つになり、質問ダイアログを作れなかった\n- 2 つ目は今いるローカルのブランチにする\n- プロジェクトのメモリや指示にある候補も加える\n\nCo-Authored-By: Claude Fable 5.2 <noreply@anthropic.com>",
+          "timestamp": "2026-11-10T17:17:22+09:00",
+          "tree_id": "1751fd854ff7bd3cee63cfe4cfe61ea4c3668927",
+          "url": "https://github.com/meltin/dotfiles/commit/11464d63c8aecd69d0cc892f95d89f4692670227"
+        },
+        "date": 1794298745334,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 38.6,
+            "range": "7.23 ms",
+            "unit": "ms",
+            "extra": "median: 38.6 ms\nmin: 37.84 ms\nmax: 68.32 ms\nstddev: 7.23 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 39.05,
+            "range": "7.25 ms",
+            "unit": "ms",
+            "extra": "median: 39.05 ms\nmin: 38.29 ms\nmax: 68.87 ms\nstddev: 7.25 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.07,
+            "range": "0.03 ms",
+            "unit": "ms",
+            "extra": "median: 1.07 ms\nmin: 1.01 ms\nmax: 1.12 ms\nstddev: 0.03 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 1.72,
+            "range": "4.17 ms",
+            "unit": "ms",
+            "extra": "median: 1.72 ms\nmin: 0.72 ms\nmax: 18.91 ms\nstddev: 4.17 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 34.13,
+            "range": "0.74 ms",
+            "unit": "ms",
+            "extra": "median: 34.13 ms\nmin: 32.5 ms\nmax: 35.51 ms\nstddev: 0.74 ms\nruns: 16"
           }
         ]
       }
