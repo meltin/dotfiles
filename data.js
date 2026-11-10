@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794296431482,
+  "lastUpdate": 1794298025614,
   "repoUrl": "https://github.com/meltin/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -7733,6 +7733,65 @@ window.BENCHMARK_DATA = {
             "range": "3.7 ms",
             "unit": "ms",
             "extra": "median: 37.33 ms\nmin: 33.65 ms\nmax: 47.36 ms\nstddev: 3.7 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "committer": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "distinct": true,
+          "id": "c8707a1643ec62d1899020b8eed248288b7efdf6",
+          "message": "chore(claude): 見た目に関わる仕様の提案は Artifact で共有するルールを追加\n\n- 文章で説明する代わりに Artifact を公開して見せる\n- 色やラベル 1 つ程度の小さな変更では作らない\n\nCo-Authored-By: Claude Fable 5.2 <noreply@anthropic.com>",
+          "timestamp": "2026-11-10T16:48:57+09:00",
+          "tree_id": "bee19c563760d8bdde042894f96c4f8f5607ddb5",
+          "url": "https://github.com/meltin/dotfiles/commit/c8707a1643ec62d1899020b8eed248288b7efdf6"
+        },
+        "date": 1794298024309,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 40.22,
+            "range": "9.4 ms",
+            "unit": "ms",
+            "extra": "median: 40.22 ms\nmin: 37.84 ms\nmax: 78.55 ms\nstddev: 9.4 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 40.71,
+            "range": "9.41 ms",
+            "unit": "ms",
+            "extra": "median: 40.71 ms\nmin: 38.28 ms\nmax: 79.08 ms\nstddev: 9.41 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.11,
+            "range": "0.04 ms",
+            "unit": "ms",
+            "extra": "median: 1.11 ms\nmin: 1.02 ms\nmax: 1.17 ms\nstddev: 0.04 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 10.37,
+            "range": "8.59 ms",
+            "unit": "ms",
+            "extra": "median: 10.37 ms\nmin: 1.3 ms\nmax: 23.19 ms\nstddev: 8.59 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 34.76,
+            "range": "2.67 ms",
+            "unit": "ms",
+            "extra": "median: 34.76 ms\nmin: 33 ms\nmax: 42.44 ms\nstddev: 2.67 ms\nruns: 16"
           }
         ]
       }
