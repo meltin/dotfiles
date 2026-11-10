@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794233398668,
+  "lastUpdate": 1794271811612,
   "repoUrl": "https://github.com/meltin/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -7497,6 +7497,65 @@ window.BENCHMARK_DATA = {
             "range": "1.82 ms",
             "unit": "ms",
             "extra": "median: 34.41 ms\nmin: 32.88 ms\nmax: 39.15 ms\nstddev: 1.82 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "committer": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "distinct": true,
+          "id": "6a222272de1d09d506ff2aee7a242dad04cfb27f",
+          "message": "feat(commit): ステージ済みがないときは責務ごとにステージしてコミットする\n\n- 無条件の git add 禁止をやめ、インデックスの状態で分岐させる\n- ステージ済みがあればその分だけをコミットし、add し忘れに見える変更は含めるか聞く\n- ステージ済みがなければ責務ごとにパス指定でステージし、1 つずつコミットする\n- Claude と Codex のスキル、Codex の git-commit-instructions に同じ規則を入れる\n- 聞くときのツールは Claude が AskUserQuestion、Codex が request_user_input\n\nCo-Authored-By: Claude Fable 5.2 <noreply@anthropic.com>",
+          "timestamp": "2026-11-10T09:48:53+09:00",
+          "tree_id": "d7ea5b6701ba89b62b5df119f0bd7828f5df1158",
+          "url": "https://github.com/meltin/dotfiles/commit/6a222272de1d09d506ff2aee7a242dad04cfb27f"
+        },
+        "date": 1794271810296,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 39.55,
+            "range": "6.33 ms",
+            "unit": "ms",
+            "extra": "median: 39.55 ms\nmin: 37.91 ms\nmax: 64.49 ms\nstddev: 6.33 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 40.03,
+            "range": "6.38 ms",
+            "unit": "ms",
+            "extra": "median: 40.03 ms\nmin: 38.39 ms\nmax: 65.05 ms\nstddev: 6.38 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.08,
+            "range": "0.16 ms",
+            "unit": "ms",
+            "extra": "median: 1.08 ms\nmin: 1.04 ms\nmax: 1.73 ms\nstddev: 0.16 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 18.25,
+            "range": "7.76 ms",
+            "unit": "ms",
+            "extra": "median: 18.25 ms\nmin: 1.32 ms\nmax: 20.88 ms\nstddev: 7.76 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 34.21,
+            "range": "2.6 ms",
+            "unit": "ms",
+            "extra": "median: 34.21 ms\nmin: 32.4 ms\nmax: 40.77 ms\nstddev: 2.6 ms\nruns: 16"
           }
         ]
       }
