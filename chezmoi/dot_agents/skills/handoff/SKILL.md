@@ -34,7 +34,7 @@ git status --short                                   # 今いる worktree の未
 
 1 回でまとめて次を尋ねる。
 
-- **start-point**: 1 つ目の選択肢は `origin/<既定ブランチ>`。今いるブランチが既定ブランチでなければ、それも選択肢にする。
+- **start-point**: 1 つ目の選択肢は `origin/<既定ブランチ>`、2 つ目は今いるローカルのブランチ。プロジェクトのメモリや指示に候補が書かれていれば、それも加える。
 - **名前**: ブランチ名、worktree 名（フォルダー名）、worktree のパスを 1 組にして、案を 2 つ出す。パスは `<wt.basedir を展開したもの>/<フォルダー名>`。
   - ブランチ名は create-branch スキルと同じ `prefix/{issue-no}-summary`（例: `feat/1216-legend-number`）。
   - フォルダー名は英数字の短い名前（例: `issue-1216-legend-number`）。
