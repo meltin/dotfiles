@@ -18,9 +18,14 @@ description: Create a GitHub pull request using the gh CLI. Use when the user wa
 4. Ensure all intended changes are committed before creating the PR.
 5. If there are unstaged or uncommitted changes, stop and ask the user unless they explicitly said a draft/WIP PR is acceptable with local changes left out.
 6. Push the current branch with `git push -u origin HEAD`.
-7. Create the PR with `gh pr create`.
-8. After creating the PR, open it with `gh pr view --web`, then report the PR URL and a short summary.
-9. Do not merge the PR unless explicitly instructed.
+7. Draft the PR title and body. If they are in Japanese, polish them with the `yomiyasu` skill (`yomiyasu:yomiyasu`) before creating the PR. Do not run `gh pr create` until this is done.
+   - Pass the drafted title and body to the skill explicitly as the text to polish. Never invoke it without text, and keep any working files it needs outside the repository.
+   - Keep the Markdown structure as is: the Copilot comment, template headings, `- [ ]` checkboxes, contiguous bullets, image references, code, and the `<type>(scope):` title prefix.
+   - Put only the polished text into the PR. Report anything else the skill returns that needs the user's judgment (e.g. 書き手に確かめたい点) to the user instead.
+   - If the skill is not available, create the PR without it and say so in the report.
+8. Create the PR with `gh pr create`.
+9. After creating the PR, open it with `gh pr view --web`, then report the PR URL and a short summary.
+10. Do not merge the PR unless explicitly instructed.
 
 ## Pull Request Content
 
