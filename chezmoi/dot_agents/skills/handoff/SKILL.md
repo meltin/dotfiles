@@ -88,13 +88,14 @@ repo=$(basename "$(dirname "$(git -C "$wt_dir" rev-parse --path-format=absolute 
 sid=$(rex ls --json | jq -r --arg l "$repo" 'first(.sessions[] | select(.label == $l) | .session_id) // empty')
 if [ -n "$sid" ]; then
   echo "$sid"
-  rex window new -s "$sid" -c "$wt_dir" --focus=false --json -- sh -c '"$1" "$(cat "$2")"' sh "$agent" "$prompt_file"
+  rex window new -s "$sid" -c "$wt_dir" --focus=false --json -- env AGENT="$agent" PROMPT_FILE="$prompt_file" sh -c '"$AGENT" "$(cat "$PROMPT_FILE")"'
 else
-  rex new "$repo" -c "$wt_dir" --json -- sh -c '"$1" "$(cat "$2")"' sh "$agent" "$prompt_file"
+  rex new "$repo" -c "$wt_dir" --json -- env AGENT="$agent" PROMPT_FILE="$prompt_file" sh -c '"$AGENT" "$(cat "$PROMPT_FILE")"'
 fi
 ```
 
 - この形は、コマンドが最初の指示を引数で受け取る前提（`claude` と `codex` はそう）。受け取らないエージェントなら、そのエージェントの渡し方に合わせる。
+- 値は環境変数で渡す。シェルの位置引数（1 番目、2 番目を表す変数）をこのファイルに書くと、スキルの引数に置き換わって壊れる。
 - タブに名前（`rex window new` の LABEL、`rex new` の `--window`）を付けない。付けるとサイドバーがその名前で固定され、エージェントが付ける要約のタイトルが出なくなる。
 - セッション ID とブロック ID を控える。タブを足したときは出力した `sid` と `.block_ids[0]`、セッションを作ったときは `.session_id` と `.initial_windows[0].block_ids[0]`。
 - セッション名は SessionStart フックがリポジトリ名に付け替えるので、Issue 名を付けても残らない。
