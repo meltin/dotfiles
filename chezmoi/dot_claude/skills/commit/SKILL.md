@@ -1,5 +1,5 @@
 ---
-allowed-tools: Bash(git status:*), Bash(git diff:*), Bash(git log:*), Bash(git branch:*), Bash(git commit:*)
+allowed-tools: Bash(git status:*), Bash(git diff:*), Bash(git log:*), Bash(git branch:*), Bash(git add:*), Bash(git commit:*)
 argument-hint: [additional explanation]
 description: Create a git commit
 ---
@@ -8,6 +8,7 @@ description: Create a git commit
 
 - Current git status: !`git status`
 - Staged changes: !`git diff --staged`
+- Unstaged changes: !`git diff`
 - Recent commits (for language detection): !`git log -n 10 --pretty=format:"%s"`
 - Current branch: !`git branch --show-current`
 
@@ -15,8 +16,8 @@ description: Create a git commit
 
 Based on the above context:
 
-1. Analyze the staged changes for any critical issues:
-   - Review the **Staged changes** from context above
+1. Decide what goes into the commit by following the **Staging Rules** section below, then analyze those changes for any critical issues:
+   - Review the changes that will be committed: the **Staged changes** from context above, or the changes you are about to stage when nothing is staged
    - Check for sensitive information (passwords, API keys, etc.)
    - Verify that the changes are complete and coherent
    - If issues are found, confirm with the user before proceeding
@@ -30,10 +31,24 @@ Based on the above context:
 3. Create and execute the commit:
    - Refer to the **Commit Message Guidelines** section below when writing the message
    - Use `git commit -m` with an appropriate message
+   - When the Staging Rules yield several commits, stage and commit them one at a time
 
 4. Verify the commit was successful:
    - Execute `git status` to verify the commit was successful
    - Provide a summary of what was committed to the user
+
+## Staging Rules
+
+One commit holds one responsibility. Always decide the granularity by responsibility; never put changes into one commit only because they sit in the working tree together. A single commit is fine when the changes really are one responsibility. This governs what you stage yourself; a non-empty index has already been split by the user, so do not re-split or second-guess it.
+
+- **Staged changes exist**: commit exactly what is staged. Do not widen the selection on your own: a non-empty index is the user's deliberate choice, and adding to it merges changes they meant to keep separate.
+  - If unstaged or untracked changes look like they belong to the same responsibility as the staged ones (the user may have forgotten to `git add` them), ask the user with the `AskUserQuestion` tool whether to include them before committing.
+  - Otherwise leave them untouched and mention them after the commit.
+- **Nothing is staged, but the working tree has changes**: the user is asking for those changes to be committed. Do not stop to ask for permission to stage.
+  - Group the changes by responsibility. For each group, stage it by explicit path (never `git add -A` or `git add .`) and commit it before staging the next group.
+  - Include an untracked file when it clearly belongs to a group. Read it before staging it, because its content is not in the context above. If you are unsure whether it belongs, ask the user with the `AskUserQuestion` tool.
+  - If one file mixes several responsibilities and cannot be split by path, ask the user how to proceed.
+- **Nothing to commit at all**: say so and stop.
 
 ## Commit Message Guidelines
 
@@ -83,7 +98,4 @@ When composing a multi-line commit message with `git commit -m "$(cat <<...EOF .
 
 ## Important Notes
 
-- Do not execute `git add`
-- The changes are already staged with the correct granularity and responsibility.
-- If unstaged changes exist, leave them untouched and mention them after the commit
 - Do not execute `git push`

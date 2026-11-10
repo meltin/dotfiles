@@ -1,4 +1,4 @@
 interface:
   display_name: "Commit"
   short_description: "Create a git commit with Conventional Commits format"
-  default_prompt: "Use $commit to commit the staged changes."
+  default_prompt: "Use $commit to commit the changes."
