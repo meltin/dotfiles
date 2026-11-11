@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794391055208,
+  "lastUpdate": 1794391822711,
   "repoUrl": "https://github.com/meltin/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -8323,6 +8323,65 @@ window.BENCHMARK_DATA = {
             "range": "17.44 ms",
             "unit": "ms",
             "extra": "median: 35.7 ms\nmin: 32.61 ms\nmax: 107.38 ms\nstddev: 17.44 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "committer": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "distinct": true,
+          "id": "0c06e1b329c00652d2a0adb408949680b2e41e82",
+          "message": "fix(meltype): ユーザー辞書から あぴ → API を外す\n\n- README にあった あぴ の変換の説明も消す\n\nCo-Authored-By: Claude Opus 5.5 Xhigh <noreply@anthropic.com>",
+          "timestamp": "2026-11-11T19:09:33+09:00",
+          "tree_id": "f72a9a5577b6f37a97e150db7542b12eed17b6b2",
+          "url": "https://github.com/meltin/dotfiles/commit/0c06e1b329c00652d2a0adb408949680b2e41e82"
+        },
+        "date": 1794391821428,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 41.2,
+            "range": "5.83 ms",
+            "unit": "ms",
+            "extra": "median: 41.2 ms\nmin: 38.71 ms\nmax: 58.04 ms\nstddev: 5.83 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 41.76,
+            "range": "5.9 ms",
+            "unit": "ms",
+            "extra": "median: 41.76 ms\nmin: 39.18 ms\nmax: 58.53 ms\nstddev: 5.9 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.08,
+            "range": "0.06 ms",
+            "unit": "ms",
+            "extra": "median: 1.08 ms\nmin: 0.99 ms\nmax: 1.25 ms\nstddev: 0.06 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 19.05,
+            "range": "5.52 ms",
+            "unit": "ms",
+            "extra": "median: 19.05 ms\nmin: 1.71 ms\nmax: 21.83 ms\nstddev: 5.52 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 36.25,
+            "range": "1.57 ms",
+            "unit": "ms",
+            "extra": "median: 36.25 ms\nmin: 33.37 ms\nmax: 38.91 ms\nstddev: 1.57 ms\nruns: 16"
           }
         ]
       }
