@@ -17,6 +17,7 @@
 - Never run `git commit` or `gh pr create` directly. Create commits with the `commit` skill and pull requests with the `create-pr` skill, even for one-line changes and in other worktrees.
 - When creating a pull request, please check if there is a PR template in the repository and follow it if available.
 - Do not include the `Claude-Session:` trailer in commit messages or the session URL in PR descriptions; keep `Co-Authored-By`.
+  - Copy the harness-provided `Co-Authored-By` line verbatim (keep the model name) and insert the effort level from `$CLAUDE_EFFORT`, capitalized, before the email (e.g. ` High` right before `<noreply@anthropic.com>`). A PreToolUse hook rejects other forms.
 - Use `rg` (ripgrep) instead of `grep` for text search. `rg` is faster, honors `.gitignore` by default, and is already permitted without prompts. Reserve `grep` only for piping short command output (e.g. `ps aux | grep foo`) where `rg` would be awkward.
 - Prefer the built-in `LSP` tool for symbol-level work: jumping to a definition, finding references, inspecting types/signatures via hover, or listing symbols in a file or workspace. Use it instead of `rg`/`find` whenever the target is a named symbol (function, class, variable, type), because LSP returns semantic results rather than text matches and is dramatically faster on large codebases.
   - Fall back to `rg`/`find` only for non-symbol text: comments, markdown, log strings, config values, or when LSP cannot resolve the language.
