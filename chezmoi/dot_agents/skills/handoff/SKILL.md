@@ -129,7 +129,7 @@ fi
 hc wait '<terminal>' --timeout 30 >/dev/null; herdr-app ls | jq -c --arg t '<terminal>' '.spaces[].tabs[].terminals[] | select(.terminal == $t) | {app, status}'; hc read '<terminal>' | tail -40
 ```
 
-`hc wait` は、タブのコマンドが動いている間は 30 秒待って戻る。エージェントが起動したあとは、最初のターンが終わった時点で戻る。どちらも正常。terminal のアドレスは必ず付ける（省くと選ぶよう求められる）。
+`hc wait` は、タブのコマンドが動いている間は 30 秒待って戻る。エージェントが動き始めると、作業が止まった時点で早めに戻ることもある。どちらも正常。terminal のアドレスは必ず付ける（省くと、どの terminal かを尋ねるエラーになる）。
 
 画面ごとの判断:
 

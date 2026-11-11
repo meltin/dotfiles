@@ -103,7 +103,7 @@ fi
 
 ### 6. 届いたか確かめて終える
 
-Herdr は指示が届いたかを返さないので、10 秒待って画面を読む。読むのは起動したその terminal だけ。アドレスを必ず付ける（省くと選ぶよう求められる）。
+Herdr は指示が届いたかを返さないので、10 秒待って画面を読む。読むのは起動したその terminal だけ。アドレスを必ず付ける（省くと、どの terminal かを尋ねるエラーになる）。
 
 ```sh
 hc wait '<terminal>' --timeout 10 >/dev/null; herdr-app ls | jq -c --arg t '<terminal>' '.spaces[].tabs[].terminals[] | select(.terminal == $t) | {app, status}'; hc read '<terminal>' | tail -40
