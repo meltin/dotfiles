@@ -94,6 +94,12 @@ codex:create-pr() {
   codex-exec-fast 'Use the `create-pr` skill.'
 }
 
+# ccsession は fzf に --preview-window=right,60% を固定で渡し、一覧のタイトルが切れる。
+# ccsession が使っていない load イベントでプレビューを下へ移す（後から渡す引数が勝つので環境変数では上書きできない）
+ccsession() {
+  FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS:-} --bind 'load:change-preview-window(down,50%,wrap)'" command ccsession "$@"
+}
+
 # interactive-only aliases
 [[ -o interactive ]] && alias cd='z'
 [[ -o interactive ]] && alias cdi='zi'
