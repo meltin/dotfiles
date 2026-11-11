@@ -85,7 +85,7 @@ in
         copyignored = true;
         copyuntracked = true;
         copymodified = true;
-        hook = "ni";
+        hook = "test ! -f package.json || ni";
       };
     };
 
