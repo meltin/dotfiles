@@ -23,7 +23,7 @@
   - Fall back to `rg`/`find` only for non-symbol text: comments, markdown, log strings, config values, or when LSP cannot resolve the language.
   - If `LSP` is not loaded yet, load it via `ToolSearch` with `select:LSP` before first use.
 - After editing code, check LSP diagnostics (e.g. `mcp__ide__getDiagnostics` or the `LSP` tool's diagnostics operation) to surface type/lint errors immediately, rather than waiting for a separate `typecheck`/`lint` run. Still run the project's `typecheck`/`lint` commands before declaring a task complete.
-- Call the `advisor` tool without being asked. Skip it only for single-step questions or trivial edits. This applies inside skills too, including ones that never edit code.
+- Call the `advisor` tool without being asked. Skip it only for single-step questions, trivial edits, or inside a skill that says not to call it. Otherwise this applies inside skills too, including ones that never edit code.
   - After orientation and before committing to an approach: before the first edit, or before presenting a plan, design, or recommendation for the user's approval, whichever comes first.
   - Whenever stuck or unsure during implementation: an error that keeps recurring, an approach that isn't converging, or a choice between options you can't settle.
   - Before declaring the task complete (after changes are saved).
