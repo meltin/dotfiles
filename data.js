@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794356235944,
+  "lastUpdate": 1794388691128,
   "repoUrl": "https://github.com/meltin/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -8205,6 +8205,65 @@ window.BENCHMARK_DATA = {
             "range": "0.61 ms",
             "unit": "ms",
             "extra": "median: 33.09 ms\nmin: 32.6 ms\nmax: 34.8 ms\nstddev: 0.61 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "committer": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "distinct": true,
+          "id": "31c12e7386b6babb638b4f5d4b47d077819ab04c",
+          "message": "fix(skills): handoff で advisor を呼ばないようにする\n\n- CLAUDE.md の advisor の指示に、スキルが禁じていれば呼ばない例外を足す\n- handoff は手順 1 の質問が「承認を求める前」に当たり、シェルを 1 回動かした直後に advisor が呼ばれていた\n- 判断は依頼者への質問と引き継ぎ先に任せ、タブを早く出すことを優先する\n\nCo-Authored-By: Claude Opus 5.5 Xhigh <noreply@anthropic.com>",
+          "timestamp": "2026-11-11T18:17:11+09:00",
+          "tree_id": "2c6370fc3d99496a9238104993daa535bc3218b8",
+          "url": "https://github.com/meltin/dotfiles/commit/31c12e7386b6babb638b4f5d4b47d077819ab04c"
+        },
+        "date": 1794388690023,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 39.37,
+            "range": "7.16 ms",
+            "unit": "ms",
+            "extra": "median: 39.37 ms\nmin: 37.08 ms\nmax: 64.52 ms\nstddev: 7.16 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 39.86,
+            "range": "7.29 ms",
+            "unit": "ms",
+            "extra": "median: 39.86 ms\nmin: 37.54 ms\nmax: 65 ms\nstddev: 7.29 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.04,
+            "range": "0.04 ms",
+            "unit": "ms",
+            "extra": "median: 1.04 ms\nmin: 0.98 ms\nmax: 1.14 ms\nstddev: 0.04 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 15.05,
+            "range": "8.3 ms",
+            "unit": "ms",
+            "extra": "median: 15.05 ms\nmin: 1.02 ms\nmax: 22.73 ms\nstddev: 8.3 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 34.21,
+            "range": "1.56 ms",
+            "unit": "ms",
+            "extra": "median: 34.21 ms\nmin: 32.88 ms\nmax: 38.95 ms\nstddev: 1.56 ms\nruns: 16"
           }
         ]
       }
