@@ -85,20 +85,17 @@ cd '<resume-spec の cwd>' && exec claude --resume '<セッション ID>' "$(cat
 launcher='<起動スクリプトのパス>'
 dir='<resume-spec の cwd>'
 repo=$(basename "$(dirname "$(git -C "$dir" rev-parse --path-format=absolute --git-common-dir)")")
-ls_json=$(herdr-app ls)
-prev_tab=$(printf '%s' "$ls_json" | jq -r 'first(.spaces[] | select(.active) | .tabs[] | select(.active) | .id) // empty')
-space=$(printf '%s' "$ls_json" | jq -r --arg r "$repo" 'first(.spaces[] | select(.machine == null and .name == $r) | .id) // empty')
+space=$(herdr-app ls | jq -r --arg r "$repo" 'first(.spaces[] | select(.machine == null and .name == $r) | .id) // empty')
 if [ -n "$space" ]; then
   herdr-app do tab.new "$(jq -nc --arg s "$space" --arg f "$dir" --arg l "$launcher" '{space: $s, folder: $f, argv: ["sh", $l]}')"
 else
   herdr-app do space.new "$(jq -nc --arg f "$dir" --arg l "$launcher" '{folder: $f, argv: ["sh", $l]}')"
 fi
-[ -z "$prev_tab" ] || herdr-app do tab.select "$(jq -nc --arg i "$prev_tab" '{id: $i}')"
 ```
 
 - `space` と `folder` は必ず渡す。省くと、依頼者がいま見ている space と、フォーカスのある terminal のフォルダーが使われる。
 - `argv` は `["sh", 起動スクリプト]` だけにする。Herdr はこれを対話シェル（`zsh -lic`）の中で動かし、終わるとそのタブでシェルを開く。
-- Herdr は新しいタブにフォーカスを移すので、最後の行で、開く前に表示していたタブを選び直す（space も一緒に戻る）。
+- Herdr は新しいタブを表示する。依頼者がそのまま進み具合を見られるので、元のタブには戻さない。
 - 出力の `terminal`（`t1c` のようなアドレス）を控える。
 
 ### 6. 届いたか確かめて終える
