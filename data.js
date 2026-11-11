@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794353229645,
+  "lastUpdate": 1794356235944,
   "repoUrl": "https://github.com/meltin/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -8146,6 +8146,65 @@ window.BENCHMARK_DATA = {
             "range": "3.78 ms",
             "unit": "ms",
             "extra": "median: 32.98 ms\nmin: 32.06 ms\nmax: 44.22 ms\nstddev: 3.78 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "committer": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "distinct": true,
+          "id": "c50b9948ed727d9e0936297467a2da4be0c051d1",
+          "message": "feat(claude): コミットの Co-Authored-By に effort を付け、形を hook で確かめる\n\n- モデル名が抜けた署名でコミットされたことがあったため、PreToolUse hook で署名の形を確かめる\n- モデル名はハーネスが渡す行に任せ、hook は 1 語以上あることと effort の語だけを見る\n- effort は hook の入力の .effort.level、無ければ $CLAUDE_EFFORT から読む\n- 毎回拒否されないよう、CLAUDE.md に署名の行の書き方を加える\n- 動作確認用に commit-attribution-guard.test.sh を置く\n\nCo-Authored-By: Claude Opus 5.5 High <noreply@anthropic.com>",
+          "timestamp": "2026-11-11T09:02:24+09:00",
+          "tree_id": "36ae9c0e64d802b8a4d6409cb766873736dde010",
+          "url": "https://github.com/meltin/dotfiles/commit/c50b9948ed727d9e0936297467a2da4be0c051d1"
+        },
+        "date": 1794356234707,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 38.11,
+            "range": "5.81 ms",
+            "unit": "ms",
+            "extra": "median: 38.11 ms\nmin: 36.15 ms\nmax: 61.66 ms\nstddev: 5.81 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 38.57,
+            "range": "5.83 ms",
+            "unit": "ms",
+            "extra": "median: 38.57 ms\nmin: 36.6 ms\nmax: 62.2 ms\nstddev: 5.83 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.06,
+            "range": "0.03 ms",
+            "unit": "ms",
+            "extra": "median: 1.06 ms\nmin: 1 ms\nmax: 1.15 ms\nstddev: 0.03 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 2.93,
+            "range": "8.14 ms",
+            "unit": "ms",
+            "extra": "median: 2.93 ms\nmin: 1.07 ms\nmax: 20.93 ms\nstddev: 8.14 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 33.09,
+            "range": "0.61 ms",
+            "unit": "ms",
+            "extra": "median: 33.09 ms\nmin: 32.6 ms\nmax: 34.8 ms\nstddev: 0.61 ms\nruns: 16"
           }
         ]
       }
