@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794388691128,
+  "lastUpdate": 1794391055208,
   "repoUrl": "https://github.com/meltin/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -8264,6 +8264,65 @@ window.BENCHMARK_DATA = {
             "range": "1.56 ms",
             "unit": "ms",
             "extra": "median: 34.21 ms\nmin: 32.88 ms\nmax: 38.95 ms\nstddev: 1.56 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "committer": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "distinct": true,
+          "id": "b61eb5e51ff686f0365fc071843e852acdcf48e4",
+          "message": "feat(zsh): ccsession のプレビューを下に出して一覧のタイトルを見やすくする\n\n- ccsession は fzf に `--preview-window=right,60%` を固定で渡すため、一覧が幅の 40% しかなくタイトルが切れていた\n- コマンドラインの引数が環境変数より優先されるので、`FZF_DEFAULT_OPTS` で `--preview-window` を指定しても上書きできない\n- ccsession が使っていない `load` イベントに `change-preview-window(down,50%,wrap)` を割り当てる関数を足した\n- 上流の v1.6.0 には表示レイアウトの設定がない\n\nCo-Authored-By: Claude Opus 5.5 Xhigh <noreply@anthropic.com>",
+          "timestamp": "2026-11-11T18:50:45+09:00",
+          "tree_id": "e94aae6c1b0c2aade492073dd9b39edfcf611bfa",
+          "url": "https://github.com/meltin/dotfiles/commit/b61eb5e51ff686f0365fc071843e852acdcf48e4"
+        },
+        "date": 1794391053902,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 40.15,
+            "range": "6.06 ms",
+            "unit": "ms",
+            "extra": "median: 40.15 ms\nmin: 38.09 ms\nmax: 64.45 ms\nstddev: 6.06 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 40.64,
+            "range": "6.06 ms",
+            "unit": "ms",
+            "extra": "median: 40.64 ms\nmin: 38.58 ms\nmax: 64.93 ms\nstddev: 6.06 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.05,
+            "range": "0.06 ms",
+            "unit": "ms",
+            "extra": "median: 1.05 ms\nmin: 0.96 ms\nmax: 1.18 ms\nstddev: 0.06 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 8.5,
+            "range": "8.27 ms",
+            "unit": "ms",
+            "extra": "median: 8.5 ms\nmin: 1.33 ms\nmax: 20.06 ms\nstddev: 8.27 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 35.7,
+            "range": "17.44 ms",
+            "unit": "ms",
+            "extra": "median: 35.7 ms\nmin: 32.61 ms\nmax: 107.38 ms\nstddev: 17.44 ms\nruns: 16"
           }
         ]
       }
