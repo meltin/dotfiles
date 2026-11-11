@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794391822711,
+  "lastUpdate": 1794421771631,
   "repoUrl": "https://github.com/meltin/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -8382,6 +8382,65 @@ window.BENCHMARK_DATA = {
             "range": "1.57 ms",
             "unit": "ms",
             "extra": "median: 36.25 ms\nmin: 33.37 ms\nmax: 38.91 ms\nstddev: 1.57 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "committer": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "distinct": true,
+          "id": "57061ad10991969e7b1896e8d5df0725bf9b180c",
+          "message": "fix(git): gh wt の hook で package.json があるときだけ ni を動かす\n\n- dotfiles など package.json のないリポジトリでは、gh wt のたびに ni のパッケージマネージャー選択画面が出ていた\n- hook は標準入力をつながずに動くので止まりはしないが、選択画面が残って紛らわしい\n\nCo-Authored-By: Claude Opus 5.5 Xhigh <noreply@anthropic.com>",
+          "timestamp": "2026-11-12T03:28:46+09:00",
+          "tree_id": "15556427f817108443182ab9b08edb18b1749594",
+          "url": "https://github.com/meltin/dotfiles/commit/57061ad10991969e7b1896e8d5df0725bf9b180c"
+        },
+        "date": 1794421770340,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 38.18,
+            "range": "6.7 ms",
+            "unit": "ms",
+            "extra": "median: 38.18 ms\nmin: 37.25 ms\nmax: 65.72 ms\nstddev: 6.7 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 38.63,
+            "range": "6.72 ms",
+            "unit": "ms",
+            "extra": "median: 38.63 ms\nmin: 37.69 ms\nmax: 66.26 ms\nstddev: 6.72 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.03,
+            "range": "0.03 ms",
+            "unit": "ms",
+            "extra": "median: 1.03 ms\nmin: 0.95 ms\nmax: 1.09 ms\nstddev: 0.03 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 1.58,
+            "range": "5.55 ms",
+            "unit": "ms",
+            "extra": "median: 1.58 ms\nmin: 1.22 ms\nmax: 18.75 ms\nstddev: 5.55 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 32.62,
+            "range": "0.39 ms",
+            "unit": "ms",
+            "extra": "median: 32.62 ms\nmin: 31.92 ms\nmax: 33.55 ms\nstddev: 0.39 ms\nruns: 16"
           }
         ]
       }
