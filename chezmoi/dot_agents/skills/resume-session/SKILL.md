@@ -1,15 +1,15 @@
 ---
 name: resume-session
-description: 過去のエージェントのセッションを探して再開し、追加の指示を送る。「あのセッションに伝えて」「それやってるセッションを起動して指示を送って」「前のセッションを再開して」などと、既存・過去のセッションに作業を頼むよう言われたときに使う。相手が動いていればメッセージを送り、止まっていれば Rex の新しいタブで再開する。
+description: 過去のエージェントのセッションを探して再開し、追加の指示を送る。「あのセッションに伝えて」「それやってるセッションを起動して指示を送って」「前のセッションを再開して」などと、既存・過去のセッションに作業を頼むよう言われたときに使う。相手が動いていればメッセージを送り、止まっていれば Herdr の新しいタブで再開する。
 ---
 
 # resume-session
 
-すでにあるセッションに追加の指示を届ける。相手が動いていればメッセージを送るだけで終え、止まっていれば Rex の新しいタブで再開して指示を渡す。記録の検索には `ccsession` を使う。新しい worktree を作って作業を渡すのは handoff スキル。
+すでにあるセッションに追加の指示を届ける。相手が動いていればメッセージを送るだけで終え、止まっていれば Herdr の新しいタブで再開して指示を渡す。記録の検索には `ccsession` を使う。新しい worktree を作って作業を渡すのは handoff スキル。
 
 動いているセッションを別のタブで再開すると、会話が 2 つに分かれる。再開する前に、相手が動いていないことを必ず確かめる。
 
-Bash の呼び出しをまたぐとシェルの変数は消える。手順をまたぐ値（セッション ID、フォルダー、ブロックの ID）は出力を読み取り、次のコマンドに直接書く。
+Bash の呼び出しをまたぐとシェルの変数は消える。手順をまたぐ値（セッション ID、フォルダー、terminal のアドレス）は出力を読み取り、次のコマンドに直接書く。
 
 ## 手順
 
@@ -25,7 +25,7 @@ ccsession list --json --grep '<検索語>' --limit 5 \
 - Codex のセッションを探すときは `ccsession --codex list ...`。以降の `ccsession` にも同じ `--codex` を付ける。
 - 自分のセッションも検索に掛かる（検索語を打った時点で自分の記録に入る）。フォルダーが今の作業フォルダーで、いちばん新しい行が自分。候補から外す。
 - 候補が複数あって決まらなければ、候補を並べて依頼者に尋ねる。選択肢で尋ねるツールがあればそれを使う（例: Claude の AskUserQuestion、Codex の request_user_input）。中身を見て見分けたいときは `ccsession preview --no-color <ID>`。
-- 他のタブの画面を `rex capture` で読んで探さない。依頼者のシェルの出力に秘密情報が映っていることがある。
+- 他のタブの画面を `hc read` で読んで探さない。依頼者のシェルの出力に秘密情報が映っていることがある。
 
 ### 2. 相手が動いていないか確かめる
 
@@ -65,45 +65,55 @@ jq -r 'select(.gitBranch) | .gitBranch' ~/.claude/projects/*/'<セッション I
 - 再開先の今の状態で相手が知らないこと（ブランチが変わっている、未コミットの変更があるなど）
 - その作業で守る約束事（コミットメッセージ、PR の作り方、push とマージの扱い、レビューへの返信の仕方など。メモリや CLAUDE.md、AGENTS.md にあるものを書き写す）
 
-### 5. Rex のタブで再開する
+### 5. Herdr のタブで再開する
 
-起動の直前に手順 2 をもう一度行い、相手が動いていないことを確かめる。それから、リポジトリ名の Rex のセッションを探し、あればタブを足し、なければセッションを作る。
+起動スクリプトを指示ファイルと同じ場所に書く。値はそのまま書き込む。
 
 ```sh
-dir='<resume-spec の cwd>'
-session='<再開するセッション ID>'
-prompt_file='<指示ファイルのパス>'
-repo=$(basename "$(dirname "$(git -C "$dir" rev-parse --path-format=absolute --git-common-dir)")")
-sid=$(rex ls --json | jq -r --arg l "$repo" 'first(.sessions[] | select(.label == $l) | .session_id) // empty')
-if [ -n "$sid" ]; then
-  echo "$sid"
-  rex window new -s "$sid" -c "$dir" --focus=false --json -- env RESUME_ID="$session" PROMPT_FILE="$prompt_file" sh -c 'claude --resume "$RESUME_ID" "$(cat "$PROMPT_FILE")"'
-else
-  rex new "$repo" -c "$dir" --json -- env RESUME_ID="$session" PROMPT_FILE="$prompt_file" sh -c 'claude --resume "$RESUME_ID" "$(cat "$PROMPT_FILE")"'
-fi
+cd '<resume-spec の cwd>' && exec claude --resume '<セッション ID>' "$(cat '<指示ファイルのパス>')"
 ```
 
 - 再開のコマンドは `resume-spec` の `args` に合わせる。Codex のセッションなら `claude --resume` を `codex resume` に変える。
-- 伝える指示がなく、再開だけ頼まれたときは、`--` のあとを `claude --resume "$session"` だけにする。手順 4 は飛ばす。
-- 値は環境変数で渡す。シェルの位置引数（1 番目、2 番目を表す変数）をこのファイルに書くと、スキルの引数に置き換わって壊れる。
-- `ccsession resume` は使わない。実行したその場（Bash の中）で対話画面を起動するので、Rex のタブが開かず、最初の指示も渡せない。
+- 伝える指示がなく、再開だけ頼まれたときは、`exec` のあとを `claude --resume '<セッション ID>'` だけにする。手順 4 は飛ばす。
+- シェルの位置引数（1 番目、2 番目を表す変数）を、このファイルにも起動スクリプトにも書かない。このファイルではスキルの引数に置き換わって壊れる。
+- `ccsession resume` は使わない。実行したその場（Bash の中）で対話画面を起動するので、Herdr のタブが開かず、最初の指示も渡せない。
 - 再開先のフォルダーを cwd にする。別のフォルダーからだと、セッションが見つからないか、別の場所で作業が進む。
-- タブに名前（`rex window new` の LABEL、`rex new` の `--window`、`rex window rename`）を付けない。付けるとサイドバーがその名前で固定され、エージェントが付ける要約のタイトルが出なくなる。
-- Rex のセッション ID とブロック ID を控える。タブを足したときは出力した `sid` と `.block_ids[0]`、セッションを作ったときは `.session_id` と `.initial_windows[0].block_ids[0]`。
+
+書いたら `sh -n <起動スクリプトのパス>` で構文を確かめる。起動の直前に手順 2 をもう一度行い、相手が動いていないことを確かめる。それから、リポジトリ名の space を探し、あればタブを足し、なければ space を作る。
+
+```sh
+launcher='<起動スクリプトのパス>'
+dir='<resume-spec の cwd>'
+repo=$(basename "$(dirname "$(git -C "$dir" rev-parse --path-format=absolute --git-common-dir)")")
+ls_json=$(herdr-app ls)
+my_tab=$(printf '%s' "$ls_json" | jq -r --arg t "${HC_TERMINAL_ID-}" 'first(.spaces[].tabs[] | select(any(.terminals[]; .terminal == $t)) | .id) // empty')
+space=$(printf '%s' "$ls_json" | jq -r --arg r "$repo" 'first(.spaces[] | select(.machine == null and .name == $r) | .id) // empty')
+if [ -n "$space" ]; then
+  herdr-app do tab.new "$(jq -nc --arg s "$space" --arg f "$dir" --arg l "$launcher" '{space: $s, folder: $f, argv: ["sh", $l]}')"
+else
+  herdr-app do space.new "$(jq -nc --arg f "$dir" --arg l "$launcher" '{folder: $f, argv: ["sh", $l]}')"
+fi
+[ -z "$my_tab" ] || herdr-app do tab.select "$(jq -nc --arg i "$my_tab" '{id: $i}')"
+```
+
+- `space` と `folder` は必ず渡す。省くと、依頼者がいま見ている space と、フォーカスのある terminal のフォルダーが使われる。
+- `argv` は `["sh", 起動スクリプト]` だけにする。Herdr はこれを対話シェル（`zsh -lic`）の中で動かし、終わるとそのタブでシェルを開く。
+- Herdr は新しいタブにフォーカスを移すので、最後の行で自分のタブを選び直す（space も一緒に戻る）。Herdr の外から呼ばれたときは何もしない。
+- 出力の `terminal`（`t1c` のようなアドレス）を控える。
 
 ### 6. 届いたか確かめて終える
 
-Rex は指示が届いたかを返さないので、10 秒待って画面を読む。読むのは起動したそのタブだけ。`-s` と `-b` を必ず付ける（省くとフォーカスのあるブロック、つまり依頼者のシェルを読むことがある）。
+Herdr は指示が届いたかを返さないので、10 秒待って画面を読む。読むのは起動したその terminal だけ。アドレスを必ず付ける（省くと選ぶよう求められる）。
 
 ```sh
-rex wait -s <session_id> <block_id> --for 10s; rex capture -s <session_id> -b <block_id> --trim | tail -40
+hc wait '<terminal>' --timeout 10 >/dev/null; herdr-app ls | jq -c --arg t '<terminal>' '.spaces[].tabs[].terminals[] | select(.terminal == $t) | {app, status}'; hc read '<terminal>' | tail -40
 ```
 
-エージェントが動いていれば `rex wait` は `wait timed out` のエラーで戻る。これが正常。`rex wait` がエラーなしですぐ戻り、`rex capture` が `not found` になったら、起動に失敗してタブが閉じている。セッション ID、フォルダー、指示ファイルのパスを確かめてから手順 5 をやり直す。
+`app` がエージェントの名前（Claude なら `claude-code`）になり、指示の本文が表示されてエージェントが動き始めていれば渡せている。フォルダーを信頼するかの確認などで止まっていたら、依頼者にそのタブで答えてもらうよう伝える。再開したセッション ID、フォルダー、指示ファイルのパスを依頼者に伝えて終える。
 
-指示の本文が表示され、エージェントが動き始めていれば渡せている。フォルダーを信頼するかの確認などで止まっていたら、依頼者にそのタブで答えてもらうよう伝える。再開したセッション ID、フォルダー、指示ファイルのパスを依頼者に伝えて終える。
+`app` が `null` のままシェルのプロンプトに戻っていたら、起動に失敗している。画面のエラーを確かめ、セッション ID、フォルダー、指示ファイルのパスを確かめてから、同じタブで `hc send '<terminal>' "sh '<起動スクリプトのパス>'"` を実行して起動し直す。
 
 ## やらないこと
 
 - 頼まれた作業を自分で進めない。相手の完了も待たない。
-- `rex new` や `rex window new` がタイムアウトしても、すぐ作り直さない。同じセッションを 2 回再開すると会話が分かれる。`rex ls --json` と `rex session inspect <session_id> --json` で、セッションやタブができていないか確かめてからにする。
+- `herdr-app do tab.new` や `space.new` がエラーやタイムアウトで戻っても、すぐ作り直さない。同じセッションを 2 回再開すると会話が分かれる。`herdr-app ls` で、タブや space ができていないか確かめてからにする。
