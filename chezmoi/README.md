@@ -4,7 +4,7 @@ This directory is the chezmoi source tree for mutable dotfiles.
 
 Nix owns packages, system settings, and stable Home Manager modules. chezmoi owns files that are edited by app UIs or day-to-day commands, such as Codex, Claude, SidePulse, Karabiner, Ghostty, mise, VS Code, and Cursor settings.
 
-Meltype's user dictionary is managed at `private_Library/private_Application Support/Meltype/userdict.txt`. Each UTF-8 line contains a hiragana reading and its replacement, separated by a tab. Apply only the dictionary with `chezmoi apply --exclude scripts "$HOME/Library/Application Support/Meltype/userdict.txt"`, then restart Meltype to reload it. The `あぴ` entry converts to `API` when Space is pressed.
+Meltype's user dictionary is managed at `private_Library/private_Application Support/Meltype/userdict.txt`. Each UTF-8 line contains a hiragana reading and its replacement, separated by a tab. Apply only the dictionary with `chezmoi apply --exclude scripts "$HOME/Library/Application Support/Meltype/userdict.txt"`, then restart Meltype to reload it.
 
 After the user dictionary changes on this Mac, capture it with `chezmoi add "$HOME/Library/Application Support/Meltype/userdict.txt"` before applying dotfiles again.
 
