@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794421771631,
+  "lastUpdate": 1794450577621,
   "repoUrl": "https://github.com/meltin/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -8441,6 +8441,65 @@ window.BENCHMARK_DATA = {
             "range": "0.39 ms",
             "unit": "ms",
             "extra": "median: 32.62 ms\nmin: 31.92 ms\nmax: 33.55 ms\nstddev: 0.39 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "committer": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "distinct": true,
+          "id": "f8513b73b3e50b8b05dd615a351ef53b9ce14f67",
+          "message": "feat(nix): 過去の Claude Code のセッションを探す session-rg を入れる\n\n- flake の入力に github:meltin/session-rg を足し（nixpkgs は follows）、home/pkgs.nix で入れる\n- 自作のコマンドで、ログを rg で全文検索する。ccsession は記録の末尾 64KB しか読まず、一覧に出ないセッションがある\n- darwinConfigurations.M4Pro.system をビルドし、中に session-rg が入ることを確かめた\n\nCo-Authored-By: Claude Opus 5.5 Xhigh <noreply@anthropic.com>",
+          "timestamp": "2026-11-12T11:28:48+09:00",
+          "tree_id": "54509aab093a65fa253778505afa3a66be1327cf",
+          "url": "https://github.com/meltin/dotfiles/commit/f8513b73b3e50b8b05dd615a351ef53b9ce14f67"
+        },
+        "date": 1794450576364,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 38.15,
+            "range": "7.4 ms",
+            "unit": "ms",
+            "extra": "median: 38.15 ms\nmin: 36.53 ms\nmax: 68.54 ms\nstddev: 7.4 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 38.58,
+            "range": "7.41 ms",
+            "unit": "ms",
+            "extra": "median: 38.58 ms\nmin: 37.02 ms\nmax: 69.05 ms\nstddev: 7.41 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.04,
+            "range": "0.03 ms",
+            "unit": "ms",
+            "extra": "median: 1.04 ms\nmin: 1.01 ms\nmax: 1.1 ms\nstddev: 0.03 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 1.66,
+            "range": "4.9 ms",
+            "unit": "ms",
+            "extra": "median: 1.66 ms\nmin: 1 ms\nmax: 19.21 ms\nstddev: 4.9 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 32.96,
+            "range": "1.55 ms",
+            "unit": "ms",
+            "extra": "median: 32.96 ms\nmin: 32.15 ms\nmax: 38.09 ms\nstddev: 1.55 ms\nruns: 16"
           }
         ]
       }
