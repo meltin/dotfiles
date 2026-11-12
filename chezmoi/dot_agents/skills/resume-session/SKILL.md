@@ -24,7 +24,7 @@ ccsession list --json --grep '<語>' --limit 5 | jq -r '.[] | [.id, .cwd, .last_
 - 見つからないときは、記録を直接探す。ccsession は、記録の末尾 64KB に人の発言がないセッションを一覧から外すため。ファイル名がセッション ID
 
   ```sh
-  rg -l --fixed-strings '<語>' ~/.claude/projects/*/*.jsonl | head
+  rg -l --fixed-strings '<語>' ~/.claude/projects/*/*.jsonl | rg -v "${CLAUDE_CODE_SESSION_ID:-no-session-id}" | head
   ```
 
 - 候補が複数あって決まらなければ、依頼者に尋ねる。中身は `ccsession preview --no-color '<ID>'` で見る
@@ -46,9 +46,10 @@ ps -p '<pid>'
 ```sh
 ccsession resume-spec '<セッション ID>'   # cwd、cwd_exists、args
 git -C '<cwd>' status -sb
+jq -r 'select(.gitBranch) | .gitBranch' ~/.claude/projects/*/'<セッション ID>'.jsonl | tail -1   # 相手が最後にいたブランチ（Claude）
 ```
 
-- 今のブランチが、相手が作業していたブランチと違うとき、`cwd_exists` が `false` のときは、依頼者に尋ねる。自分でブランチを切り替えない
+- 今のブランチが、相手が最後にいたブランチと違うとき、`cwd_exists` が `false` のときは、依頼者に尋ねる。自分でブランチを切り替えない
 - 未コミットの変更があるときは、指示に書くか、依頼者に尋ねる
 
 ## 4. 指示ファイルと起動スクリプトを書く
