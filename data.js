@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794468923244,
+  "lastUpdate": 1794470785908,
   "repoUrl": "https://github.com/meltin/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -8677,6 +8677,65 @@ window.BENCHMARK_DATA = {
             "range": "2.84 ms",
             "unit": "ms",
             "extra": "median: 37.67 ms\nmin: 33.51 ms\nmax: 42.42 ms\nstddev: 2.84 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "committer": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "distinct": true,
+          "id": "e7e3a7b38b951a3e01d6722707d8c70f875a5d7c",
+          "message": "feat(ci): Claude の自動レビューと @claude で動くワークフローを足す\n\n- tipextra-frontend と同じ 2 つ。claude-code-review.yml は PR を開いたときにレビューし、claude.yml は @claude のコメントで動く\n- どちらも自分（user id 83203852）のときだけ動く。secret の CLAUDE_CODE_OAUTH_TOKEN は登録済み\n- 違いはコメントの名前だけ（公開リポジトリなので GitHub のユーザー名にした）\n\nCo-Authored-By: Claude Opus 5.5 Xhigh <noreply@anthropic.com>",
+          "timestamp": "2026-11-12T17:05:40+09:00",
+          "tree_id": "a030635d1e9d7fba6dd987967573334a9619a9ed",
+          "url": "https://github.com/meltin/dotfiles/commit/e7e3a7b38b951a3e01d6722707d8c70f875a5d7c"
+        },
+        "date": 1794470784628,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 38.32,
+            "range": "7.86 ms",
+            "unit": "ms",
+            "extra": "median: 38.32 ms\nmin: 37.54 ms\nmax: 70.74 ms\nstddev: 7.86 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 38.76,
+            "range": "7.87 ms",
+            "unit": "ms",
+            "extra": "median: 38.76 ms\nmin: 37.98 ms\nmax: 71.23 ms\nstddev: 7.87 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.06,
+            "range": "0.04 ms",
+            "unit": "ms",
+            "extra": "median: 1.06 ms\nmin: 1.02 ms\nmax: 1.16 ms\nstddev: 0.04 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 3.44,
+            "range": "5.75 ms",
+            "unit": "ms",
+            "extra": "median: 3.44 ms\nmin: 0.97 ms\nmax: 18.13 ms\nstddev: 5.75 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 33.53,
+            "range": "1.58 ms",
+            "unit": "ms",
+            "extra": "median: 33.53 ms\nmin: 32.76 ms\nmax: 39.39 ms\nstddev: 1.58 ms\nruns: 16"
           }
         ]
       }
