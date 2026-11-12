@@ -30,7 +30,7 @@ git branch --show-current
 git config --get wt.basedir                          # {gitroot} はリポジトリ名
 git status --short                                   # 未コミット・未追跡の変更
 git rev-parse --show-toplevel                        # 今いる worktree のルート
-gh wt -l                                             # すでにある worktree
+git worktree list --porcelain                        # すでにある worktree（絶対パスとブランチ）
 ```
 
 選択肢で尋ねるツール（Claude の AskUserQuestion、Codex の request_user_input）で、1 回にまとめて尋ねる。答えをもらうまで作らない。依頼者が指定していた値は 1 つ目の選択肢にする。
@@ -69,7 +69,14 @@ exec "${SHELL:-/bin/zsh}" -l
 
 ## 4. タブを開く
 
-開く場所は worktree で決める。新しく作る worktree は新しい space。すでにある worktree は、その worktree にいる space のタブ（なければ新しい space）。PR は、`gh wt -l` にその PR のブランチがあれば「すでにある worktree」、なければ「新しく作る worktree」として扱う。すでにある worktree は、そこで別のエージェントが動いていないかも確かめる。
+開く場所は worktree で決める。新しく作る worktree は新しい space。すでにある worktree は、その worktree にいる space のタブ（なければ新しい space）。すでにある worktree は、そこで別のエージェントが動いていないかも確かめる。
+
+PR は、そのブランチの worktree があれば「すでにある worktree」、なければ「新しく作る worktree」として扱う。
+
+```sh
+gh pr view '<番号|URL>' --json headRefName --jq .headRefName
+git worktree list --porcelain | rg -B2 '^branch refs/heads/<ブランチ名>$' | sed -n 's/^worktree //p'   # 出れば、それが worktree のルート
+```
 
 新しく作る worktree（folder は今いる worktree のルート。`gh wt` はそこから未コミットの変更を写す）:
 
