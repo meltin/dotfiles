@@ -16,6 +16,10 @@ jobs:
     name: Zsh Interactive Latency
     runs-on: macos-latest
     timeout-minutes: 30
+    env:
+      # M4Pro の git 設定は http.sslCAInfo に社内 CA（corp.pem）を書くが、GitHub のランナーにはない。
+      # git はこの環境変数を設定より優先するので、ランナーの CA を使わせる。
+      GIT_SSL_CAINFO: /etc/ssl/cert.pem
     steps:
       - uses: actions/checkout@v6
 
