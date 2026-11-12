@@ -75,7 +75,7 @@ PR は、そのブランチの worktree があれば「すでにある worktree�
 
 ```sh
 gh pr view '<番号|URL>' --json headRefName --jq .headRefName
-git worktree list --porcelain | rg -B2 '^branch refs/heads/<ブランチ名>$' | sed -n 's/^worktree //p'   # 出れば、それが worktree のルート
+git worktree list --porcelain | rg -F -x -B2 'branch refs/heads/<ブランチ名>' | sed -n 's/^worktree //p'   # 出れば、それが worktree のルート
 ```
 
 新しく作る worktree（folder は今いる worktree のルート。`gh wt` はそこから未コミットの変更を写す）:
