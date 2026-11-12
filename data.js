@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794450577621,
+  "lastUpdate": 1794467303768,
   "repoUrl": "https://github.com/meltin/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -8500,6 +8500,65 @@ window.BENCHMARK_DATA = {
             "range": "1.55 ms",
             "unit": "ms",
             "extra": "median: 32.96 ms\nmin: 32.15 ms\nmax: 38.09 ms\nstddev: 1.55 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "committer": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "distinct": true,
+          "id": "ca8d80a86eebc4a87ac790b8b0aac5ee0fa64e94",
+          "message": "feat(herdr): Agents をリポジトリでまとめるレイアウトを main から作る\n\n- main.json の Agents のブロックだけを agents-by-repo に替えたレイアウト（main-by-repo）を chezmoi のテンプレートで作る\n- 写しを持たずに jq で 1 か所だけ替えるので、Herdr の更新後に chezmoi apply すれば新しい main から作り直せる\n- mod は ~/dev/oss/herdr-agents-by-repo へのリンクにし、clone がないマシンではリンクを作らない\n\nCo-Authored-By: Claude Opus 5.5 Xhigh <noreply@anthropic.com>",
+          "timestamp": "2026-11-12T16:07:22+09:00",
+          "tree_id": "7b55523830939776331b0a40ff603722cce2b632",
+          "url": "https://github.com/meltin/dotfiles/commit/ca8d80a86eebc4a87ac790b8b0aac5ee0fa64e94"
+        },
+        "date": 1794467302493,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 38.24,
+            "range": "5.3 ms",
+            "unit": "ms",
+            "extra": "median: 38.24 ms\nmin: 37.6 ms\nmax: 60.06 ms\nstddev: 5.3 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 38.69,
+            "range": "5.31 ms",
+            "unit": "ms",
+            "extra": "median: 38.69 ms\nmin: 38.05 ms\nmax: 60.58 ms\nstddev: 5.31 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.05,
+            "range": "0.02 ms",
+            "unit": "ms",
+            "extra": "median: 1.05 ms\nmin: 0.99 ms\nmax: 1.09 ms\nstddev: 0.02 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 2.24,
+            "range": "6 ms",
+            "unit": "ms",
+            "extra": "median: 2.24 ms\nmin: 1.12 ms\nmax: 22.63 ms\nstddev: 6 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 32.97,
+            "range": "1 ms",
+            "unit": "ms",
+            "extra": "median: 32.97 ms\nmin: 32.13 ms\nmax: 36.73 ms\nstddev: 1 ms\nruns: 16"
           }
         ]
       }
