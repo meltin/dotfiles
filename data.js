@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794472525993,
+  "lastUpdate": 1794473272052,
   "repoUrl": "https://github.com/meltin/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -8854,6 +8854,65 @@ window.BENCHMARK_DATA = {
             "range": "3.04 ms",
             "unit": "ms",
             "extra": "median: 33.22 ms\nmin: 32.39 ms\nmax: 45.05 ms\nstddev: 3.04 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "committer": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "distinct": true,
+          "id": "65de24606ab324e697c6e0d4e607b031de4dd709",
+          "message": "feat(herdr): auto-title がタブ名を読み直す間隔を 5 秒にする\n\n- タブは space ごとに 1 枚で名前もあまり変わらないので、既定の 500 ms は多すぎる\n- ~/.config/herdr-auto-title/config.env に HERDR_AUTO_TITLE_POLL_MS=5000 を置く。起動時にだけ読むので、変えたら launchctl kickstart で入れ直す\n- CPU は 1 コアの約 0.9% から約 0.2% に下がった\n\nCo-Authored-By: Claude Opus 5.5 Xhigh <noreply@anthropic.com>",
+          "timestamp": "2026-11-12T17:47:07+09:00",
+          "tree_id": "0861c3f3617355606357a813a8a8f6ea9ba369df",
+          "url": "https://github.com/meltin/dotfiles/commit/65de24606ab324e697c6e0d4e607b031de4dd709"
+        },
+        "date": 1794473270735,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 38.34,
+            "range": "7.44 ms",
+            "unit": "ms",
+            "extra": "median: 38.34 ms\nmin: 37.27 ms\nmax: 68.92 ms\nstddev: 7.44 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 38.8,
+            "range": "7.45 ms",
+            "unit": "ms",
+            "extra": "median: 38.8 ms\nmin: 37.72 ms\nmax: 69.42 ms\nstddev: 7.45 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.06,
+            "range": "0.03 ms",
+            "unit": "ms",
+            "extra": "median: 1.06 ms\nmin: 1.01 ms\nmax: 1.14 ms\nstddev: 0.03 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 2.42,
+            "range": "2.6 ms",
+            "unit": "ms",
+            "extra": "median: 2.42 ms\nmin: 1.13 ms\nmax: 12.22 ms\nstddev: 2.6 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 33.49,
+            "range": "2.33 ms",
+            "unit": "ms",
+            "extra": "median: 33.49 ms\nmin: 32.9 ms\nmax: 42.99 ms\nstddev: 2.33 ms\nruns: 16"
           }
         ]
       }
