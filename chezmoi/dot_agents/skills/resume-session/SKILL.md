@@ -1,15 +1,23 @@
 ---
 name: resume-session
-description: 過去のエージェントのセッションを探して再開し、追加の指示を送る。「あのセッションに伝えて」「それやってるセッションを起動して指示を送って」「前のセッションを再開して」などと、既存・過去のセッションに作業を頼むよう言われたときに使う。相手が動いていればメッセージを送り、止まっていれば Herdr のタブで再開する。
+description: 過去のエージェントのセッションを探して再開し、追加の指示を送る。「あのセッションに伝えて」「それやってるセッションを起動して指示を送って」「前のセッションを再開して」などと、既存・過去のセッションに作業を頼むよう言われたときに使う。相手が動いていればメッセージを送り、止まっていれば端末アプリ（Herdr か Rex）のタブで再開する。
 ---
 
 # resume-session
 
-すでにあるセッションに指示を届ける。相手が動いていればメッセージを送るだけで終え、止まっていれば Herdr のタブで再開して指示を渡す。新しい worktree を作って渡すのは handoff スキル。
+すでにあるセッションに指示を届ける。相手が動いていればメッセージを送るだけで終え、止まっていれば今使っている端末アプリのタブで再開して指示を渡す。新しい worktree を作って渡すのは handoff スキル。
 
 動いているセッションを別のタブで再開すると、会話が 2 つに分かれる。再開する前に、相手が動いていないことを必ず確かめる。
 
 Bash の呼び出しをまたぐとシェルの変数は消える。値は出力を読み取り、次のコマンドに直接書く。シェルの位置引数（1 番目、2 番目を表す変数）は、このファイルにも起動スクリプトにも書かない（スキルの引数に置き換わって壊れる）。
+
+## 端末アプリを見分ける
+
+```sh
+if [ -n "$HC_TERMINAL_ID" ]; then echo herdr; elif [ -n "$REX_SESSION" ]; then echo rex; fi
+```
+
+出た名前のファイル（このフォルダーの `herdr.md` か `rex.md`）だけを読む。手順 4 の起動スクリプト、手順 5、手順 6 はそのファイルに従う。何も出なければ、相手が動いていてメッセージを送るだけで済むとき（手順 2 まで）のほかは、対応する端末アプリの外にいると依頼者に伝えて終える。
 
 ## 1. 相手を探す
 
@@ -22,7 +30,7 @@ session-rg --json --limit 5 '<語>' | jq -r '[.id, .cwd, .last_activity[0:16], .
 - 期間で絞るときは `--since 3d` や `--since 2026-11-01` を付ける
 - Codex のセッションは `ccsession --codex list --json --grep '<語>' --limit 5 | jq -r '.[] | [.id, .cwd, .last_activity, .label] | @tsv'`。以降の `ccsession` にも `--codex` を付ける
 - 候補が複数あって決まらなければ、依頼者に尋ねる。中身は `ccsession preview --no-color '<ID>'` で見る
-- 他の terminal の画面を `hc read` で読んで探さない（依頼者のシェルに秘密情報が映っていることがある）
+- 他のタブの画面を `hc read` や `rex capture` で読んで探さない（依頼者のシェルに秘密情報が映っていることがある）
 
 ## 2. 相手が動いていないか確かめる
 
@@ -52,52 +60,23 @@ jq -r 'select(.gitBranch) | .gitBranch' ~/.claude/projects/*/'<セッション I
 
 指示は一時ファイル（スクラッチパッドがあればそこ）に書く。相手は以前の会話を覚えているので、そのあとに変わったことを書く: この会話で決まったこととその理由、やること、再開先の今の状態で相手が知らないこと、守る約束事（メモリや CLAUDE.md、AGENTS.md から書き写す）。
 
-起動スクリプトも同じ場所に書き、値をそのまま書き込む。
-
-```sh
-cd '<cwd>' && claude --resume '<セッション ID>' "$(cat '<指示ファイル>')"
-exec "${SHELL:-/bin/zsh}" -l
-```
+起動スクリプトも同じ場所に、アプリのファイルにある形で書き、値をそのまま書き込む。
 
 - 再開のコマンドは `resume-spec` の `args` に合わせる（Codex なら `codex resume '<セッション ID>'`）
 - 指示がないときは、`"$(cat ...)"` を消す
 - `ccsession resume` は使わない（Bash の中で対話画面を起動するので、タブが開かず、指示も渡せない）
-- 最後の行は、エージェントが終わったあとも、そのフォルダーにシェルを残すため
 
 書いたら `sh -n '<起動スクリプト>'` で確かめる。
 
 ## 5. タブで再開する
 
-起動の直前に、手順 2 をもう一度行う。開く場所は cwd の worktree にいる space のタブ（なければ新しい space）。
-
-```sh
-target=$(git -C '<cwd>' rev-parse --show-toplevel 2>/dev/null || echo '<cwd>')
-space=$(herdr-app ls | jq -r '.spaces[] | .id as $s | .tabs[].terminals[].terminal | "\($s) \(.)"' | while read -r s t; do
-  cwd=$(hc get "$t" --json | jq -r '.foreground.cwd // .cwd')
-  [ "$(git -C "$cwd" rev-parse --show-toplevel 2>/dev/null || echo "$cwd")" = "$target" ] && { echo "$s"; break; }
-done)
-if [ -n "$space" ]; then
-  herdr-app do tab.new "$(jq -nc --arg s "$space" --arg f '<cwd>' --arg l '<起動スクリプト>' '{space: $s, folder: $f, argv: ["sh", $l]}')"
-else
-  herdr-app do space.new "$(jq -nc --arg f '<cwd>' --arg l '<起動スクリプト>' '{folder: $f, argv: ["sh", $l]}')"
-fi
-```
-
-出力の `terminal`（`t1c` のような値）を控える。Herdr は開いたタブを表示する（元のタブには戻さない）。
+起動の直前に、手順 2 をもう一度行う。それから、アプリのファイルの手順で開く。
 
 ## 6. 届いたか確かめる
 
-```sh
-hc wait '<terminal>' --timeout 10 >/dev/null; hc get '<terminal>' --json | jq -c '{app: .status.app, state: .status.state}'; hc read '<terminal>' | tail -30
-```
-
-- `app` が `claude-code`（Codex なら `codex`）になり、指示の本文が出ている: 渡せた。確認待ちで止まっていたら、依頼者にそのタブで答えてもらう
-- `app` が `null` のまま、画面に質問（フォルダーを信頼するかなど）が出ている: 依頼者にそのタブで答えてもらう
-- シェルのプロンプトに戻っている: 起動に失敗した。画面のエラーを確かめ、セッション ID、cwd、指示ファイルのパスを見直す
-
-再開したセッション ID、cwd、terminal のアドレスを伝えて終える。
+アプリのファイルにあるコマンドで確かめる。再開したセッション ID、cwd、アプリのファイルにある ID を伝えて終える。
 
 ## やらないこと
 
 - 頼まれた作業を自分で進めない。相手の完了も待たない
-- `herdr-app do` がエラーやタイムアウトで戻っても、すぐ作り直さない（同じセッションを 2 回再開すると会話が分かれる）。`herdr-app ls` で、タブや space ができていないか確かめる
+- アプリのファイルにある「やらないこと」
