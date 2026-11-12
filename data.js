@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794470785908,
+  "lastUpdate": 1794472461495,
   "repoUrl": "https://github.com/meltin/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -8736,6 +8736,65 @@ window.BENCHMARK_DATA = {
             "range": "1.58 ms",
             "unit": "ms",
             "extra": "median: 33.53 ms\nmin: 32.76 ms\nmax: 39.39 ms\nstddev: 1.58 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "k.suzuki",
+            "username": "meltin"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "e5b6ae823a2859a8bf54fc611b7f95809c8a1d39",
+          "message": "feat(skills): handoff と resume-session でタブを開く先を Rex から Herdr に替える (#15)\n\n* feat(skills): handoff と resume-session でタブを開く先を Rex から Herdr に替える\n\n- タブは herdr-app do tab.new で開き、space がなければ space.new で作る\n- handoff は自分の terminal（HC_TERMINAL_ID）がある space、resume-session はリポジトリ名の space にタブを足す\n- Herdr は新しいタブにフォーカスを移すので、tab.select で自分のタブに戻す\n- 届いたかは hc wait、herdr-app ls の app と status、hc read で確かめる\n- コマンドが終わると Herdr がシェルを開くので、起動スクリプトのシェルへのフォールバックをやめる\n- 引き継ぎ先を hc run の子にしない（親と一緒に止まり、相手の様子が親に届き続けるため）\n\nCo-Authored-By: Claude Opus 5.5 Xhigh <noreply@anthropic.com>\n\n* fix(skills): handoff と resume-session でタブを開いたあと、開く前に表示していたタブに戻す\n\n- 自分のタブではなく、依頼者がタブを開く前に見ていたタブを選び直す（Rex の --focus=false に近い動き）\n- Herdr の外から呼ばれたときも、Herdr が表示しているタブに戻せる\n\nCo-Authored-By: Claude Opus 5.5 Xhigh <noreply@anthropic.com>\n\n* fix(skills): handoff と resume-session の hc read と hc wait の説明を実際の動きに合わせる\n\n- アドレスを省いた hc read は選ぶ画面を出さず、どの terminal かを尋ねるエラーで止まる\n- hc wait がエージェントの最初のターンで戻るかは確かめていないので、早めに戻ることもある、という書き方にする\n\nCo-Authored-By: Claude Opus 5.5 Xhigh <noreply@anthropic.com>\n\n* fix(skills): handoff と resume-session でタブを開いたあと元のタブに戻すのをやめる\n\n- Herdr の標準どおり新しいタブを表示したままにし、依頼者がそのまま進み具合を見られるようにする\n- 戻すために持っていた herdr-app ls の結果と tab.select の行を消す\n\nCo-Authored-By: Claude Opus 5.5 Xhigh <noreply@anthropic.com>\n\n* fix(skills): handoff と resume-session で worktree ごとに space を決める\n\n- 新しく作る worktree は新しい space で開き、Herdr のサイドバーでリポジトリの下に入れ子で並べる\n- すでにある worktree は、その worktree にいる space にタブを足す（なければ新しい space）\n- 起動スクリプトの最後で worktree の中にシェルを残し、エージェントが終わっても space が元のフォルダーに戻らないようにする\n- resume-session で ccsession に出ないセッション（記録の末尾 64KB に人の発言がない）を rg で探す\n- 手順をルールと決まりきったコマンドだけに短くした\n\nCo-Authored-By: Claude Opus 5.5 Xhigh <noreply@anthropic.com>\n\n* fix(skills): handoff で既存の worktree と PR の場所を git worktree list から取る\n\n- gh wt -l はパスを ~ で出し、ブランチ名も省略するので、space を探す絶対パスとの比較に使えなかった\n- PR は、そのブランチの worktree があれば既存の worktree、なければ新しく作る worktree として扱う（gh wt -p の経路も実地で確認）\n\nCo-Authored-By: Claude Opus 5.5 Xhigh <noreply@anthropic.com>\n\n* fix(skills): resume-session で記録を直接探すとき自分のセッションを除く\n\n- rg で記録を探すと、検索語を打った自分のセッションも見つかるので、CLAUDE_CODE_SESSION_ID で除く\n- 相手が最後にいたブランチを記録の gitBranch から読むコマンドを戻した\n\nCo-Authored-By: Claude Opus 5.5 Xhigh <noreply@anthropic.com>\n\n* fix(skills): handoff と resume-session で git でないフォルダーと信頼の確認を扱う\n\n- space を探すとき、git でないフォルダーは worktree のルートが空になり、空どうしが一致して別の space を選んでいた。git でなければフォルダーそのものと比べる（~ のシェルの space で確認）\n- 届いたかの確認に、フォルダーを信頼するかなどの質問で止まったときの場合分けを足した（このとき hc は確認待ちと知らせない）\n\nCo-Authored-By: Claude Opus 5.5 Xhigh <noreply@anthropic.com>\n\n* fix(skills): resume-session で相手を session-rg で探す\n\n- ccsession は記録の末尾 64KB に人の発言がないセッションを一覧から外すため、rg で直接探す手順を別に置いていた。session-rg は全文を読むので 1 つのコマンドで済む\n- 語を複数並べるとすべてが出てくるセッションに絞れ、自分のセッションは出ない。--since で期間も絞れる\n- Codex のセッションは ccsession --codex のまま\n\nCo-Authored-By: Claude Opus 5.5 Xhigh <noreply@anthropic.com>\n\n* fix(skills): handoff で既存の worktree を探すときブランチ名を文字列として照合する\n\n- ブランチ名を rg の正規表現として渡していたので、. や + を含む名前で別のブランチの worktree に一致した（PR #15 のレビューの指摘）\n- rg -F -x で、行全体を文字列のまま照合する\n\nCo-Authored-By: Claude Opus 5.5 Xhigh <noreply@anthropic.com>\n\n---------\n\nCo-authored-by: Claude Opus 5.5 Xhigh <noreply@anthropic.com>",
+          "timestamp": "2026-11-12T17:33:36+09:00",
+          "tree_id": "eb30b02e82068de66bbb4eb744fb19344702df41",
+          "url": "https://github.com/meltin/dotfiles/commit/e5b6ae823a2859a8bf54fc611b7f95809c8a1d39"
+        },
+        "date": 1794472460339,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 38.97,
+            "range": "7.46 ms",
+            "unit": "ms",
+            "extra": "median: 38.97 ms\nmin: 37.84 ms\nmax: 69.54 ms\nstddev: 7.46 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 39.43,
+            "range": "7.47 ms",
+            "unit": "ms",
+            "extra": "median: 39.43 ms\nmin: 38.28 ms\nmax: 70.04 ms\nstddev: 7.47 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.07,
+            "range": "0.1 ms",
+            "unit": "ms",
+            "extra": "median: 1.07 ms\nmin: 0.92 ms\nmax: 1.3 ms\nstddev: 0.1 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 1.96,
+            "range": "4.8 ms",
+            "unit": "ms",
+            "extra": "median: 1.96 ms\nmin: 0.85 ms\nmax: 18.55 ms\nstddev: 4.8 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 35.2,
+            "range": "2.47 ms",
+            "unit": "ms",
+            "extra": "median: 35.2 ms\nmin: 32.62 ms\nmax: 39.51 ms\nstddev: 2.47 ms\nruns: 16"
           }
         ]
       }
