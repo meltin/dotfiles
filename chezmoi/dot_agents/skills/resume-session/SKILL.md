@@ -13,20 +13,14 @@ Bash の呼び出しをまたぐとシェルの変数は消える。値は出力
 
 ## 1. 相手を探す
 
-Issue や PR の番号、ブランチ名、作業の内容など、相手の会話に出てきたはずの言葉で探す。
+Issue や PR の番号、ブランチ名、作業の内容など、相手の会話に出てきたはずの言葉で探す。語を複数並べると、すべてが出てくるセッションに絞れる。自分のセッションは出ない。
 
 ```sh
-ccsession list --json --grep '<語>' --limit 5 | jq -r '.[] | [.id, .cwd, .last_activity, .label] | @tsv'
+session-rg --json --limit 5 '<語>' | jq -r '[.id, .cwd, .last_activity[0:16], .title] | @tsv'
 ```
 
-- Codex のセッションは `ccsession --codex list ...`。以降の `ccsession` にも `--codex` を付ける
-- 自分のセッションも出る（cwd が今の作業フォルダーで、いちばん新しい行）。外す
-- 見つからないときは、記録を直接探す。ccsession は、記録の末尾 64KB に人の発言がないセッションを一覧から外すため。ファイル名がセッション ID
-
-  ```sh
-  rg -l --fixed-strings '<語>' ~/.claude/projects/*/*.jsonl | rg -v "${CLAUDE_CODE_SESSION_ID:-no-session-id}" | head
-  ```
-
+- 期間で絞るときは `--since 3d` や `--since 2026-11-01` を付ける
+- Codex のセッションは `ccsession --codex list --json --grep '<語>' --limit 5 | jq -r '.[] | [.id, .cwd, .last_activity, .label] | @tsv'`。以降の `ccsession` にも `--codex` を付ける
 - 候補が複数あって決まらなければ、依頼者に尋ねる。中身は `ccsession preview --no-color '<ID>'` で見る
 - 他の terminal の画面を `hc read` で読んで探さない（依頼者のシェルに秘密情報が映っていることがある）
 
