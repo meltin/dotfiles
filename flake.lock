@@ -144,7 +144,8 @@
         "home-manager": "home-manager",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs",
-        "nova": "nova"
+        "nova": "nova",
+        "session-rg": "session-rg"
       }
     },
     "rust-analyzer-src": {
@@ -161,6 +162,26 @@
         "owner": "rust-lang",
         "ref": "nightly",
         "repo": "rust-analyzer",
+        "type": "github"
+      }
+    },
+    "session-rg": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1794450426,
+        "narHash": "sha256-EM1Tgv50QgSgXvLYnxX/0dhTHE497Wqcw3GpagG3evw=",
+        "owner": "meltin",
+        "repo": "session-rg",
+        "rev": "1ce1e92428606504d1b0db3bd07959376cfa7e6e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "meltin",
+        "repo": "session-rg",
         "type": "github"
       }
     },

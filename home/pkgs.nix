@@ -47,5 +47,6 @@ in
     hyperfine
     lefthook
     inputs.ccsession.packages.${stdenv.hostPlatform.system}.default
+    inputs.session-rg.packages.${stdenv.hostPlatform.system}.default
   ];
 }

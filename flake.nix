@@ -18,6 +18,10 @@
       url = "github:sorafujitani/ccsession";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    session-rg = {
+      url = "github:meltin/session-rg";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     inputs@{
