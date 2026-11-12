@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794472461495,
+  "lastUpdate": 1794472525993,
   "repoUrl": "https://github.com/meltin/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -8795,6 +8795,65 @@ window.BENCHMARK_DATA = {
             "range": "2.47 ms",
             "unit": "ms",
             "extra": "median: 35.2 ms\nmin: 32.62 ms\nmax: 39.51 ms\nstddev: 2.47 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "committer": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "distinct": true,
+          "id": "6ec38382eda0e2d302636c4e5041efb237907421",
+          "message": "feat(herdr): タブに名前を付ける auto-title の mod を外部取得で入れる\n\n- kryptamine/herdr-auto-title（MIT）の mod/mods/auto-title だけを、v0.22.2 のコミット 9633ddf に固定して取る\n- exact にしない。Herdr が mod のフォルダーに jsconfig.json と gpui-kit.d.ts を書き足すので、exact だと apply のたびに消して書き直しが続く\n- タブ名を付けるバイナリと launchd の登録、keys.json の cmd-alt-t は dotfiles の外（ポップアップの Install で入る）\n\nCo-Authored-By: Claude Opus 5.5 Xhigh <noreply@anthropic.com>",
+          "timestamp": "2026-11-12T17:34:42+09:00",
+          "tree_id": "95ac7b2cd71924f82a3ffc315614c29221841268",
+          "url": "https://github.com/meltin/dotfiles/commit/6ec38382eda0e2d302636c4e5041efb237907421"
+        },
+        "date": 1794472524680,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 38.31,
+            "range": "7.12 ms",
+            "unit": "ms",
+            "extra": "median: 38.31 ms\nmin: 37.56 ms\nmax: 66.91 ms\nstddev: 7.12 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 38.75,
+            "range": "7.13 ms",
+            "unit": "ms",
+            "extra": "median: 38.75 ms\nmin: 38.01 ms\nmax: 67.4 ms\nstddev: 7.13 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.06,
+            "range": "0.02 ms",
+            "unit": "ms",
+            "extra": "median: 1.06 ms\nmin: 1.01 ms\nmax: 1.11 ms\nstddev: 0.02 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 1.48,
+            "range": "0.55 ms",
+            "unit": "ms",
+            "extra": "median: 1.48 ms\nmin: 1.22 ms\nmax: 2.87 ms\nstddev: 0.55 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 33.22,
+            "range": "3.04 ms",
+            "unit": "ms",
+            "extra": "median: 33.22 ms\nmin: 32.39 ms\nmax: 45.05 ms\nstddev: 3.04 ms\nruns: 16"
           }
         ]
       }
