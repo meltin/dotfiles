@@ -6,3 +6,7 @@ README.md
 Library/LaunchAgents/local.sidepulse-log-trim.plist
 sidepulse-init.sh
 {{- end }}
+{{- if not (stat (joinPath .chezmoi.homeDir "dev/oss/herdr-agents-by-repo")) }}
+# mod のリポジトリを clone していないマシンでは、リンクを作らない。
+.config/herdr-app/mods/agents-by-repo
+{{- end }}
