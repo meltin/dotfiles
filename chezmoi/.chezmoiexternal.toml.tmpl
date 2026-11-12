@@ -50,3 +50,12 @@
     stripComponents = 4
     exact = true
 {{- end }}
+
+# Herdr の mod: タブに名前を付ける Auto Title の入れ口（ポップアップ）。名前を付けるバイナリは
+# この mod の Install ボタンで入り、launchd に登録される（dotfiles の外）。v0.22.2 のコミットに固定。
+[".config/herdr-app/mods/auto-title"]
+    type = "archive"
+    url = "https://github.com/kryptamine/herdr-auto-title/archive/9633ddf4d9a0da03f80b54ff0dd4dd87c15e49b8.tar.gz"
+    include = ["*/mod/mods/auto-title/**"]
+    stripComponents = 4
+    # exact にしない: Herdr が mod のフォルダーに型の定義（jsconfig.json、gpui-kit.d.ts）を書き足すので、消すと書き直しが続く
