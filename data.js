@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794467303768,
+  "lastUpdate": 1794467431432,
   "repoUrl": "https://github.com/meltin/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -8559,6 +8559,65 @@ window.BENCHMARK_DATA = {
             "range": "1 ms",
             "unit": "ms",
             "extra": "median: 32.97 ms\nmin: 32.13 ms\nmax: 36.73 ms\nstddev: 1 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "committer": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "distinct": true,
+          "id": "1acbb57c1964802255b0f70d8f4d17d1e9fea274",
+          "message": "fix(herdr): mod の clone がないマシンでは main-by-repo のレイアウトも作らない\n\nCo-Authored-By: Claude Opus 5.5 Xhigh <noreply@anthropic.com>",
+          "timestamp": "2026-11-12T16:09:47+09:00",
+          "tree_id": "ed08c63ad57179530e84be1d055d9df9a4017012",
+          "url": "https://github.com/meltin/dotfiles/commit/1acbb57c1964802255b0f70d8f4d17d1e9fea274"
+        },
+        "date": 1794467430300,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 38.29,
+            "range": "7.32 ms",
+            "unit": "ms",
+            "extra": "median: 38.29 ms\nmin: 37.04 ms\nmax: 68.33 ms\nstddev: 7.32 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 38.74,
+            "range": "7.33 ms",
+            "unit": "ms",
+            "extra": "median: 38.74 ms\nmin: 37.51 ms\nmax: 68.84 ms\nstddev: 7.33 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.04,
+            "range": "0.02 ms",
+            "unit": "ms",
+            "extra": "median: 1.04 ms\nmin: 1 ms\nmax: 1.09 ms\nstddev: 0.02 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 2.04,
+            "range": "3.73 ms",
+            "unit": "ms",
+            "extra": "median: 2.04 ms\nmin: 1.07 ms\nmax: 17.13 ms\nstddev: 3.73 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 33.22,
+            "range": "0.63 ms",
+            "unit": "ms",
+            "extra": "median: 33.22 ms\nmin: 32.71 ms\nmax: 34.92 ms\nstddev: 0.63 ms\nruns: 16"
           }
         ]
       }
