@@ -90,7 +90,7 @@ herdr-app do space.new "$(jq -nc --arg f '<今いる worktree のルート>' --a
 target='<worktree のルート>'
 space=$(herdr-app ls | jq -r '.spaces[] | .id as $s | .tabs[].terminals[].terminal | "\($s) \(.)"' | while read -r s t; do
   cwd=$(hc get "$t" --json | jq -r '.foreground.cwd // .cwd')
-  [ "$(git -C "$cwd" rev-parse --show-toplevel 2>/dev/null)" = "$target" ] && { echo "$s"; break; }
+  [ "$(git -C "$cwd" rev-parse --show-toplevel 2>/dev/null || echo "$cwd")" = "$target" ] && { echo "$s"; break; }
 done)
 if [ -n "$space" ]; then
   herdr-app do tab.new "$(jq -nc --arg s "$space" --arg f "$target" --arg l '<起動スクリプト>' '{space: $s, folder: $f, argv: ["sh", $l]}')"
@@ -111,6 +111,7 @@ hc wait '<terminal>' --timeout 30 >/dev/null; hc get '<terminal>' --json | jq -c
 
 - `app` が `null` で、`gh wt` の進み具合が出ている: まだ作っている。繰り返す
 - `app` が `claude-code`（Codex なら `codex`）になり、指示の本文が出ている: 渡せた。確認待ちで止まっていたら、依頼者にそのタブで答えてもらう
+- `app` が `null` のまま、画面に質問（フォルダーを信頼するかなど）が出ている: 依頼者にそのタブで答えてもらう
 - シェルのプロンプトに戻っている: `gh wt` かエージェントの起動に失敗した。画面のエラーを伝える
 
 渡せたら、worktree のパス、ブランチ名、terminal のアドレスを伝えて終える。
