@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794467431432,
+  "lastUpdate": 1794468923244,
   "repoUrl": "https://github.com/meltin/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -8618,6 +8618,65 @@ window.BENCHMARK_DATA = {
             "range": "0.63 ms",
             "unit": "ms",
             "extra": "median: 33.22 ms\nmin: 32.71 ms\nmax: 34.92 ms\nstddev: 0.63 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "committer": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "distinct": true,
+          "id": "f15bee98c082049c2fb011562c9dbe52f2c454e8",
+          "message": "fix(ci): PR のベンチマークで git にランナーの CA を使わせる\n\n- 88a674f（11/05）から M4Pro の git 設定の http.sslCAInfo が corp.pem を指し、GitHub のランナーにはないので zsh-bench の git clone が毎回失敗していた\n- benchmark-pr.yml のジョブに GIT_SSL_CAINFO=/etc/ssl/cert.pem を置く（git は環境変数を設定より優先する）\n- main の benchmark.yml は self-hosted で corp.pem があるので変えない。共有の setup-bench-env で corp.pem を作らないのは、self-hosted の本物を上書きしないため\n\nCo-Authored-By: Claude Opus 5.5 Xhigh <noreply@anthropic.com>",
+          "timestamp": "2026-11-12T16:34:39+09:00",
+          "tree_id": "a2f411644b7f8dcbcdcc6b9959d34de51af9c888",
+          "url": "https://github.com/meltin/dotfiles/commit/f15bee98c082049c2fb011562c9dbe52f2c454e8"
+        },
+        "date": 1794468921991,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 41.88,
+            "range": "8.23 ms",
+            "unit": "ms",
+            "extra": "median: 41.88 ms\nmin: 38.33 ms\nmax: 75.03 ms\nstddev: 8.23 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 42.35,
+            "range": "8.25 ms",
+            "unit": "ms",
+            "extra": "median: 42.35 ms\nmin: 38.78 ms\nmax: 75.56 ms\nstddev: 8.25 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.07,
+            "range": "0.06 ms",
+            "unit": "ms",
+            "extra": "median: 1.07 ms\nmin: 0.98 ms\nmax: 1.19 ms\nstddev: 0.06 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 10.18,
+            "range": "8.29 ms",
+            "unit": "ms",
+            "extra": "median: 10.18 ms\nmin: 1.47 ms\nmax: 22.32 ms\nstddev: 8.29 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 37.67,
+            "range": "2.84 ms",
+            "unit": "ms",
+            "extra": "median: 37.67 ms\nmin: 33.51 ms\nmax: 42.42 ms\nstddev: 2.84 ms\nruns: 16"
           }
         ]
       }
