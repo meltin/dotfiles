@@ -1,5 +1,6 @@
-{{- /* Herdr の main レイアウトの Agents を、リポジトリでまとめる mod（agents-by-repo）に替える。Herdr を更新したら chezmoi apply で作り直す */ -}}
+{{- /* Herdr の main レイアウトの Agents を、リポジトリでまとめる mod（agents-by-repo）に、
+       Spaces を、ホバーで issue と PR を出す mod（spaces-issues）に替える。Herdr を更新したら chezmoi apply で作り直す */ -}}
 {{- $main := joinPath .chezmoi.homeDir ".config/herdr-app/layouts/main.json" -}}
 {{- if stat $main -}}
-{{ output "jq" "(.. | objects | select(.id? == \"agents\") | .content.mod) = \"agents-by-repo\"" $main }}
+{{ output "jq" "(.. | objects | select(.id? == \"agents\") | .content.mod) = \"agents-by-repo\" | (.. | objects | select(.id? == \"spaces\") | .content.mod) = \"spaces-issues\"" $main }}
 {{- end -}}

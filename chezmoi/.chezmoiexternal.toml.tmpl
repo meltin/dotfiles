@@ -59,3 +59,23 @@
     include = ["*/mod/mods/auto-title/**"]
     stripComponents = 4
     # exact にしない: Herdr が mod のフォルダーに型の定義（jsconfig.json、gpui-kit.d.ts）を書き足すので、消すと書き直しが続く
+
+# Herdr の mod（自作）: Agents をリポジトリでまとめる agents-by-repo。コミットに固定。
+# 手元で直すときは ~/dev/oss の clone で作業し、push したあとここのコミットを書き換える。
+[".config/herdr-app/mods/agents-by-repo"]
+    type = "archive"
+    url = "https://github.com/meltin/herdr-agents-by-repo/archive/014c2c2c7861637837e81709681be04681511ff2.tar.gz"
+    include = ["*/mods/agents-by-repo/**"]
+    stripComponents = 3
+
+# Herdr の mod（自作）: issue や PR からワークツリーを作る issue-worktree と、
+# Spaces のホバーで issue と PR を出す spaces-issues。同じリポジトリの同じコミットに固定。
+{{- $issueWorktree := "cc5748e41e28ad73d6c7d72e2c3f763ce100c94a" }}
+{{- range list "issue-worktree" "spaces-issues" }}
+
+[".config/herdr-app/mods/{{ . }}"]
+    type = "archive"
+    url = "https://github.com/meltin/herdr-issue-worktree/archive/{{ $issueWorktree }}.tar.gz"
+    include = ["*/mods/{{ . }}/**"]
+    stripComponents = 3
+{{- end }}
