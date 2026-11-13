@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794473272052,
+  "lastUpdate": 1794528371768,
   "repoUrl": "https://github.com/meltin/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -8913,6 +8913,65 @@ window.BENCHMARK_DATA = {
             "range": "2.33 ms",
             "unit": "ms",
             "extra": "median: 33.49 ms\nmin: 32.9 ms\nmax: 42.99 ms\nstddev: 2.33 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "committer": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "distinct": true,
+          "id": "151877bffba680a45c75c885f49078c4e9e8e1cd",
+          "message": "chore(nix): flake.lock の nixpkgs と session-rg を更新\n\nCo-Authored-By: Claude Fable 5.2 Medium <noreply@anthropic.com>",
+          "timestamp": "2026-11-13T08:56:14+09:00",
+          "tree_id": "7d773d68d2658ba9fa26937d66eea13133646455",
+          "url": "https://github.com/meltin/dotfiles/commit/151877bffba680a45c75c885f49078c4e9e8e1cd"
+        },
+        "date": 1794528370560,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 38.25,
+            "range": "6.85 ms",
+            "unit": "ms",
+            "extra": "median: 38.25 ms\nmin: 35.8 ms\nmax: 65.31 ms\nstddev: 6.85 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 38.75,
+            "range": "6.9 ms",
+            "unit": "ms",
+            "extra": "median: 38.75 ms\nmin: 36.27 ms\nmax: 66 ms\nstddev: 6.9 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.05,
+            "range": "0.08 ms",
+            "unit": "ms",
+            "extra": "median: 1.05 ms\nmin: 0.85 ms\nmax: 1.17 ms\nstddev: 0.08 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 1.34,
+            "range": "4.9 ms",
+            "unit": "ms",
+            "extra": "median: 1.34 ms\nmin: 1.01 ms\nmax: 17.88 ms\nstddev: 4.9 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 33.7,
+            "range": "3.02 ms",
+            "unit": "ms",
+            "extra": "median: 33.7 ms\nmin: 32.33 ms\nmax: 43.25 ms\nstddev: 3.02 ms\nruns: 16"
           }
         ]
       }
