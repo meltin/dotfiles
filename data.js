@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794528371768,
+  "lastUpdate": 1794535765922,
   "repoUrl": "https://github.com/meltin/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -8972,6 +8972,65 @@ window.BENCHMARK_DATA = {
             "range": "3.02 ms",
             "unit": "ms",
             "extra": "median: 33.7 ms\nmin: 32.33 ms\nmax: 43.25 ms\nstddev: 3.02 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "committer": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "distinct": true,
+          "id": "5a0ab392f8c139b9200c63cf11ac00b963c9a2ec",
+          "message": "chore(claude): Hono のプラグインを移転先の hono@hono に替える\n\n- 配布元の `yusukebe/hono-skill` が `honojs/skills` に移り、旧リポジトリは保守が終わった\n- `enabledPlugins` の `hono-skill@hono-skill` を `hono@hono` にする\n- `extraKnownMarketplaces` に配布元 `hono`（`honojs/skills`）を足す\n\nCo-Authored-By: Claude Fable 5.2 Medium <noreply@anthropic.com>",
+          "timestamp": "2026-11-13T09:11:19+09:00",
+          "tree_id": "62b19965d428628bfbf6e6e8bc108203b9802b79",
+          "url": "https://github.com/meltin/dotfiles/commit/5a0ab392f8c139b9200c63cf11ac00b963c9a2ec"
+        },
+        "date": 1794535764827,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 39.08,
+            "range": "2.21 ms",
+            "unit": "ms",
+            "extra": "median: 39.08 ms\nmin: 37.36 ms\nmax: 47.29 ms\nstddev: 2.21 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 39.54,
+            "range": "2.23 ms",
+            "unit": "ms",
+            "extra": "median: 39.54 ms\nmin: 37.81 ms\nmax: 47.79 ms\nstddev: 2.23 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1,
+            "range": "0.1 ms",
+            "unit": "ms",
+            "extra": "median: 1 ms\nmin: 0.96 ms\nmax: 1.34 ms\nstddev: 0.1 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 3.23,
+            "range": "6.11 ms",
+            "unit": "ms",
+            "extra": "median: 3.23 ms\nmin: 1.29 ms\nmax: 19.08 ms\nstddev: 6.11 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 34.01,
+            "range": "2.08 ms",
+            "unit": "ms",
+            "extra": "median: 34.01 ms\nmin: 33.02 ms\nmax: 41.84 ms\nstddev: 2.08 ms\nruns: 16"
           }
         ]
       }
