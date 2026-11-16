@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794535765922,
+  "lastUpdate": 1794811478183,
   "repoUrl": "https://github.com/meltin/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -9031,6 +9031,65 @@ window.BENCHMARK_DATA = {
             "range": "2.08 ms",
             "unit": "ms",
             "extra": "median: 34.01 ms\nmin: 33.02 ms\nmax: 41.84 ms\nstddev: 2.08 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "committer": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "distinct": true,
+          "id": "a65637bcc714045fad49a832287acaa60607f5c2",
+          "message": "chore(herdr): issue-worktree と spaces-issues の固定コミットを進める\n\n- ホバーのカードに GitHub のリポジトリの行を足した版（5c956bb）にする\n\nCo-Authored-By: Claude Fable 5.2 Medium <noreply@anthropic.com>",
+          "timestamp": "2026-11-13T12:03:46+09:00",
+          "tree_id": "4c1e2a882c9bcecc3c62270f3e0a887269493cc5",
+          "url": "https://github.com/meltin/dotfiles/commit/a65637bcc714045fad49a832287acaa60607f5c2"
+        },
+        "date": 1794811476615,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 37.92,
+            "range": "5.14 ms",
+            "unit": "ms",
+            "extra": "median: 37.92 ms\nmin: 36.17 ms\nmax: 58.4 ms\nstddev: 5.14 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 38.38,
+            "range": "5.13 ms",
+            "unit": "ms",
+            "extra": "median: 38.38 ms\nmin: 36.67 ms\nmax: 58.82 ms\nstddev: 5.13 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.1,
+            "range": "0.06 ms",
+            "unit": "ms",
+            "extra": "median: 1.1 ms\nmin: 1.01 ms\nmax: 1.29 ms\nstddev: 0.06 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 2.43,
+            "range": "6.67 ms",
+            "unit": "ms",
+            "extra": "median: 2.43 ms\nmin: 0.77 ms\nmax: 21.1 ms\nstddev: 6.67 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 33.33,
+            "range": "1.57 ms",
+            "unit": "ms",
+            "extra": "median: 33.33 ms\nmin: 32.15 ms\nmax: 38.26 ms\nstddev: 1.57 ms\nruns: 16"
           }
         ]
       }
