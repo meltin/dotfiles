@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794918174230,
+  "lastUpdate": 1794956819932,
   "repoUrl": "https://github.com/meltin/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -9149,6 +9149,65 @@ window.BENCHMARK_DATA = {
             "range": "1.26 ms",
             "unit": "ms",
             "extra": "median: 35.9 ms\nmin: 34.61 ms\nmax: 39.37 ms\nstddev: 1.26 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "committer": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "distinct": true,
+          "id": "1f3076eb3c6b6753db79c904b4e2f252e9273bac",
+          "message": "feat(rex): ショートカットの設定を管理に加える\n\n- Rex の設定画面で変えたショートカットは `shortcuts.json` に差分として保存される\n- cmd-n でセッションの新規作成、cmd-p でセッションの切り替え、cmd-[ と cmd-] でタブの移動などに変えた内容を別の端末でも使えるようにする\n\nCo-Authored-By: Claude Fable 5.2 Medium <noreply@anthropic.com>",
+          "timestamp": "2026-11-18T08:06:08+09:00",
+          "tree_id": "5eeace87d398c4ce01a0cb061af56f78c251272a",
+          "url": "https://github.com/meltin/dotfiles/commit/1f3076eb3c6b6753db79c904b4e2f252e9273bac"
+        },
+        "date": 1794956818751,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 37.59,
+            "range": "5.91 ms",
+            "unit": "ms",
+            "extra": "median: 37.59 ms\nmin: 36.61 ms\nmax: 61.96 ms\nstddev: 5.91 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 38.05,
+            "range": "5.92 ms",
+            "unit": "ms",
+            "extra": "median: 38.05 ms\nmin: 37.07 ms\nmax: 62.47 ms\nstddev: 5.92 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.1,
+            "range": "0.03 ms",
+            "unit": "ms",
+            "extra": "median: 1.1 ms\nmin: 1.02 ms\nmax: 1.13 ms\nstddev: 0.03 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 2.68,
+            "range": "5.32 ms",
+            "unit": "ms",
+            "extra": "median: 2.68 ms\nmin: 0.98 ms\nmax: 18.62 ms\nstddev: 5.32 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 32.72,
+            "range": "1.01 ms",
+            "unit": "ms",
+            "extra": "median: 32.72 ms\nmin: 32.25 ms\nmax: 35.65 ms\nstddev: 1.01 ms\nruns: 16"
           }
         ]
       }
