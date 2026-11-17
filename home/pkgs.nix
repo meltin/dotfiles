@@ -46,6 +46,7 @@ in
     fastfetch
     hyperfine
     lefthook
+    postgresql # psql
     inputs.ccsession.packages.${stdenv.hostPlatform.system}.default
     inputs.session-rg.packages.${stdenv.hostPlatform.system}.default
   ];
