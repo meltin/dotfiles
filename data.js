@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794811478183,
+  "lastUpdate": 1794918174230,
   "repoUrl": "https://github.com/meltin/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -9090,6 +9090,65 @@ window.BENCHMARK_DATA = {
             "range": "1.57 ms",
             "unit": "ms",
             "extra": "median: 33.33 ms\nmin: 32.15 ms\nmax: 38.26 ms\nstddev: 1.57 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "committer": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "distinct": true,
+          "id": "4c8755ac6489ea47ed585a064a659d8ede5e432f",
+          "message": "feat(ccstatusline): 右寄せを常に端まで寄せる\n\n- コンテキスト使用率が 60% を超えると右端が 40 桁空いていたため、flexMode を full にする\n\nCo-Authored-By: Claude Fable 5.2 Medium <noreply@anthropic.com>",
+          "timestamp": "2026-11-17T21:21:45+09:00",
+          "tree_id": "533af86b7ae0eb00999a22a08ab8a62c748c66b3",
+          "url": "https://github.com/meltin/dotfiles/commit/4c8755ac6489ea47ed585a064a659d8ede5e432f"
+        },
+        "date": 1794918172909,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 39.33,
+            "range": "5.1 ms",
+            "unit": "ms",
+            "extra": "median: 39.33 ms\nmin: 37.82 ms\nmax: 60.02 ms\nstddev: 5.1 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 39.79,
+            "range": "5.11 ms",
+            "unit": "ms",
+            "extra": "median: 39.79 ms\nmin: 38.27 ms\nmax: 60.49 ms\nstddev: 5.11 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.08,
+            "range": "0.03 ms",
+            "unit": "ms",
+            "extra": "median: 1.08 ms\nmin: 1.03 ms\nmax: 1.12 ms\nstddev: 0.03 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 3.14,
+            "range": "7.91 ms",
+            "unit": "ms",
+            "extra": "median: 3.14 ms\nmin: 1.25 ms\nmax: 22.89 ms\nstddev: 7.91 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 35.9,
+            "range": "1.26 ms",
+            "unit": "ms",
+            "extra": "median: 35.9 ms\nmin: 34.61 ms\nmax: 39.37 ms\nstddev: 1.26 ms\nruns: 16"
           }
         ]
       }
