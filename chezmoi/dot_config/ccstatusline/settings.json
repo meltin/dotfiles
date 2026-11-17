@@ -111,7 +111,7 @@
       }
     ]
   ],
-  "flexMode": "full-until-compact",
+  "flexMode": "full",
   "compactThreshold": 60,
   "colorLevel": 2,
   "defaultPaddingSide": "both",
