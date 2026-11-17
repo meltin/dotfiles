@@ -1,0 +1,116 @@
+{
+  "layer" : {
+    "bindings" : [
+      {
+        "action" : "client.window.new",
+        "keys" : [
+          "shift+cmd+n"
+        ],
+        "source" : "settings"
+      },
+      {
+        "action" : "session.new",
+        "keys" : [
+          "cmd+n"
+        ],
+        "source" : "settings"
+      },
+      {
+        "action" : "session.switch",
+        "keys" : [
+          "cmd+p"
+        ],
+        "source" : "settings"
+      },
+      {
+        "action" : "com.superlogical.terminal.clear",
+        "keys" : [
+          "cmd+k"
+        ],
+        "source" : "settings"
+      },
+      {
+        "action" : "client.tab.next",
+        "keys" : [
+          "cmd+]"
+        ],
+        "source" : "settings"
+      },
+      {
+        "action" : "client.tab.previous",
+        "keys" : [
+          "cmd+["
+        ],
+        "source" : "settings"
+      },
+      {
+        "action" : "client.sidebar.toggle",
+        "keys" : [
+          "cmd+b"
+        ],
+        "source" : "settings"
+      }
+    ],
+    "name" : "settings",
+    "removals" : [
+      {
+        "action" : "session.new",
+        "keys" : [
+          "shift+cmd+n"
+        ]
+      },
+      {
+        "action" : "client.window.new",
+        "keys" : [
+          "cmd+n"
+        ]
+      },
+      {
+        "action" : "session.switch",
+        "keys" : [
+          "cmd+k"
+        ]
+      },
+      {
+        "action" : "pane.go_to",
+        "keys" : [
+          "cmd+p"
+        ]
+      },
+      {
+        "action" : "pane.focus_next",
+        "keys" : [
+          "cmd+]"
+        ]
+      },
+      {
+        "action" : "pane.focus_previous",
+        "keys" : [
+          "cmd+["
+        ]
+      },
+      {
+        "action" : "client.tab.next",
+        "keys" : [
+          "shift+cmd+]"
+        ]
+      },
+      {
+        "action" : "client.tab.previous",
+        "keys" : [
+          "shift+cmd+["
+        ]
+      },
+      {
+        "action" : "client.sidebar.toggle",
+        "keys" : [
+          "cmd+\/"
+        ]
+      }
+    ]
+  },
+  "migrations" : [
+    "bracket-characters"
+  ],
+  "version" : 1
+}
