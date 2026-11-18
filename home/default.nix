@@ -8,6 +8,7 @@
     ./shell
     ./aws.nix
     ./muu.nix
+    ./bazel.nix
   ];
   home.stateVersion = "25.11";
 }
