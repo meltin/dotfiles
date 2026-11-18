@@ -23,6 +23,9 @@ in
       GIT_SSL_CAINFO = customCert;
       CARGO_HTTP_CAINFO = customCert;
       AWS_CA_BUNDLE = customCert;
+      # Nix の OpenSSL は SSL_CERT_FILE より NIX_SSL_CERT_FILE を優先して読む
+      NIX_SSL_CERT_FILE = customCert;
+      SSL_CERT_FILE = customCert;
     };
 
     # コミット署名を Secure Enclave の鍵で行う。鍵は端末外に持ち出せないため
