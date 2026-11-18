@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794956819932,
+  "lastUpdate": 1795006743996,
   "repoUrl": "https://github.com/meltin/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -9208,6 +9208,65 @@ window.BENCHMARK_DATA = {
             "range": "1.01 ms",
             "unit": "ms",
             "extra": "median: 32.72 ms\nmin: 32.25 ms\nmax: 35.65 ms\nstddev: 1.01 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "committer": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "distinct": true,
+          "id": "a612c9b082370d501de6a80e2f57a79e38fd36ae",
+          "message": "feat(bazel): TLS を検査するプロキシの下でも Bazel が依存を取得できるようにする\n\n- Bazel の内蔵 JDK は macOS のキーチェーンを見ないため、TLS を検査するプロキシの下では依存の取得に失敗する\n- switch のたびに、キーチェーンで信頼済みの証明書と一般の認証局から truststore を作り直し、~/.bazelrc から指定する\n- 一般の認証局も含めるので社外のネットワークでも動き、truststore の作成に失敗しても switch は止めない\n\nCo-Authored-By: Claude Opus 5.5 Max <noreply@anthropic.com>",
+          "timestamp": "2026-11-18T21:47:48+09:00",
+          "tree_id": "37cb627274498029cc3351485b5cbf021fce4fca",
+          "url": "https://github.com/meltin/dotfiles/commit/a612c9b082370d501de6a80e2f57a79e38fd36ae"
+        },
+        "date": 1795006742712,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 39.36,
+            "range": "1.98 ms",
+            "unit": "ms",
+            "extra": "median: 39.36 ms\nmin: 37.45 ms\nmax: 46.25 ms\nstddev: 1.98 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 39.83,
+            "range": "2 ms",
+            "unit": "ms",
+            "extra": "median: 39.83 ms\nmin: 37.83 ms\nmax: 46.71 ms\nstddev: 2 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.1,
+            "range": "0.02 ms",
+            "unit": "ms",
+            "extra": "median: 1.1 ms\nmin: 1.07 ms\nmax: 1.13 ms\nstddev: 0.02 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 3.01,
+            "range": "7.91 ms",
+            "unit": "ms",
+            "extra": "median: 3.01 ms\nmin: 1.73 ms\nmax: 21.5 ms\nstddev: 7.91 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 33.71,
+            "range": "0.63 ms",
+            "unit": "ms",
+            "extra": "median: 33.71 ms\nmin: 32.95 ms\nmax: 35.34 ms\nstddev: 0.63 ms\nruns: 16"
           }
         ]
       }
