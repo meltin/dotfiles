@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1795006743996,
+  "lastUpdate": 1795007017351,
   "repoUrl": "https://github.com/meltin/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -9267,6 +9267,65 @@ window.BENCHMARK_DATA = {
             "range": "0.63 ms",
             "unit": "ms",
             "extra": "median: 33.71 ms\nmin: 32.95 ms\nmax: 35.34 ms\nstddev: 0.63 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "committer": {
+            "email": "83203852+meltin@users.noreply.github.com",
+            "name": "meltin",
+            "username": "meltin"
+          },
+          "distinct": true,
+          "id": "87fd0b7d4285a7e2f8a2dd9f3757149f87b352ec",
+          "message": "fix(nix): Nix の OpenSSL でも社内の証明書を使う\n\n- Nix の OpenSSL は SSL_CERT_FILE より NIX_SSL_CERT_FILE を優先して読み、既定の証明書一覧には社内の CA が無いため、Python のダウンロードが失敗していた\n- NIX_SSL_CERT_FILE と SSL_CERT_FILE に、既存の社内向けの証明書一覧を指定する\n\nCo-Authored-By: Claude Opus 5.5 Max <noreply@anthropic.com>",
+          "timestamp": "2026-11-18T22:02:32+09:00",
+          "tree_id": "81fab92356ed24178e1ecdda56ec8286edc25f94",
+          "url": "https://github.com/meltin/dotfiles/commit/87fd0b7d4285a7e2f8a2dd9f3757149f87b352ec"
+        },
+        "date": 1795007016095,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 38.71,
+            "range": "6.77 ms",
+            "unit": "ms",
+            "extra": "median: 38.71 ms\nmin: 35.86 ms\nmax: 65.48 ms\nstddev: 6.77 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 39.21,
+            "range": "6.79 ms",
+            "unit": "ms",
+            "extra": "median: 39.21 ms\nmin: 36.32 ms\nmax: 66.01 ms\nstddev: 6.79 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 1.1,
+            "range": "0.04 ms",
+            "unit": "ms",
+            "extra": "median: 1.1 ms\nmin: 1.06 ms\nmax: 1.23 ms\nstddev: 0.04 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 10.45,
+            "range": "9.32 ms",
+            "unit": "ms",
+            "extra": "median: 10.45 ms\nmin: 1.69 ms\nmax: 25.67 ms\nstddev: 9.32 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 35.06,
+            "range": "1.59 ms",
+            "unit": "ms",
+            "extra": "median: 35.06 ms\nmin: 33.64 ms\nmax: 38.79 ms\nstddev: 1.59 ms\nruns: 16"
           }
         ]
       }
